@@ -1,0 +1,133 @@
+\RequirePackage[2020-02-02]{latexrelease}
+\documentclass{ntuthesis}
+
+
+\usepackage{amsmath, amssymb}
+\usepackage{bm, bbm}
+\usepackage{physics}
+\usepackage{natbib}
+
+\usepackage{appendix}
+\usepackage{caption}    % for subfigure
+\usepackage{subcaption} % for subfigure
+\usepackage{times}
+\usepackage{threeparttablex,longtable}
+\usepackage{booktabs}
+\usepackage{afterpage}  % load the afterpage package
+\usepackage{enumitem}
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{array}
+\usepackage{wallpaper}
+\usepackage[hidelinks]{hyperref}
+\usepackage[printwatermark]{xwatermark}
+\usepackage[capposition=top]{floatrow}
+\usepackage{chngcntr}
+\input{thesis-configs/newcom.tex}
+
+\counterwithout{equation}{chapter}
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+% Using the tex-text mapping for ligatures etc.
+\defaultfontfeatures{Mapping=tex-text}
+% Set the default fonts
+\setmainfont{Times New Roman}
+\setCJKmainfont[AutoFakeBold=true,AutoFakeSlant=true]{標楷體}
+%\setCJKmainfont[BoldFont={粗楷體},ItalicFont={斜楷體}]{標楷體}
+
+\ifdefined\firstpage
+
+  \def\withwatermark{1}
+  \ifdefined\withwatermark
+    \newsavebox\mybox
+    \savebox\mybox{\tikz[opacity=0.5]\node{\includegraphics{watermark.pdf}};}
+    \newwatermark*[allpages,xpos=6.1725cm,ypos=10.5225cm,scale=0.5]{\usebox\mybox}
+  \fi
+
+  % digital object identifier
+  \ifdefined\withdoi
+    \insertdoi
+  \fi
+\fi
+
+\makeatletter
+\AtBeginDocument{
+  \hypersetup{
+    pdftitle={\@titleen},
+    pdfauthor={\@authoren},
+    pdfsubject={\@typeen{} \@classen},
+    pdfkeywords={\@keywordsen}
+  }
+}
+\makeatother
+
+% Your information goes here
+\input{thesis-configs/ntuvars.tex}
+
+\begin{document}
+
+\frontmatter
+
+\makecover
+
+\ifdefined\excludefirstpage
+
+  \def\withwatermark{1}
+  \ifdefined\withwatermark
+    \newsavebox\mybox
+    \savebox\mybox{\tikz[opacity=0.5]\node{\includegraphics{watermark.pdf}};}
+    \newwatermark*[allpages,xpos=6.1725cm,ypos=10.5225cm,scale=0.5]{\usebox\mybox}
+  \fi
+
+  % digital object identifier
+  \ifdefined\withdoi
+    \insertdoi
+  \fi
+\fi
+
+% \makecertification
+
+% \input{thesis-configs/acknowledgements.tex}
+% \input{thesis-configs/abstract.tex}
+
+% \tableofcontents
+% \listoffigures
+% \listoftables
+
+\mainmatter
+
+
+\chapter{Introduction}
+\input{sections/intro.tex}  \label{ch:intro}
+\chapter{Background} \label{ch:background}
+  \section{Bitcoin as Legal Tender}\label{sec:bit-el}
+  \input{sections/bitcoin.tex}
+  \section{FDI in El Salvador}\label{sec:fdi-el}
+  \input{sections/FDI-sav.tex}
+  
+\chapter{Literature Review} \label{ch:lit}
+\chapter{Methodology} \label{ch:method}
+\input{sections/methodology.tex}
+\chapter{Result}  \label{ch:result}
+\chapter{Conclusion} \label{ch:conclusion}
+
+
+
+\backmatter
+\phantomsection
+\addcontentsline{toc}{chapter}{\bibname}
+\bibliographystyle{apalike}
+
+% Your bibliography goes here
+\bibliography{bib/ref.bib}
+
+% \chapter{Appendix}
+% \begin{appendices}
+%   \section*{The Bitcoin Law}
+%   \label{Ap-BitcoinLaw}
+%   \input{sections/Append-BitcoinLaw.tex}
+% \end{appendices}
+\end{document}
