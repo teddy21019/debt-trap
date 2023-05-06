@@ -1,0 +1,1 @@
+{"rule":"LARGE_NUMBER_OF","sentence":"^\\QThe model assumes that the economy is populated by a large number of representative households who maximizes their expected lifetime utility\\E$"}

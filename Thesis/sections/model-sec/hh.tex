@@ -1,0 +1,42 @@
+The model assumes that the economy is populated by a large number of representative households who maximize their expected lifetime utility
+\begin{equation}
+    \label{eq:utility}
+    E_0 \sum_{t=0}^\infty \beta^t U(c_t),
+\end{equation}
+where $\beta \in(0,1)$ denotes the discount factor,
+and $c_t$ represents the consumption good, which is composed of
+tradable consumption $c_t^T$ and nontradable consumption $c_t^N$.
+Assume that $c_t$ follows an aggregate technology
+\begin{equation}
+    \label{eq:A}
+    c_t = A(c^T_t, c^N_t),
+\end{equation}
+where $A$ is an increasing, concave, and linearly homogeneous function that captures characteristics such as the ratio or elasticity of substitution between tradable and nontradable consumption.
+The period utility function $U(c_t)$ follows the standard assumption, which is a strictly increasing and strictly concave function.
+
+Assume that households only have access to the one-period and state non-contingent bond.
+The households spend on consumption of tradable and untradable goods, along with their debt which is realized at this period. Their resources consist of labor incomes, dividend incomes, lump-sum transfers, as well as debt incomes. The households are also endowed with tradable goods, which follow a stochastic process.
+The budget constraint of the representative household is then
+\begin{equation}
+    \label{eq:bc}
+    P^T_t c^T_t + P^N_t c^N_t + P^T_t d_t =
+    P^T_t \tilde{y}^T_t + W_t h_t + (1- \tau^d_t)P^T_t q^d_t d_{t+1} + F_t + \Phi_t,
+\end{equation}
+where $P^T_t (P^N_t)$ denotes the nominal price of tradable (nontradable) goods, $d_t$ the bond denominated in tradable goods which is due in period $t$, $q_t$ the price of debt to be repaid at $t+1$, $\tilde{y}^T_t$ the endowment of traded goods to the household, $W_t$ the nominal wage, $h_t$ the hours worked, $\tau^d_t$ the tax on debt, $F_t$ a lump-sum transfer from the government, and finally $\Phi_t$ the nominal profits from owning firms.
+Households' working hour is bounded by an upper limit
+\begin{equation}
+    \label{eq:h-constraint}
+    h_t \le \bar{h},
+\end{equation}
+and they take the working hours $h_t$ as given.
+
+The households' problem is to choose $\{c_t, c_t^T, c_t^N, d_{t+1}\}$ such that their utility \eqref{eq:utility} is maximized subjected to the budget constraints \eqref{eq:A} -- \eqref{eq:h-constraint} and the no-Ponzi-game debt limit.
+Further denote the relative price of nontradable in terms of tradable goods as $p_t \equiv \frac{P^N_t}{P^T_t}$, we have the following first order conditions
+\begin{subequations}
+    \begin{align}
+        p_t &= \frac{A_2(c_t^T, c_t^N)}{A_1(c_t^t, c_t^N)}\\
+        \lambda_t &= U'(c_t)A_1(c_t^T, c_t^N)\\
+        (1-\tau_t^d)q_t^d \lambda_t &= \beta E_t \lambda_{t+1},
+    \end{align}
+\end{subequations}
+where $\lambda_t$ is the Lagrange multiplier.

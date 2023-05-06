@@ -1,0 +1,14 @@
+@article{10.2307/2296886,
+ ISSN = {00346527, 1467937X},
+ URL = {http://www.jstor.org/stable/2296886},
+ author = {Jonathan Eaton and Mark Gersovitz},
+ journal = {The Review of Economic Studies},
+ number = {2},
+ pages = {289--309},
+ publisher = {[Oxford University Press, Review of Economic Studies, Ltd.]},
+ title = {Debt with Potential Repudiation: Theoretical and Empirical Analysis},
+ urldate = {2023-05-06},
+ volume = {48},
+ year = {1981}
+}
+
