@@ -1,5 +1,5 @@
 The model considers a small open economy. The government borrows on international credit market.
-Due to the lack of enforcement in the market, the government can choose to default or not. Denote $I_t$ as the indicator of whether the government chooses to honor its debts in period $t$. If the government repays in this period ($I_{t} = 1$), the country can borrow in the following period, hence $d_{t+1} > 0$. However, if the government chooses to default ($I_t = 0$), then the country enters the status of financial autarky and is unable to have any sovereign debt in the next period, hence $d_{t+1} = 0$. The above scenario can be written as a slackness condition
+Due to the lack of enforcement in the market, the government can choose to default or not. Denote $I_t$ as the indicator of whether the government chooses to honor its debts in period $t$. If the government repays in this period ($I_{t} = 1$), the country will be able to borrow in the following period, hence $d_{t+1} > 0$. However, if the government chooses to default ($I_t = 0$), then the country will enter the status of financial autarky and is unable to have any sovereign debt in the next period, hence $d_{t+1} = 0$. The above scenario can be written as a slackness condition
 \begin{equation}
     \label{eq:gov-next-debt}
     (1 - I_t)d_{t+1} = 0 .
@@ -7,7 +7,7 @@ Due to the lack of enforcement in the market, the government can choose to defau
 
 To model the duration of financial exclusion, assume that once the country is in bad standing in the international credit market, it can regain reputation with probability $\theta$, and remain in bad standing with probability $1-\theta$. This implies that the country has an average exclusion duration of $1/\theta$ periods.
 
-Assume that the government distributes the proceeds from the debt tax to households as a lump-sum payment. If the government honors the debt, it repays $d_t$, but if the government decides to default, it will not make any payments to foreign lenders, and instead will return any payments made by households to the lenders back to the households. The budget constraint for the government can then be expressed as
+Assume that the government distributes the proceeds from the debt tax to households as a lump-sum payment. If the government honors the debt, it repays $d_t$, but if the government decides to default, it will not make any payments to foreign lenders, and instead will return any payments made by households directly to them. The budget constraint for the government can then be expressed as
 \begin{equation}
     \label{eq:gov-budget}
     f_t = \tau_t^d q_t^d d_{t+1} + (1-I_t)d_t,
