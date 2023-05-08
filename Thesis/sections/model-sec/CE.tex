@@ -1,4 +1,4 @@
-Under equilibrium, the households' consumption equals to the production of firms
+Under equilibrium, the households' consumption equals the production of firms
 \begin{equation}
     \label{eq:nontrade-clear}
     c^N_{t} = y^N_t.
@@ -15,14 +15,15 @@ When the country decides to default, it is in bad standing, hence it faces an ou
         y^T_t  - (1 - I_t) L(y^T_t).
 \end{equation}
 When the country defaults ($I_t = 0$), the endowment decreases.
-Price of debt offered by the foreign lender should be equal to the price of the domestic debt, but only during the good standing
+
+Price of debt offered by foreign lenders should be equal to the price of the domestic debt, but only during the good standing
 \begin{equation}
     \label{eq:qq}
     I_t(q^d_t - q_t) = 0.
 \end{equation}
 
-The market clearing condition can be established by combining various equations, including the household budget constraint (Equation \eqref{eq:h-constraint}), the firm's production function (Equation \eqref{eq:production}) and profit equation (Equation \eqref{eq:profit}), the government's constraint on debt (Equation \eqref{eq:gov-next-debt}) and lump-sum return equation (Equation \eqref{eq:gov-budget}), and the clearing conditions from Equations \eqref{eq:nontrade-clear}, \eqref{eq:ytt}, and \eqref{eq:qq}.
-Formally,
+The market clearing condition can be established by combining various equations, including the household budget constraint \eqref{eq:bc} and \eqref{eq:h-constraint}, the firm's production function \eqref{eq:production} and profit equation \eqref{eq:profit}, the government's constraint on debt \eqref{eq:gov-next-debt} and lump-sum return \eqref{eq:gov-budget}, and the clearing conditions from \eqref{eq:nontrade-clear}, \eqref{eq:ytt}, and \eqref{eq:qq}.
+Eventually we get,
 \begin{equation}
     \label{eq:market-clearing}
     c^T_t = y^T_t - (1 - I_t)L(y^T_t) + I_t(q_t d_{t+1} - d_t)
@@ -45,7 +46,7 @@ For convenience, also define the devaluation rate of domestic currency as
 
 As proven by \citet*{Na-18}, if the government is able to set the devaluation rate and the tax on debt freely, then the stochastic process of the variables $\left\{ c^T_t, h_t, d_{t+1}, q_t \right\}$ can be determined by the process of $\left\{ y^T_t, I_t\right\}$ and the initial debt level $d_0$.
 
-As discussed previously, the decision of $I_t$ is an optimal policy for the government due to lack of commitment in the international credit market. Furthermore, the default decision of the government in the next period $t+1$ is also affected by the current decision. To see this argument, first notice that the default decision in $t+1$ is determined by the state variables $\left\{ y^T_{t+1}, d_{t+1} \right\}$. However, $d_{t+1}$ is determined in period $t$, which means that the government in period $t$ understands that it is able to affect the default decision in $t+1$ via the choice of $d_{t+1}$. As $y^T_{t+1}$ follows a first-order Markov process, the expected value of $y^T_{t+1}$ is a function of $y^T_t$, hence the expected value for the default decision on period $t$ is actually a function of $y^T$ and $d_{t+1}$. Recall that the price for the debt $q_t$ is related to the probability of default in the next period, according to Equation \eqref{eq:lender}, it can be expressed in the contemporary variables
+As discussed previously, the decision of $I_t$ is an optimal policy for the government due to lack of commitment to repay in the international credit market. Furthermore, the default decision of the government in the next period $t+1$ is also affected by the current decision. To see this argument, first notice that the default decision in $t+1$ is determined by the state variables $\left\{ y^T_{t+1}, d_{t+1} \right\}$. However, $d_{t+1}$ is determined in period $t$, which means that the government in period $t$ understands that it is able to affect the default decision in $t+1$ via the choice of $d_{t+1}$. As $y^T_{t+1}$ follows a first-order Markov process, the expected value of $y^T_{t+1}$ is a function of $y^T_t$, hence the expected value for the default decision on period $t$ is actually a function of $y^T$ and $d_{t+1}$. Recall that the price for the debt $q_t$ is related to the probability of default in the next period, according to Equation \eqref{eq:lender}, it can be expressed in the contemporary variables
 \begin{equation}
     q_t = q(y^T_t, d_{t+1}).
 \end{equation}

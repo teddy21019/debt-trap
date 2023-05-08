@@ -1,4 +1,4 @@
-The standard Eaton-Gersovitz framework considers the following three value functions:
+Following the standard Eaton-Gersovitz framework, this model considers the following three value functions:
 value of continuing to repay the debt $v^c$, value of being in good standing $v^g$, and value of being in bad standing $v^b$.
 
 Under the period of being in good financial standing, the value for the government to continue repaying the debt is the maximum value of the utility gained by the households this period, plus the discounted value of being in a good financial standing, subject to the households' budget constraints. Formally,
@@ -18,9 +18,9 @@ Under the period of being in good financial standing, the value for the governme
                     & h_t \le \bar{h}.
     \end{aligned}
 \end{equation}
+Where the first constraint is obtained by setting $I_t = 1$ in \refeq{eq:market-clearing}, and the second is the constraint on working hour.
 
 If the country is in bad standing, the consumption on tradable goods experiences a loss. The government has probability $\theta$ of regaining reputation and be in good standing, and probability $1 - \theta$ of continuing in bad standing. During the period in bad standing, the country obtains no international borrowing, hence, the state variable for debt is excluded. Formally,
-
 \begin{equation}
     \begin{aligned}
         v^b(y^T_t) = \max_{\left\{ h_t \right\}} \quad
@@ -40,8 +40,9 @@ If the country is in bad standing, the consumption on tradable goods experiences
           \text{s.t} \quad& h_t \le \bar{h}.
     \end{aligned}
 \end{equation}
+The tradable consumption $c^T_t = y^T_t - L(y^T_t)$ again follows \refeq{eq:market-clearing} by setting $I_t = 0$, and is substituted explicitly into the value function.
 
-If the country is in good standing, the government has the freedom to choose which is best for the country: to continue or to default. The decision is made by comparing the value functions of the two scenarios, given the current output shock for tradable goods and the current level of debts
+If the country is in good standing, the government has the freedom to choose which is best for the country: to continue or to default. The decision is made by comparing the value functions of the two scenarios, given the current output shock for tradable goods and the current level of debt
 \begin{equation}
     v^g(y^T_t, d_t) = \max\left\{
         v^c(y^T_t, d_t) ,
@@ -64,11 +65,11 @@ Under rational expectations, the foreign lenders recognize the default set, henc
 \end{equation}
 Note that the price of debt enters the value function of continuing, $v^c(y^T_t, d_{t})$.
 
-It is obvious that the optimal labor supply is $h_t = \bar{h}$ since all functions, $F, A, U$, are monotonic, which implies that under the freedom to choose the devaluation rate and the tax on debt, the government can ensure full employment. Combining Equation \eqref{eq:firm-FOC} and the Euler equation in \eqref{eq:FOC-HH-1} and impose the optimal policy $h_t = \bar{h}$, we have
+It is obvious that the optimal labor supply is $h_t = \bar{h}$ since all functions, $F, A, U$, are monotonic, which implies that under the freedom to choose the devaluation rate and the tax on debt, the government can ensure full employment. Denote $w^f(c^T_t)$ the equilibrium wage function under full employment given the consumption of tradable goods. Combining Equation \eqref{eq:firm-FOC} and the Euler equation in \eqref{eq:FOC-HH-1} and impose the optimal policy $h_t = \bar{h}$, we have
 \begin{equation}
     w_t = w^f(c^T_t) \equiv \frac{A_2(c^T_t, F(\bar{h}))}{A_1(c^T_t, F(\bar{h}))} F'(\bar{h}).
 \end{equation}
-Knowing that the wage has downward nominal rigidity, the government sets the devaluation rate accordingly. The downward rigidity states that
+Knowing that the wage has downward nominal rigidity, the government sets the devaluation rate accordingly. The downward rigidity \eqref{eq:wage-rigid} states that
 \begin{equation*}
     \gamma \le \frac{W_t}{W_{t-1}} = \frac{w_t}{w_{t-1}} \frac{P^T_t}{P^T_{t-1}} = \epsilon \frac{w_t}{w_{t-1}},
 \end{equation*}
