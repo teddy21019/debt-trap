@@ -8,6 +8,7 @@
 % this stuff is worth it, you can buy me a chocolate in return Tz-Huan Huang
 % ----------------------------------------------------------------------------
 
+
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{ntuthesis}[2013/04/23 Thesis template for National Taiwan University]
 

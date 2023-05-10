@@ -10,6 +10,7 @@
 \usepackage{appendix}
 \usepackage{caption}    % for subfigure
 \usepackage{subcaption} % for subfigure
+\usepackage[compact]{titlesec}    % remove redundant spacing
 \usepackage{times}
 \usepackage{threeparttablex,longtable}
 \usepackage{booktabs}
@@ -67,6 +68,11 @@
 % Your information goes here
 \input{thesis-configs/ntuvars.tex}
 
+\titleformat{\chapter}                      % 設置 Chapter 格式
+{\Huge\bfseries}                            % 定義 format
+{Chapter~\thechapter:~}              		        % 定義 label
+{1em}                                       % 定義 sep
+{} 
 \begin{document}
 
 \frontmatter
@@ -103,17 +109,17 @@
 \chapter{Introduction}
 \input{sections/intro.tex}  \label{ch:intro}
 \chapter{Literature Review} \label{ch:lit}
-\chapter{Model} \label{ch:model}
+\chapter{Analytic Model} \label{ch:model}
 \input{sections/model.tex}
-\chapter{Result}  \label{ch:result}
-\chapter{Conclusion} \label{ch:conclusion}
+\chapter{Empirical Results}  \label{ch:result}
+\chapter{Conclusion and Discussion} \label{ch:conclusion}
 
 
 
 \backmatter
 \phantomsection
 \addcontentsline{toc}{chapter}{\bibname}
-\bibliographystyle{apalike}
+\bibliographystyle{econ}
 
 % Your bibliography goes here
 \bibliography{bib/ref.bib}
