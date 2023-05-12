@@ -2,6 +2,7 @@ library(readxl)
 library(tidyverse)
 library(gridExtra)
 library(reshape2)
+library(scales)
 
 setwd("/Users/abc/Desktop/論文3/Thesis/fig")
 
@@ -15,7 +16,7 @@ for (country in countries){
   Country.Data = HRT_DebtDatabase %>% 
     filter(RecipientCountry == country, Year > 2000) %>% 
     mutate(PPGDebt_WB = PPGDebt_IBRD + PPGDebt_IDA) %>% 
-    select(Year, ExternalDebt_China, PPGDebt_IMF, PPGDebt_WB , PPGDebt_ParisClub)
+    select(Year, ExternalDebt_China, PPGDebt_WB , PPGDebt_IMF,  PPGDebt_ParisClub)
   
   Country.Plot = Country.Data %>% 
         melt(id.vars = 'Year', variable.name = 'Creditor') %>% 
@@ -36,6 +37,6 @@ for (country in countries){
       guides(shape = guide_legend(nrow =2))
 
 
-    ggsave(paste("ALL/",country, "_debt_source.pdf", sep = ""), Country.Plot, width=5, height = 3)
+    ggsave(paste("ALL/",country, "_debt_source.pdf", sep = ""), Country.Plot, width=4, height = 3)
 }
                 

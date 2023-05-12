@@ -4,18 +4,18 @@ library(gridExtra)
 library(reshape2)
 library(scales)
 
-#setwd("/Users/abc/Desktop/隢??3/Thesis/fig")
-setwd("C:/Users/tedb0/Documents/debt-trap/Thesis/fig")
+setwd("/Users/abc/Desktop/論文3/Thesis/fig")
+#setwd("C:/Users/tedb0/Documents/debt-trap/Thesis/fig")
 
 Debt.Comparison.International <- read_excel("../../DATA/Horn Reinhart Trebesch _ China's Overseas Lending _ Data and Replication Folder/HRT _ DebtDatabase.xlsx", 
                                sheet = "Figure9", 
                                skip = 1,
-                               col_names = c("Year","Debt to China", "Debt to Paris Club Governments",
+                               col_names = c("Year","Debt to China", "Debt to Paris Club",
                                              "Debt to IMF", "Debt to World Bank"))
 
 PLT = Debt.Comparison.International %>% 
   select("Year","Debt to China", 
-         "Debt to IMF", "Debt to World Bank","Debt to Paris Club Governments") %>% 
+         "Debt to World Bank", "Debt to IMF", "Debt to Paris Club") %>% 
   melt(id.vars = 'Year', variable.name = 'Creditor') %>% 
   ggplot(aes(x = Year, y= value)) +
   geom_point(aes(shape = Creditor)) + 
