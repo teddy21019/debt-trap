@@ -5,17 +5,16 @@ clear all
 
 %data from World Bank
 tradable_per_capita = table2array(readtable('/Users/abc/Desktop/論文3/DATA/Tradable.GDP.per.capita.csv'));
-tradable_per_capita = tradable_per_capita(20:end,:);
+tradable_per_capita = tradable_per_capita(20:end,:)
+SRI = log(tradable_per_capita(20:end,10));
+PAK = log(tradable_per_capita(20:end,11));
 
-SRI = log(tradable_per_capita(:,10));
-PAK = log(tradable_per_capita(:,11));
-% 
-% y_cyclical_SRI = LQ_detrend(SRI, 'difference');
-% y_cyclical_PAK = LQ_detrend(PAK, 'difference');
-[ys_SRI, y_cyclical_SRI] = hpfilter(SRI, 100);
-[ys_PAK,y_cyclical_PAK] = hpfilter(PAK, 100);
-% ys_SRI = SRI - y_cyclical_SRI;
-% ys_PAK = PAK - y_cyclical_PAK;
+y_cyclical_SRI = LQ_detrend(SRI, 'difference');
+y_cyclical_PAK = LQ_detrend(PAK, 'difference');
+% [ys_SRI, y_cyclical_SRI] = hpfilter(SRI, 100);
+% [ys_PAK,y_cyclical_PAK] = hpfilter(PAK, 100);
+ys_SRI = SRI - y_cyclical_SRI;
+ys_PAK = PAK - y_cyclical_PAK;
 
 subplot(1,2,1);
 plot(tradable_per_capita(:,1), SRI,'color','[0.8500, 0.3250, 0.0980]')
