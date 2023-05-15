@@ -5,6 +5,7 @@ clear all
 
 %data from World Bank
 tradable_per_capita = table2array(readtable('/Users/abc/Desktop/論文3/DATA/Tradable.GDP.per.capita.csv'));
+% 1960 - 2021
 
 SRI = log(tradable_per_capita(:,10));
 PAK = log(tradable_per_capita(:,11));

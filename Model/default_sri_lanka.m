@@ -25,24 +25,34 @@ filename = 'default_sri_lanka';                         %output file needed to r
 %       -- (ny x ny ) matrix
 %
 
-load tpm.mat ygrid pai                              %ygrid=endowment grid; associated pai=transition probability matrix
+load tpm_SRI.mat ygrid pai                              %ygrid=endowment grid; associated pai=transition probability matrix
 ny = numel(ygrid);                                  %number of grid points for log of tradable ouput
 y = exp(ygrid(:));                                  %level of tradable output
 
 %Calibrated parameters: 
-rstar = 0.0096/4;                                   %quarterly risk-free interest rate, using US 3-month treasury bill
-betta = 0.90;                                       %discount factor based on loss-function, using standard numbers (from Na et al. 2018)
+rstar = 0.0012/4;                                   %quarterly risk-free interest rate, using US 3-month treasury bill
+betta = 0.85;                                       %discount factor based on loss-function, using standard numbers (from Na et al. 2018)
 theta = 0.0385;                                     %probability of leaving 'bad standing' is 1-theta. When it is in bad standing, external obligations go to zero. Implies you're in bad standing for ~6.5 years, following Na et al. (2018)
-alfa = 0.75;                                        %hours elasticity of nontraded output (rough estimate based on exports as % of GDP)
+alfa = 0.9;                                         %hours elasticity of nontraded output (rough estimate based on exports as % of GDP)
 hbar = 1;                                           %full-employment hours (normalised to unity)
-a = 0.26;                                           %share of tradables (as a % of total consumption) (based on actual GDP data, imports/consumptions)
-sigg = 2;                                           %elasticity of substitution: inverse intertemporal (Na et al. 2018)
-xi = 1/sigg;                                        %elasticity of substitution between traded and nontraded goods (estimates vary considerably; 1/sigg (where sigg=2) is Na et al; 0.75 is Devereux and Smith.)
+a = 0.35;                                           %share of tradables (as a % of total consumption) (based on actual GDP data, imports/consumptions)
+xi = 0.78;                                          %elasticity of substitution between traded and nontraded goods (estimates vary considerably; 1/sigg (where sigg=2) is Na et al; 0.75 is Devereux and Smith.)
+sigg = 1/xi;                                        %elasticity of substitution: inverse intertemporal (Na et al. 2018)
+
+% %Calibrated parameters: 
+% rstar = 0.0096/4;                                   %quarterly risk-free interest rate, using US 3-month treasury bill
+% betta = 0.9;                                       %discount factor based on loss-function, using standard numbers (from Na et al. 2018)
+% theta = 0.0385;                                     %probability of leaving 'bad standing' is 1-theta. When it is in bad standing, external obligations go to zero. Implies you're in bad standing for ~6.5 years, following Na et al. (2018)
+% alfa = 0.75;                                         %hours elasticity of nontraded output (rough estimate based on exports as % of GDP)
+% hbar = 1;                                           %full-employment hours (normalised to unity)
+% a = 0.26;                                           %share of tradables (as a % of total consumption) (based on actual GDP data, imports/consumptions)
+% xi = 0.5;                                          %elasticity of substitution between traded and nontraded goods (estimates vary considerably; 1/sigg (where sigg=2) is Na et al; 0.75 is Devereux and Smith.)
+% sigg = 1/xi;                                        %elasti
 
 % Debt grid
 dupper = 1.5;                                       %upper bound debt range
 dlower = 0;                                         %lower bound debt range
-nd = 100;                                           %# of grid points for debt 
+nd = 200;                                           %# of grid points for debt 
 d = dlower:(dupper-dlower)/(nd-1):dupper;           % create a 200 vector of debt space
 d = d(:);                                           % reshape as one column (1 x 200) to (200 x 1)
 
