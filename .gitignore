@@ -1,3 +1,4 @@
+*.asv
 #DATA/
 ## Core latex/pdflatex auxiliary files:
 *.aux
