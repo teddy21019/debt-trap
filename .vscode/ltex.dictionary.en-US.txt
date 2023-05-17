@@ -1,2 +1,3 @@
 nontradable
 exogenously
+Eaton-Gersovitz

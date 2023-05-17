@@ -8,7 +8,7 @@
 clear all
 format compact
 
-load default_1950s.mat 
+load default_sri_lanka.mat 
 
 cpai = cumsum(pai,2);
 
@@ -161,4 +161,4 @@ for i=1:nd
     lad(i,1) = mean(D==d(i));
 end
 
-save simu_1950s.mat
+save simu_SRI.mat
