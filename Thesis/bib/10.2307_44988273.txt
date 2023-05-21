@@ -1,0 +1,14 @@
+@article{10.2307/44988273,
+ ISSN = {0030980X},
+ URL = {http://www.jstor.org/stable/44988273},
+ author = {Mansoor Akbar Kundi},
+ journal = {Pakistan Horizon},
+ number = {4},
+ pages = {15--25},
+ publisher = {Pakistan Institute of International Affairs},
+ title = {Paris Club, International Debt Regime and Pakistan},
+ urldate = {2023-05-20},
+ volume = {69},
+ year = {2016}
+}
+

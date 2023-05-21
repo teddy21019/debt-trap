@@ -1,0 +1,9 @@
+The approximated equilibrium is obtained by conducting value function iteration(VFI) over an $n_y \times n_d$ discretized and equally spaced state space, where $n_y = $ 200 is the number of grids for output process and $n_d=$ 200 is the number of grid for debt \citep{Na-18}. Denote $[\underline{y}^T, \overline{y}^T]$ as the lower and upper bound of output grid. Following \citet{Uribe-Schmitt-Grohe-textbook}, this is set as $[-4.2 \times \sigma_u, 4.2 \times \sigma_u]$. 
+
+Since the discretized nature of VFI is unable to directly cope with the AR(1) process of $y^T_t$, I apply the approach proposed by \citet*{schmitt-09-finite} to construct a transition probability matrix of the output process estimated in \refeq{eq:ar1-output}.
+A time series of 10 million observations was generated based on equation \refeq{eq:ar1-output}. Each observation was then associated with the closest grid of the 200 discrete values of $\ln y^T$. The discretized series was analyzed to calculate the probabilities of transitioning from one discrete state to another in consecutive periods.
+To obtain the transition probability matrix, a $200\times200$ matrix was initialized with zeros. For each pair of consecutive observations, the corresponding element in the matrix was incremented by 1. After considering all the observations, the matrix was normalized by dividing each row by the sum of its elements. This resulted in the estimated transition probability matrix, which effectively captured the covariance matrices of order 0 and 1.
+\citep*{Uribe-Schmitt-Grohe-textbook}.
+
+%%Value function Interation?
+The equilibrium dynamics can be simulated once the VFI is 

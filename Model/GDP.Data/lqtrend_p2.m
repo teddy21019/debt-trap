@@ -4,11 +4,10 @@
 clear all
 
 %data from World Bank
-tradable_per_capita = table2array(readtable('/Users/abc/Desktop/論文3/DATA/Tradable.GDP.per.capita.csv'));
-tradable_per_capita = tradable_per_capita(20:end,:);
-
-SRI = log(tradable_per_capita(:,10));
-PAK = log(tradable_per_capita(:,11));
+tradable_per_capita = table2array(readtable('/Users/abc/Desktop/論文3/DATA/GDP.per.capita.csv'));
+tradable_per_capita = tradable_per_capita(2:end, :);
+SRI = log(tradable_per_capita(:,2));
+PAK = log(tradable_per_capita(:,3));
 % 
 % y_cyclical_SRI = LQ_detrend(SRI, 'difference');
 % y_cyclical_PAK = LQ_detrend(PAK, 'difference');
@@ -24,10 +23,11 @@ plot(tradable_per_capita(:,1), PAK,'color','[0.4940, 0.1840, 0.5560]')
 plot(tradable_per_capita(:,1), ys_SRI,'--','color','[0.8500, 0.3250, 0.0980]')
 plot(tradable_per_capita(:,1), ys_PAK,'--','color','[0.4940, 0.1840, 0.5560]')
 set(gca, 'YScale','log')
-ylabel('Log of real GDP per capita')
+ylabel('Log of real GDP per capita','interpreter','latex')
+xlabel('Year','interpreter','latex')
 xlim([1960 2021]);
-title('Real GDP per capita and secular trend component','fontweight','normal')
-legend('Sri Lanka {y_t}', 'Pakistan {y_t}','Location','southeast')
+title('Real GDP per capita and secular trend component','fontweight','normal','interpreter','latex')
+legend('Sri Lanka $y_t$', 'Pakistan $y_t$','Location','southeast','interpreter','latex')
 hold off
 
 %plot deviation
@@ -36,14 +36,16 @@ plot(tradable_per_capita(:,1), y_cyclical_SRI*100,'color','[0.8500, 0.3250, 0.09
 hold on
 plot(tradable_per_capita(:,1), y_cyclical_PAK*100,'color','[0.4940, 0.1840, 0.5560]')
 xlim([1960 2020])
-ylabel('Percent deviation from secular trend of {y_t}')
+ylim([-15 15])
+ylabel('Percent deviation from secular trend of $y_t$','interpreter','latex')
+xlabel('Year','interpreter','latex')
 hline=refline(0);
 hline.Color='Black';
-title('Cyclical compotent of real GDP per capita','fontweight','normal')
-legend('Sri Lanka {y_t}', 'Pakistan {y_t}', 'Location','southwest')
+title('Cyclical compotent of real GDP per capita','fontweight','normal','interpreter','latex')
+legend('Sri Lanka $y_t$', 'Pakistan $y_t$', 'Location','southwest','interpreter','latex')
 
-SRI_autocorr=autocorr(y_cyclical_SRI,'NumLags',2);
-PAK_autocorr=autocorr(y_cyclical_PAK,'Numlags',2);
+SRI_autocorr=autocorr(y_cyclical_SRI,'NumLags',1);
+PAK_autocorr=autocorr(y_cyclical_PAK,'Numlags',1);
 
 p_SRI=1-(1-SRI_autocorr(2))/4;
 p_PAK=1-(1-PAK_autocorr(2))/4;

@@ -1,0 +1,21 @@
+The calibration strategy for Pakistan is similar to that of Sri Lanka.
+The parameters for the output process is obtained from the cyclical component of the HP-filter on the annual log-real-GDP for Pakistan, which yields $\rho = $ 0.9008 and $\sigma_u=$ 0.0111 (see \autoref{fig:decompose-gdp}).
+The risk-free interest rate remains to be 1\%. 
+Pakistan decided to default in January 1999\citep{pakistan-default-start}, and received its last debt treatment from the Paris Club on December 13, 2001\footnote{``Debt Stock Restructuring Agreement Between
+the Paris Club and Pakistan'', Press Release of Paris Club, Dec 13, 2001}.
+Accordingly, the reentry period is set to 8 quarters, or $\theta=$ 0.125.
+I refer to the calibration of \citet{Pakistan-DSGE-calibration} for the other structural parameters, as they estimate a small open economy DSGE model calibrated in Pakistan to study the effect of workers' remittances.
+The labor share is set as 0.4 to match the capital share in real GDP accordingly. The share of tradable consumption $a=$ 0.22 is calibrated according to the ratio of domestic and import consumption. The intratemporal elasticity of substitution of consumption $\xi=$ 0.5 and $\sigma=$ 2, following standard business-cycle studies \citep{Pakistan-DSGE-calibration,Uribe-Schmitt-Grohe-textbook}.
+\input{sections/result-sec/pakistan-calibration-table.tex}
+Finally, the triplet $\left( \beta, \delta_1, \delta_2 \right)$ is also chosen to follow the three equilibrium results:
+\begin{enumerate*}[label = (\roman*)]
+    \item the average debt-to-traded-GDP ratio in periods of good standing is 68\% per quarter;
+    \item the frequency of default is 2.6 times per century; and
+    \item the average output loss is 10.5\% per year conditional on being in financial autarky.
+\end{enumerate*}
+The average debt-to-GDP-ratio is 34\% in the data in average, once again multiplying it with a 50\% haircut ratio yields a 17\% of annual secured debt, which gives a 68\% secured debt-to-GDP ratio quarterly.
+Pakistan is currently (2023) facing the potential ``risk'' of default\footnotemark{}. 
+\footnotetext{``Pakistan is at risk of default'', \emph{Economist}, Feb 7, 2023}
+However, considering both the present situation and the historical context, including the previous default in 1998, the average frequency of default occurrences in Pakistan from its year of independence in 1947 to 2023 is approximately 2.6 times per century\footnotemark{}.
+\footnotetext{$\frac{2}{2023 - 1947} \times 100 \approx 2.6$. This is similar to the calibration target for Argentina in \citet{Na-18}.}
+Finally, the average output loss during default is set exactly the same as that of Sri Lanka in order to capture characteristics of the recent volatile global economic environment\footnote{The average output loss in Pakistan during its defualt in 1998, according to the cyclical component estimated, is -1.7\% in 1998, -1.9\% in 1999. These numbers are, however, too small in comparison to the observed output loss of Sri Lanka during its default in 2023. Refering to the loss in Sri Lanka allows us to better caputure the loss during autarky.}.

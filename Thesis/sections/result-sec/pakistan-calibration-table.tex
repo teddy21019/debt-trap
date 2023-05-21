@@ -1,0 +1,28 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage{graphicx}
+\begin{table}[t!]
+    \centering
+    % \footnotesize
+    \begin{tabular}{@{}lllH@{}}
+    % \begin{tabular}{@{}lp{0.6\textwidth}lp{0.3\textwidth}@{}}
+        \toprule
+    Parameter  & Description                                                       & Value  & Source                                                                         \\ \midrule
+    $\rho$     & Autocorrelation of output                                         & 0.9008  & Estimation of AR(1)\\
+    $\sigma_u$ & Standard deviation of output                                      & 0.0111 & Estimation of AR(1) \\
+    $r^*$      & Risk-free rate                                                    & 0.01 & 3 month treasury bill rate \\
+    $\theta$   & Probability of reentry                                            & 0.125 & \citet*{Reinhart-Rogoff-2014-100-episode}                                              \\
+    $\alpha$   & Labor share in non-tradable goods sector                          & 0.4   & \citet{Jegajeevan-Sri-Lanka-DSGE}                                                       \\
+    $a$        & Share of tradable consumption                                     & 0.22   &\citet*{Jegajeevan-Sri-Lanka-DSGE}                    \\
+    $\xi$      & Intratemporal elasticity of substitution of consumption & 0.5   & \citet*{Jegajeevan-Sri-Lanka-DSGE}                              \\
+    $\sigma$   & Inverse of intertemperal elasticity of substitution of consumption  & 2   & $1 / \xi$                                                                      \\
+    $\beta$    & Discount factor                                                   & (\dots)  &                                                                                \\
+    $\delta_1$ & Coefficient of the linear term in loss function                   &  (\dots) &                                                                                \\
+    $\delta_2$ & Coefficient of the quadratic term in loss function                &  (\dots)   &                                                                                \\
+    $\bar{h}$  & Labor endowment                                                   & 1      & Normalized to 1\\
+    \bottomrule
+    \end{tabular}%
+    \caption{Calibration for Pakistan}
+    \label{tab:cal-sri-lanka}
+    \floatfoot{\emph{Note}: The time unit is one quarter. AR(1) is performed on annual tradable GDP data but quarterized following the approach of \citet*{Hinrichsen_2020-chapter4}. }
+    \end{table}

@@ -1,3 +1,4 @@
 nontradable
 exogenously
 Eaton-Gersovitz
+intratemporal
