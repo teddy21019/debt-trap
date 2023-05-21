@@ -78,6 +78,8 @@ mean_dev =  (W(1)/W(end))^(1/(length(W)-1));
 mean_dev = (mean_dev^4-1)*100;
 
 f = @(x) median(x);
+f = @(x) mean(x);
+
 
 nameOfEpisode='Sri Lanka';                                                      
 i=1;                                                                                
