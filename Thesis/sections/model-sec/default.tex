@@ -3,6 +3,7 @@ value of continuing to repay the debt $v^c$, value of being in good standing $v^
 
 Under the period of being in good financial standing, the value for the government to continue repaying the debt is the maximum value of the utility gained by the households this period, plus the discounted value of being in a good financial standing, subject to the households' budget constraints. Formally,
 \begin{equation}
+    \label{eq:vc}
     \begin{aligned}
         v^c(y^T_t, d_t) = \max_{\left\{ c^T_t, h_t, d_{t+1} \right\}} \quad
         &\left\{
@@ -22,6 +23,7 @@ Where the first constraint is obtained by setting $I_t = 1$ in \refeq{eq:market-
 
 If the country is in bad standing, the consumption on tradable goods experiences a loss. The government has probability $\theta$ of regaining access to international financial markets, and probability $1 - \theta$ of continuing in bad standing. During the period in bad standing, the country obtains no international borrowing, hence, the state variable for debt is excluded. Formally,
 \begin{equation}
+    \label{eq:vb}
     \begin{aligned}
         v^b(y^T_t) = \max_{\left\{ h_t \right\}} \quad
         &\left\{
@@ -44,6 +46,7 @@ The tradable consumption $c^T_t = y^T_t - L(y^T_t)$ again follows \refeq{eq:mark
 
 If the country is in good standing, the government has the freedom to choose which is best for the country: to continue or to default. The decision is made by comparing the value functions of the two scenarios, given the current output shock for tradable goods and the current level of debt
 \begin{equation}
+    \label{eq:vg}
     v^g(y^T_t, d_t) = \max\left\{
         v^c(y^T_t, d_t) ,
         v^b(y^T_t)

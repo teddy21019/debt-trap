@@ -13,14 +13,16 @@ Estimation of the AR(1) on the cyclical component thus yields $\rho = $ 0.9114 a
 $\rho = 1 - \frac{1 - \hat{\rho}}{4}$, and $\sigma_u = \frac{\hat{\sigma}}{\sqrt{4}}$, where $\hat{\rho}$ and $\hat{\sigma}$ are the estimated parameters for the AR(1) via OLS.}
 
 The global risk-free world interest rate $r^*$ is set to match the 3-month treasury bill rate during the period, which is roughly 4\% annually, or 1\% for one quarter. This is in line with \citet{Chatterjee-12}.
-The probability of reentry is difficult to assess since Sri Lanka encountered its first default in April 12, 2022, and is not yet undergoing the process of restructuring. As a result, following \citet*{Chatterjee-12} and \citet*{Hinrichsen_2020-chapter4}, I set the probability of reentry to 0.0385, which implies that the country will be in default on average for about 6.5 years, matching the median of default spans for past 100 systemic crises \citep*{Reinhart-Rogoff-2014-100-episode}.
+The probability of reentry is difficult to assess since Sri Lanka encountered its first default in April 12, 2022, and is not yet undergoing the process of restructuring. As a result, following \citet*{Chatterjee-12} and \citet*{Hinrichsen_2020-chapter4}, I set the probability of reentry to 0.0385, which implies that the country will be in default on average for about 6.5 years, matching the median of time spans for past 100 systemic crises \citep*{Reinhart-Rogoff-2014-100-episode}.
 
 Calibration on other structural parameters regarding the Sri Lanka economy follows \citet*{Jegajeevan-Sri-Lanka-DSGE}. The author estimates the Sri Lanka economy with a DSGE model, and based on her calibration, the share of labor is set as 65\%. As the author adopts a CES aggregator for the home and foreign consumption as well, I directly refer to her estimation; that gives $a =$ 0.35 and $\xi=$ 0.78\footnotemark{}.
 \footnotetext{\citet*{Jegajeevan-Sri-Lanka-DSGE} calibrates the share of foreign goods (tradable goods) based on the average expenditure on imported goods of 35\% according to the consumer price index. The elasticity of substitution between tradable and nontradable goods is obtained via the posterior mean of the Bayesian estimation within 2008 to 2014.}
 This implies that $\sigma = 1/\xi = $ 1.28.
 
 \input{sections/result-sec/sri_lanla-calibration-table.tex}
-Following \citet{Na-18}, the rest of the parameters $\left( \beta, \delta_1, \delta_2 \right)$, which is respectively the subjective discount factor and the two parameter for the loss function, is chosen to match three equilibrium outcomes:
+Following \citet{Na-18}, the rest of the parameters $\left( \beta, \delta_1, \delta_2 \right)$, which is respectively the subjective discount factor and the two parameter for the loss function, is chosen to match three equilibrium outcomes\footnote{
+    In particular, I use the grid search algorithm to search for the optimal values for the three parameters. Essentially, VFI must be proceeded for each triplet of the parameters to obtain the targeting equilibrium outcomes. Details are mentioned in \autoref{sec:computation}.
+}:
 \begin{enumerate*}[label = (\roman*)]
     \item the average debt-to-GDP ratio in periods of good standing is 84\% per quarter;
     \item the frequency of default is 1.37 times per century; and
