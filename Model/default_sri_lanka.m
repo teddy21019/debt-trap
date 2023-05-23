@@ -8,7 +8,7 @@
 
 clear all
 filename = 'default_sri_lanka';                         %output file needed to run simu_1950s.m
-
+tic
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %   Exogenous process for traded endowment
@@ -162,5 +162,5 @@ betta* Elagp ./ lac ./q(I);
 tauc = 1-ans;
 
 clear ans yTtry cTtry cTatry dtry dptry Itry qtry  utry uatry Evgptry Evbptry Evrptry
-
-eval(['save ' filename ])
+toc
+%eval(['save ' filename ])
