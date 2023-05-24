@@ -1,4 +1,17 @@
-function VFI(ygrid, pai, rstar, theta, alfa, a, xi, sigg, betta, delta_1, delta_2, output_file_name, init_value_function)
+function VFI(calibration_param, output_file_name, init_value_function)
+    % extract calibration parameters
+    rstar   = calibration_param.rstar;                  %quarterly risk-free interest rate, using US 3-month treasury bill
+    betta   = calibration_param.betta;                  %discount factor based on loss-function, using standard numbers (from Na et al. 2018)
+    theta   = calibration_param.theta;                  %probability of leaving 'bad standing' is 1-theta. When it is in bad standing, external obligations go to zero. Implies you're in bad standing for ~6.5 years, following Na et al. (2018)
+    alfa    =  calibration_param.alfa;                  %hours elasticity of nontraded output (rough estimate based on exports as % of GDP)
+    a       = calibration_param.a;                      %share of tradables (as a % of total consumption) (based on actual GDP data, imports/consumptions)
+    xi      = calibration_param.xi;                     %elasticity of substitution between traded and nontraded goods (estimates vary considerably; 1/sigg (where sigg=2) is Na et al; 0.75 is Devereux and Smith.)
+    sigg    = calibration_param.sigg; 
+    delta_1 = calibration_param.delta_1;
+    delta_2 = calibration_param.delta_2;
+
+    ygrid   = gpuArray(calibration_param.ygrid);
+    pai     = gpuArray(calibration_param.pai);
 
     ny = numel(ygrid);                                  %number of grid points for log of tradable ouput
     y = exp(ygrid(:));                                  %level of tradable output
@@ -10,7 +23,7 @@ function VFI(ygrid, pai, rstar, theta, alfa, a, xi, sigg, betta, delta_1, delta_
     dlower = 0;                                         %lower bound debt range
     nd = 200;                                           %# of grid points for debt 
     d = dlower:(dupper-dlower)/(nd-1):dupper;           % create a 200 vector of debt space
-    d = d(:);                                           % reshape as one column (1 x 200) to (200 x 1)
+    d = gpuArray(d(:));                                           % reshape as one column (1 x 200) to (200 x 1)
 
     [~,nd0]=min(abs(d)); 
     d(nd0) = 0; 
@@ -22,15 +35,15 @@ function VFI(ygrid, pai, rstar, theta, alfa, a, xi, sigg, betta, delta_1, delta_
     dtry = reshape(dtry,n,nd);                          
 
     %grid for d_{t+1} try
-    dptryix = repmat(1:nd,n,1);
+    dptryix = gpuArray(repmat(1:nd,n,1));
     dptry = d(dptryix);
 
     %grid for yT_t
-    yTix = repmat((1:ny)',1,nd);
+    yTix =gpuArray(repmat((1:ny)',1,nd));
     yT = y(yTix);
 
     %grid for yT_t try
-    yTtryix = repmat(yTix,nd,1);
+    yTtryix = gpuArray(repmat(yTix,nd,1));
     yTtry = y(yTtryix);
 
     %Punishment Function
@@ -45,12 +58,16 @@ function VFI(ygrid, pai, rstar, theta, alfa, a, xi, sigg, betta, delta_1, delta_
     init_value_function = strcat(init_value_function, '.mat');
     if isfile(init_value_function)
         load(init_value_function, 'vc', 'vg', 'vb', 'vr')
+        vc = gpuArray(vc);
+        vg = gpuArray(vg);
+        vb = gpuArray(vb);
+        vr = gpuArray(vr);
     else
         %Initialize the value functions
-        vc = zeros(ny,nd);                                  %continue repaying
-        vg = zeros(ny,nd);                                  %good standing
-        vb = zeros(ny,nd);                                  %bad standing
-        vr = zeros(ny,nd); 
+        vc = zeros(ny,nd, 'gpuArray');                                  %continue repaying
+        vg = zeros(ny,nd, 'gpuArray');                                  %good standing
+        vb = zeros(ny,nd, 'gpuArray');                                  %bad standing
+        vr = zeros(ny,nd, 'gpuArray'); 
     end
     
     vcnew = vc;
@@ -66,9 +83,12 @@ function VFI(ygrid, pai, rstar, theta, alfa, a, xi, sigg, betta, delta_1, delta_
     dist = 1;
     while dist>1e-8
         qtry = repmat(q,[nd 1]);
-        cTtry =  dptry .* qtry - dtry + yTtry;              %consumption of tradables
+        cTtry =  complex(dptry .* qtry - dtry + yTtry);              %consumption of tradables
         utry = (a * cTtry.^(1-sigg)  + (1-a) * hbar.^(alfa*(1-sigg)) -1)  / (1-sigg);
         utry(cTtry<=0) = -inf;
+        
+        utry = real(utry);
+
         evgptry = pai *  vg;
         Evgptry = evgptry(Itry);
 
@@ -108,10 +128,10 @@ function VFI(ygrid, pai, rstar, theta, alfa, a, xi, sigg, betta, delta_1, delta_
     cTg = cTa.*f + cTc.*(1-f); 
 
     %marginal utility of consumption of tradabels under continuation
-    lac = a*cTc.^(-sigg);
+    lac = a*complex(cTc).^(-sigg);
 
     %marginal utility of consumption of tradabels in good standing
-    lag = a*cTg.^(-sigg);
+    lag = a*complex(cTg).^(-sigg);
 
     %Elagp=E_tla_{t+1} if continuation in t
     pai*lag;
@@ -123,6 +143,18 @@ function VFI(ygrid, pai, rstar, theta, alfa, a, xi, sigg, betta, delta_1, delta_
 
     clear ans yTtry cTtry cTatry dtry dptry Itry qtry  utry uatry Evgptry Evbptry Evrptry
     
+    % Change from gpuArray back to normal 
+    d = gather(d);
+    y = gather(y);
+    yTa = gather(yTa);
+    cTc = gather(cTc);
+    q = gather(q);
+    dpix = gather(dpix);
+    tauc = gather(tauc);
+    f = gather(f);
+    pai = gather(pai);
+
+
     save(strcat(output_file_name,'.mat'))
 
 end
