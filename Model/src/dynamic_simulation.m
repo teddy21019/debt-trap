@@ -1,7 +1,8 @@
-function dynamic_simulation(VFI_filename, sim_filename, save_file_bool)
+function dynamic_simulation(VFI_filename, sim_filename, full_simulation, save_file_bool)
     arguments
         VFI_filename string
         sim_filename string
+        full_simulation logical = true
         save_file_bool logical = true 
     end
     load(strcat(VFI_filename, '.mat'))
@@ -32,7 +33,7 @@ function dynamic_simulation(VFI_filename, sim_filename, save_file_bool)
     F = zeros(Tburn+T,1);
     TAU = zeros(Tburn+T,1);
     H = zeros(Tburn+T,1);
-    STATE = zeros(Tburn+T,1);
+%     STATE = zeros(Tburn+T,1);
     CN = zeros(Tburn+T,1);
     C = zeros(Tburn+T,1);
     P = zeros(Tburn+T,1);
@@ -42,20 +43,22 @@ function dynamic_simulation(VFI_filename, sim_filename, save_file_bool)
 
     for t=1:T+Tburn
 
-        STATE(t,1) = sub2ind([ny nd ],i,j);
+        % for each round, need: i,j, b, F(t) only
+
+%         STATE(t) = sub2ind([ny nd ],i,j);
         rr = rand;                                          %random number  determining reentry if applicable
-        F(t,1) = f(i,j);
+        F(t) = f(i,j);
 
 
         if (b==0) && (F(t)==0)                              %choose to continue 
-            B(t,1) = 0;                                         %B=0==>good standing at the beginning of current period
-            D(t,1) = d(j);
-            YT(t,1) = y(i);
-            YTtilde(t,1) = y(i);
-            YTA(t,1) = yTa(i,j); 
-            CT(t,1) = cTc(i,j);
-            Q(t,1) = q(i,dpix(i,j));
-            TAU(t,1) = tauc(i,j)*100;
+            B(t) = 0;                                         %B=0==>good standing at the beginning of current period
+            D(t) = d(j);
+            YT(t) = y(i);
+            YTtilde(t) = y(i);
+            YTA(t) = yTa(i,j); 
+            CT(t) = cTc(i,j);
+            Q(t) = q(i,dpix(i,j));
+            TAU(t) = tauc(i,j)*100;
 
             %update state
             jp  = dpix(i,j);                                    %update debt state
@@ -63,14 +66,14 @@ function dynamic_simulation(VFI_filename, sim_filename, save_file_bool)
         end                                                 %if b==0 & F(t) ==0
 
         if (b==0) && (F(t) ==1)                             %choose to default
-            B(t,1) = 0;                                         %B=0==>good standing at the beginning of current period
-            D(t,1) = d(j);
-            YT(t,1)= y(i);
-            YTtilde(t,1) = yTa(i,j);
-            YTA(t,1) = yTa(i,j); 
-            CT(t,1) = yTa(i,j);
-            Q(t,1) = 0;
-            TAU(t,1) = 0;
+            B(t) = 0;                                         %B=0==>good standing at the beginning of current period
+            D(t) = d(j);
+            YT(t)= y(i);
+            YTtilde(t) = yTa(i,j);
+            YTA(t) = yTa(i,j); 
+            CT(t) = yTa(i,j);
+            Q(t) = 0;
+            TAU(t) = 0;
 
             %update state
             jp = nd0;                                           %update debt state
@@ -78,14 +81,14 @@ function dynamic_simulation(VFI_filename, sim_filename, save_file_bool)
         end                                                 %if F(t) == 1 && b==0
 
         if (b==1) && (rr>theta)                             %==> autarky (bad standing and did not get to re-enter)
-            B(t,1) = 1;                                         %bad standing in t
-            D(t,1) = 0;
-            YTtilde(t,1) = yTa(i,j);
-            YTA(t,1) = yTa(i,j);
-            YT(t,1) = y(i); 
-            CT(t,1) = yTa(i,j);
-            Q(t,1) = 0;
-            TAU(t,1) = 0;
+            B(t) = 1;                                         %bad standing in t
+            D(t) = 0;
+            YTtilde(t) = yTa(i,j);
+            YTA(t) = yTa(i,j);
+            YT(t) = y(i); 
+            CT(t) = yTa(i,j);
+            Q(t) = 0;
+            TAU(t) = 0;
 
             %update state
             jp = nd0;                                           %update debt state
@@ -93,35 +96,40 @@ function dynamic_simulation(VFI_filename, sim_filename, save_file_bool)
         end                                                 %if (b==1) && (rr>theta); % ==> autarky (bad standing and did not get to re-enter)
 
         if (b==1) && (rr<=theta)                            %reentry after having been in bad standing 
-            B(t,1) = 0; 
-            D(t,1) = d(nd0);
-            YTtilde(t,1) = y(i);
-            YT(t,1) = y(i);
-            YTA(t,1) = yTa(i,j);
-            CT(t,1) = cTc(i,nd0);
-            Q(t,1) = q(i,dpix(i,nd0));
-            TAU(t,1) = tauc(i,nd0)*100;
+            B(t) = 0; 
+            D(t) = d(nd0);
+            YTtilde(t) = y(i);
+            YT(t) = y(i);
+            YTA(t) = yTa(i,j);
+            CT(t) = cTc(i,nd0);
+            Q(t) = q(i,dpix(i,nd0));
+            TAU(t) = tauc(i,nd0)*100;
 
             %update state
             jp = dpix(i,nd0);                                   %update debt state
 
         end                                                 %if (b==1) && (rr<=theta); %reentry after having been in bad standing 
-
-        H(t,1)  =  hbar; 
-        CN(t,1) = H(t,1)^alfa;
-        C(t,1) = (a*CT(t)^(1-1/xi) + (1-a)*CN(t)^(1-1/xi))^(1/(1-1/xi));
-        P(t,1) = (1-a) / a * (CT(t)/CN(t))^(1/xi);
-        PC(t,1) = 1/a * (CT(t)/C(t))^(1/xi);                %price of final consumption in units of tradables; that is: PC = P^C/P^T
-        INFL(t,1) = ((PC(t)/pcb)^4-1)*100;                  %inflation
-        PM(t,1) = ((1/Q(t,1)/(1+rstar))^4-1)*100;           %country risk premium
-
-        find(cpai(i,:)>rand);
-        i = ans(1);
-        pcb = PC(t);
-
+        
         b = B(t) + F(t);                                    %F(t) = 1  you choose to default; B(t) =1 means you were in bad standing at the end of the period. 
-
         j=jp; 
+        i = find(cpai(i,:)>rand, 1);
+
+        if ~full_simulation
+            continue
+        end
+
+        H(t)  =  hbar; 
+        CN(t) = H(t)^alfa;
+        C(t) = (a*CT(t)^(1-1/xi) + (1-a)*CN(t)^(1-1/xi))^(1/(1-1/xi));
+        P(t) = (1-a) / a * (CT(t)/CN(t))^(1/xi);
+        PC(t) = 1/a * (CT(t)/C(t))^(1/xi);                %price of final consumption in units of tradables; that is: PC = P^C/P^T
+        INFL(t) = ((PC(t)/pcb)^4-1)*100;                  %inflation
+        PM(t) = ((1/Q(t)/(1+rstar))^4-1)*100;           %country risk premium
+
+
+        pcb = PC(t);
+       
+
 
     end                        
 
@@ -132,7 +140,7 @@ function dynamic_simulation(VFI_filename, sim_filename, save_file_bool)
     DEV = Wback./W;
 
     %remove burn in 
-    STATE = STATE(Tburn+1:end);
+%     STATE = STATE(Tburn+1:end);
     YT = YT(Tburn+1:end);
     YTA = YTA(Tburn+1:end);
     YTtilde = YTtilde(Tburn+1:end);
