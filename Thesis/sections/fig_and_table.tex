@@ -1,0 +1,60 @@
+\section*{}
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width = \textwidth]{fig/total_debt.pdf}
+        \caption{Top 30 Debtor by Total Debt in USD}
+        \label{fig:total-debt-30}
+    \end{subfigure}%
+    ~
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width = \textwidth]{fig/perc_debt.pdf}
+        \caption{Top 30 Debtor by Dept-to-GDP Ratio}
+        \label{fig:perc-debt-30}
+    \end{subfigure}
+    \caption{Debt to China Statistic by Country in 2017}
+    \label{fig:Country-Agg}
+    \floatfoot{Source: \citet{Horn-Reinhart-Trebesch-21} database \\
+    Note: The figure on the left presents the top 30 countries in amount of total external debt to China in 2017. The figure on the right compares by the China-debt-to-GDP ratio.}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width = 0.8\textwidth]{fig/aggr_debt_source.pdf}
+    \caption{Change of Aggregate Public Debt for Different Official Creditors}
+    \label{fig:debt-ts}
+    \floatfoot{Source: \citet{Horn-Reinhart-Trebesch-21} database \\
+    Note: The figure shows the change in the aggregate external public debt that the developing countries owed to different official creditors. These include China, World Bank (excluding China), IMF, and all 22 Paris Club governments. It is obvious that China had become the largest official creditors in the world according to the estimation of \citet*{Horn-Reinhart-Trebesch-21}.}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[position]{0.8\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{fig/ALL/Sri Lanka_debt_source.pdf}
+        \caption{Sri Lanka}
+        \label{fig: sri-lanka-debt-ts}
+    \end{subfigure}
+    \begin{subfigure}[position]{0.8\textwidth}
+        \centering
+        \includegraphics[width = \textwidth]{fig/ALL/Pakistan_debt_source.pdf}
+        \caption{Pakistan}
+        \label{fig: pakistan-debt-ts}
+    \end{subfigure}
+    \caption{Debt to Main Creditors}
+    \floatfoot{Source: HRT Database \citeyearpar{Horn-Reinhart-Trebesch-21} \\
+    Note: The figure shows the change in the external public debt that Sri Lanka and Pakistan owed to different official creditors. These include China, World Bank (excluding China), IMF, and all 22 Paris Club governments.}
+\end{figure}
+
+\begin{figure}[h]
+    \includegraphics[width = \textwidth]{fig/decompose_gdp.eps}
+    \caption{Decomposition of log-real-tradable-GDP for Sri Lanka and Pakistan}
+    \label{fig:decompose-gdp}
+    \floatfoot{\emph{Source:} World Bank national accounts data. \\
+    \emph{Note:} The cyclical component in the right is obtained by the HP-filter with smoothing parameter $\lambda = 100$ for the log-real-GDP in the left. The quarterized AR(1) estimation for Sri Lanka yields $(\rho, \sigma_u)= (0.9114, 0.0123)$, and for Pakistan yields $(\rho, \sigma_u)= (0.9008, 0.0111)$}
+\end{figure}
+\section*{}
+\input{sections/result-sec/sri_lanla-calibration-table.tex}
+\input{sections/result-sec/pakistan-calibration-table.tex}

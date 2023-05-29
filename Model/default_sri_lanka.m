@@ -106,7 +106,7 @@ dpixold = 0;
 dist = 1;
 while dist>1e-8
     qtry = repmat(q,[nd 1]);
-    cTtry =  dptry .* qtry - dtry + yTtry;              %consumption of tradables
+    cTtry =  complex(dptry .* qtry - dtry + yTtry);              %consumption of tradables
     utry = (a * cTtry.^(1-sigg)  + (1-a) * hbar.^(alfa*(1-sigg)) -1)  / (1-sigg);
     utry(cTtry<=0) = -inf;
     evgptry = pai *  vg;
@@ -163,4 +163,4 @@ tauc = 1-ans;
 
 clear ans yTtry cTtry cTatry dtry dptry Itry qtry  utry uatry Evgptry Evbptry Evrptry
 
-eval(['save ' filename ])
+% eval(['save ' filename ])

@@ -16,6 +16,7 @@
 \usepackage{booktabs}
 \usepackage{afterpage}  % load the afterpage package
 \usepackage[inline]{enumitem}   % can get rid of new line
+\usepackage[section]{placeins}
 \usepackage{verbatim}
 \usepackage{color}
 \usepackage{url}
@@ -113,12 +114,14 @@
 \input{sections/intro.tex}  \label{ch:intro}
 \chapter{Literature Review} \label{ch:lit}
 \input{sections/lit.tex}
+\chapter{Debt to China} \label{ch:data}
+\input{sections/data.tex}
 \chapter{Analytic Model} \label{ch:model}
 \input{sections/model.tex}
 \chapter{Empirical Results}  \label{ch:result}
 \input{sections/empirical.tex}
 \chapter{Conclusion and Discussion} \label{ch:conclusion}
-
+\input{sections/fig_and_table.tex}
 
 
 \backmatter
