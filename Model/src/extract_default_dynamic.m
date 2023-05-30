@@ -1,8 +1,16 @@
 function [debt_ratio, default_freq, output_loss]  ...
-    = extract_default_dynamic(simulation_filename)
-
-    simulation_filename = strcat(simulation_filename, '.mat');
-    load(simulation_filename)
+    = extract_default_dynamic(simulation_result)
+    
+    if isstring(simulation_result)
+        simulation_result = strcat(simulation_result, '.mat');
+        load(simulation_result)
+    else
+        F = simulation_result.F;
+        T = simulation_result.T;
+        YT = simulation_result.YT;
+        YTtilde = simulation_result.YTtilde;
+        D = simulation_result.D;
+    end
     
     tb = 1;                                             %periods before default
     ta = 3; 

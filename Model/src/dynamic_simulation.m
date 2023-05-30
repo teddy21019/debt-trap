@@ -7,6 +7,7 @@ function dynamic_simulation(VFI_filename, sim_filename, full_simulation, save_fi
     end
     load(strcat(VFI_filename, '.mat'))
     
+    rng(0);
 
     cpai = cumsum(pai,2);
 
@@ -114,9 +115,12 @@ function dynamic_simulation(VFI_filename, sim_filename, full_simulation, save_fi
         j=jp; 
         i = find(cpai(i,:)>rand, 1);
 
+
+
         if ~full_simulation
             continue
         end
+
 
         H(t)  =  hbar; 
         CN(t) = H(t)^alfa;
@@ -133,6 +137,7 @@ function dynamic_simulation(VFI_filename, sim_filename, full_simulation, save_fi
 
     end                        
 
+    disp('/')
 
     %create W(t), W(t-1), and DEV(t)
     W  = P.* alfa; 

@@ -26,9 +26,9 @@ function optimal_calibration_grid = grid_search_calibration(...
 
         waitbar(row_num/size(search_grid, 1), f, strcat("Simulation on ",grid_text))
 
-        dynamic_simulation('temp_VFI_result', 'temp_simulation_result',false, true);
+        sym_results = fast_dynamic_simulation('temp_VFI_result', 'temp_simulation_result',false);
         [debt_ratio, default_freq, output_loss] = ...
-            extract_default_dynamic('temp_simulation_result');
+            extract_default_dynamic(sym_results);
         toc
 
         grid_result(row_num, search_grid_col_n + 1:search_grid_col_n+target_col_n) = ...
