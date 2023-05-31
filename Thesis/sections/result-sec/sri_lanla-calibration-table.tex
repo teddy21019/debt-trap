@@ -4,21 +4,21 @@
 \begin{table}[h]
     \centering
     % \footnotesize
-    \begin{tabular}{@{}lllH@{}}
+    \begin{tabular}{@{}llll@{}}
     % \begin{tabular}{@{}lp{0.6\textwidth}lp{0.3\textwidth}@{}}
         \toprule
     Parameter  & Description                                                       & Value  & Source                                                                         \\ \midrule
-    $\rho$     & Autocorrelation of output                                         & 0.9114  & Estimation of AR(1)\\
-    $\sigma_u$ & Standard deviation of output                                      & 0.0123 & Estimation of AR(1) \\
-    $r^*$      & Risk-free rate                                                    & 0.01 & 3 month treasury bill rate \\
-    $\theta$   & Probability of reentry                                            & 0.0385 & \citet*{Reinhart-Rogoff-2014-100-episode}                                              \\
+    $\rho$     & Autocorrelation of output                                         & 0.9114  & Estimation of AR(1) on GDP\\
+    $\sigma_u$ & Standard deviation of output                                      & 0.0123 & Estimation of AR(1) on GDP \\
+    $r^*$      & Risk-free rate                                                    & 0.01 & U.S. 3-month treasury bill rate \\
+    $\theta$   & Probability of reentry                                            & 0.0385 & \citet*{Chatterjee-12}                                              \\
     $\alpha$   & Labor share in non-tradable goods sector                          & 0.65   & \citet{Jegajeevan-Sri-Lanka-DSGE}                                                       \\
-    $a$        & Share of tradable consumption                                     & 0.35   &\citet*{Jegajeevan-Sri-Lanka-DSGE}                    \\
-    $\xi$      & Intratemporal elasticity of substitution of consumption & 0.78   & \citet*{Jegajeevan-Sri-Lanka-DSGE}                              \\
-    $\sigma$   & Inverse of intertemperal elasticity of substitution of consumption  & 1.28   & $1 / \xi$                                                                      \\
-    $\beta$    & Discount factor                                                   & (\dots)  &                                                                                \\
-    $\delta_1$ & Coefficient of the linear term in loss function                   &  (\dots) &                                                                                \\
-    $\delta_2$ & Coefficient of the quadratic term in loss function                &  (\dots)   &                                                                                \\
+    $a$        & Share of tradable consumption                                     & 0.35   & Share of tradable goods in GPD                  \\
+    $\xi$      & Intratemporal elasticity of substitution of consumption & 0.5   & \citet{Na-18}                             \\
+    $\sigma$   & Inverse of intertemperal elasticity of substitution of consumption  & 2   & $1 / \xi$                                                                      \\
+    $\beta$    & Discount factor                                                   & (\dots)  &  Self-estimated                                                                              \\
+    $\delta_1$ & Coefficient of the linear term in loss function                   &  (\dots) &   Self-estimated                                                                             \\
+    $\delta_2$ & Coefficient of the quadratic term in loss function                &  (\dots)   &               Self-estimated                                                                 \\
     $\bar{h}$  & Labor endowment                                                   & 1      & Normalized to 1\\
     \bottomrule
     \end{tabular}%
