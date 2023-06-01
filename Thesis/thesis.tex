@@ -101,14 +101,14 @@
   \fi
 \fi
 
-% \makecertification
+\makecertification
 
-% \input{thesis-configs/acknowledgements.tex}
-% \input{thesis-configs/abstract.tex}
+\input{thesis-configs/acknowledgements.tex}
+\input{thesis-configs/abstract.tex}
 
-% \tableofcontents
-% \listoffigures
-% \listoftables
+\tableofcontents
+\listoffigures
+\listoftables
 
 \mainmatter
 
@@ -127,7 +127,7 @@
 \input{sections/fig_and_table.tex}
 
 
-\backmatter
+% \backmatter
 \phantomsection
 \addcontentsline{toc}{chapter}{\bibname}
 \bibliographystyle{econ}
@@ -135,10 +135,14 @@
 % Your bibliography goes here
 \bibliography{bib/ref.bib}
 
-% \chapter{Appendix}
-% \begin{appendices}
-%   \section*{The Bitcoin Law}
-%   \label{Ap-BitcoinLaw}
-%   \input{sections/Append-BitcoinLaw.tex}
-% \end{appendices}
+\titleformat{\chapter}                      % 設置 Chapter 格式
+{\Huge\bfseries}                            % 定義 format
+{Appendix~\thechapter:~}              		        % 定義 label
+{1em}                                       % 定義 sep
+{}
+
+\appendix
+  \chapter{Output Loss}
+  \label{ap: zarazaga}
+  \input{sections/appendix/zarazaga.tex}
 \end{document}

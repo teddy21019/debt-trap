@@ -5,6 +5,7 @@ Pakistan defaulted on January 1999, completed its debt restructuring on December
 The model adopted in my thesis does not distinguish between partial or full reaccess, hence the reentry period is set as the first year Pakistan gain positive flow of debt. Accordingly, the reentry period is set to 6 years (24 quarters), and $\theta=$ 0.0417.
 
 The labor share is set as 0.4 to match the capital share in real GDP, following \citet{Pakistan-DSGE-calibration}. The share of tradable consumption is calibrated according to the tradable-to-GDP ratio over 1980 to 2021, which gives $a=$ 0.33. The intratemporal elasticity of substitution of consumption $\xi=$ 0.5 and $\sigma=$ 2, following the same justification for Sri Lanka \citep{Pakistan-DSGE-calibration,Uribe-Schmitt-Grohe-textbook}.
+Nominal wage rigidity is set as $\gamma=$ 1.048 based on the empirical estimation on 2014 by \citet*{wage-rigidity-data}.
 
 Finally, the triplet $\left( \beta, \delta_1, \delta_2 \right)$ is also chosen to match the three equilibrium results:
 \begin{enumerate*}[label = (\roman*)]
@@ -20,9 +21,7 @@ is 30\% according to the International Debt Statistics. Multiplying it with a 15
     \item History defaults or restructurings in Pakistan according to the BoC-BoE Sovereign Default Database states that Pakistan default (or rescheduled) to IMF 2 times (1978, 1980), to Paris Club 5 times (1972, 1974, 1981, 1999, 2001)\footnote{
         These defaults differ. In 1972, 1974 and 2001, Pakistan was dealt with under \emph{ad hoc terms}, meaning that the creditors is able to fix the terms and conditions for restructuring or rescheduling; in 1981, Pakistan was treated under the \emph{Classic terms}, in which it received a waiver on interest; in 1999, which is the default episode most widely recorded, Pakistan was dealt with under the \emph{Houston terms}, which offers an even longer grace period \citep{pakistan-default-start}.
     }, and to China 2 times (2002, 2021). This yields an average frequency of 4 times per century per creditor\footnote{$\frac{2+5+2}{2022 - 1947}\times 100 \times \frac{1}{3}$}.
-    \item Using data from the Penn World Table, the annually capital-to-output ratio\footnote{
-        Calculated by dividing the capital stock at current PPPs by the output-side real GDP at current PPPs.}
-    during the run-up to the default, which is 1998, had reached 1.3735, while it dropped to 1.3673 in 1999, and 1.3613 in 2000. Following Zarazaga (2012), I assume a production function of the form $y_t = h_t^\alpha k_t^{1-\alpha}$, where $y_t$ denotes output, $k_t$ denotes physical capital, and $h_t$ denotes employment. According to previous calibration, $\alpha=$ 0.4, which implies that by the relationship ${y_t}/{h_t} = \left( {k_t}/{y_t} \right)^{3/2}$. This means that if the capital-to-output ratio has not decreased between 1999 and 2000, the output per worker in 2000 would have been $[(1.3673 /1.3613)^{3/2} - 1] \times 100 = 0.662\%$ higher. Thus, on average, the output per worker was lower than it would have been $0.662\%/2=$ 0.331\% if the capital-to-output ratio were not fallen. If we ascribe all the fall in capital-to-output ratio, we conclude that the output cost of the default for Pakistan in 1999 is 0.331\% per year per worker, which is quite subtle. The above calculation suggests that the approximation approach by \citet{zarazaga-12} is also not applicable in Pakistan's case.
-    Therefore, I again set the output loss to be 7\%, following \citet{Na-18}.
+    \item
+    Following calculations based on \citet*{zarazaga-12}, the capital-output ratio dropped from 1.43 to 1.35 after the default episode. This yields an output cost of 5\% each year if the loss is attributed solely on the default in 1999. See Appendix \ref{ap: zarazaga} for more detail.
 \end{enumerate}
 Table \ref{tab:cal-pakistan} summarizes the calibrated parameters for Pakistan.
