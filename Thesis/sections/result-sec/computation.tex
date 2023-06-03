@@ -1,4 +1,4 @@
-The approximated equilibrium is obtained by conducting value function iteration (VFI) over an $n_y \times n_d$ discretized and equally spaced state space,
+The approximated equilibrium is obtained by conducting value function iteration over an $n_y \times n_d$ discretized and equally spaced state space,
 where $n_y = $ 200 is the number of grids for the output process and $n_d=$ 200 is the number of grids for the debt \citep{Na-18}. Denote $[\underline{y}^T, \overline{y}^T]$ as the lower and upper bound of output grid. Following \citet{Uribe-Schmitt-Grohe-textbook}, this is set as $[-4.2 \sigma_u, 4.2 \sigma_u]$. Also following the authors, since the average debt levels for both countries do not exceed 150\%, the upper bound for debt is set as 1.5, therefore the debt range for the VFI is $[\underline{d}, \overline{d}]=[0,1.5]$.
 
 \citet{Schmitt-Uribe-16} and \citet{Na-18} deal with this issue by constructing a transition probability matrix over the grids of the AR(1) output process.
