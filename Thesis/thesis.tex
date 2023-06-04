@@ -8,6 +8,7 @@
 \usepackage{natbib}
 % \usepackage{newtxmath}
 \usepackage{appendix}
+\usepackage[hang]{footmisc}
 \usepackage{caption}    % for subfigure
 \usepackage{subcaption} % for subfigure
 \usepackage[compact]{titlesec}    % remove redundant spacing
@@ -16,6 +17,8 @@
 \usepackage{booktabs}
 \usepackage{afterpage}  % load the afterpage package
 \usepackage[inline]{enumitem}   % can get rid of new line
+\usepackage[section]{placeins}
+\usepackage{lscape}   % landscape
 \usepackage{verbatim}
 \usepackage{color}
 \usepackage{url}
@@ -38,6 +41,7 @@
 \setmainfont{Times New Roman}
 \setCJKmainfont[AutoFakeBold=true,AutoFakeSlant=true]{標楷體}
 %\setCJKmainfont[BoldFont={粗楷體},ItalicFont={斜楷體}]{標楷體}
+\setlength\footnotemargin{10pt}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}
@@ -97,14 +101,14 @@
   \fi
 \fi
 
-% \makecertification
+\makecertification
 
-% \input{thesis-configs/acknowledgements.tex}
-% \input{thesis-configs/abstract.tex}
+\input{thesis-configs/acknowledgements.tex}
+\input{thesis-configs/abstract.tex}
 
-% \tableofcontents
-% \listoffigures
-% \listoftables
+\tableofcontents
+\listoffigures
+\listoftables
 
 \mainmatter
 
@@ -113,15 +117,17 @@
 \input{sections/intro.tex}  \label{ch:intro}
 \chapter{Literature Review} \label{ch:lit}
 \input{sections/lit.tex}
+\chapter{Debt to China} \label{ch:data}
+\input{sections/data.tex}
 \chapter{Analytic Model} \label{ch:model}
 \input{sections/model.tex}
 \chapter{Empirical Results}  \label{ch:result}
 \input{sections/empirical.tex}
 \chapter{Conclusion and Discussion} \label{ch:conclusion}
+\input{sections/fig_and_table.tex}
 
 
-
-\backmatter
+% \backmatter
 \phantomsection
 \addcontentsline{toc}{chapter}{\bibname}
 \bibliographystyle{econ}
@@ -129,10 +135,14 @@
 % Your bibliography goes here
 \bibliography{bib/ref.bib}
 
-% \chapter{Appendix}
-% \begin{appendices}
-%   \section*{The Bitcoin Law}
-%   \label{Ap-BitcoinLaw}
-%   \input{sections/Append-BitcoinLaw.tex}
-% \end{appendices}
+\titleformat{\chapter}                      % 設置 Chapter 格式
+{\Huge\bfseries}                            % 定義 format
+{Appendix~\thechapter:~}              		        % 定義 label
+{1em}                                       % 定義 sep
+{}
+
+\appendix
+  \chapter{Output Loss}
+  \label{ap: zarazaga}
+  \input{sections/appendix/zarazaga.tex}
 \end{document}
