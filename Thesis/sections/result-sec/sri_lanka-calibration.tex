@@ -1,38 +1,41 @@
-The model is calibrated to Sri Lanka before 2007, when the Chinese government started to provide the increasing amount of loans (see \autoref{fig: sri-lanka-debt-ts}).
-\begin{figure}[t]
-    \includegraphics[width = \textwidth]{fig/decompose_gdp.eps}
-    \caption{Decomposition of log-real-tradable-GDP for Sri Lanka and Pakistan}
-    \label{fig:decompose-gdp}
-    \floatfoot{\emph{Source:} World Bank national accounts data. \\
-    \emph{Note:} The cyclical component in the right is obtained by the HP-filter with smoothing parameter $\lambda = 100$ for the log-real-GDP in the left. The quarterized AR(1) estimation for Sri Lanka yields $(\rho, \sigma_u)= (0.9114, 0.0123)$, and for Pakistan yields $(\rho, \sigma_u)= (0.9008, 0.0111)$}
-\end{figure}
+The model is calibrated to Sri Lanka before 2008, when the Chinese government started to provide the increasing amount of loans.
+China started to provide loans to Sri Lanka in 2005, and during 2006 to 2008, the debt amount to China remains to be around \$1 billion, which is roughly 2.9\% of GDP. Starting from 2009, debt to China has increased to \$3 billion, and it reached \$7.5 billion in 2014, accounting for 9.5\% of GDP
+(see \autoref{fig: sri-lanka-debt-ts}).
 
 I proxy the output process of \refeq{eq:ar1-output} by the detrended log-real-GDP of Sri Lanka from 1980 to 2021. Considering that the seasonality in the quarterly data for Sri Lanka might impose a higher volatility estimated in the AR(1) process, I follow \citet{Hinrichsen_2020-chapter4} and estimate the annual data over 1980 to 2021. I obtain the cyclical component of the output by filtering the time series with an HP-filter with smoothing parameter $\lambda$ set to 100.
 Estimation of the AR(1) on the cyclical component thus yields $\rho = $ 0.9114 and $\sigma_u = $ 0.0123\footnotemark{}. \autoref{fig:decompose-gdp} presents the decomposition of the log-real-GDP.
 \footnotetext{Since the AR(1) estimation is conducted on annual data, the estimated coefficients must be quarterized. Specifically,
 $\rho = 1 - \frac{1 - \hat{\rho}}{4}$, and $\sigma_u = \frac{\hat{\sigma}}{\sqrt{4}}$, where $\hat{\rho}$ and $\hat{\sigma}$ are the estimated parameters for the AR(1) via OLS.}
 
-The global risk-free world interest rate $r^*$ is set to match the 3-month treasury bill rate during the period, which is roughly 4\% annually, or 1\% for one quarter. This is in line with \citet{Chatterjee-12}.
-The probability of reentry is difficult to assess since Sri Lanka encountered its first default in April 12, 2022, and is not yet undergoing the process of restructuring. As a result, following \citet*{Chatterjee-12} and \citet*{Hinrichsen_2020-chapter4}, I set the probability of reentry to 0.0385, which implies that the country will be in default on average for about 6.5 years, matching the median of time spans for past 100 systemic crises \citep*{Reinhart-Rogoff-2014-100-episode}.
+The global risk-free world interest rate $r^*$ is set to match the U.S. 3-month treasury bill rate during 1990 to 2007\footnote{
+    Quarterly averaged data retrieved from FRED. 1980s are excluded due to the fact that the FED sets it rate extremely high to fight the inflation, and 2008 is excluded due to sudden drop caused by the financial crisis. The average of 3-month treasury bill rate over 1990 to 2007 is 4.10\%.
+}, which is roughly 4\% annually, or 1\% for one quarter. This is in line with \citet{Chatterjee-12}.
+The probability of reentry is difficult to assess due to the lack of data. As a result, following \citet*{Chatterjee-12} and \citet*{Hinrichsen_2020-chapter4}, I set the probability of reentry to 0.0385, which implies that the country will be in default on average for about 6.5 years.
 
-Calibration on other structural parameters regarding the Sri Lanka economy follows \citet*{Jegajeevan-Sri-Lanka-DSGE}. The author estimates the Sri Lanka economy with a DSGE model, and based on her calibration, the share of labor is set as 65\%. As the author adopts a CES aggregator for the home and foreign consumption as well, I directly refer to her estimation; that gives $a =$ 0.35 and $\xi=$ 0.78\footnotemark{}.
-\footnotetext{\citet*{Jegajeevan-Sri-Lanka-DSGE} calibrates the share of foreign goods (tradable goods) based on the average expenditure on imported goods of 35\% according to the consumer price index. The elasticity of substitution between tradable and nontradable goods is obtained via the posterior mean of the Bayesian estimation within 2008 to 2014.}
-This implies that $\sigma = 1/\xi = $ 1.28.
+The labor share is set as $\alpha=$ 0.65 based on the calibration in \citet*{Jegajeevan-Sri-Lanka-DSGE}, which matches the estimation of labor share in \citet{duma2007sri}. The share of tradable consumption is approximated by the share of tradable output in total output, as suggested in \citet{Uribe-Schmitt-Grohe-textbook}. Calculating the mean of tradable-to-GDP ratio over 1980 to 2021, I set the value as $a =$ 0.36. The elasticity of substitution between tradable and nontradable goods $\xi$ follows the cross-country estimation by \citet*{Stockman-Tesar-95}, which is 0.44, and is approximated to 0.5 following the literature. According to the assumption in \refeq{eq:xi-sigma}, $\sigma=1/\xi=$ 2. The calibration on the two parameters is inline with most real-business-cycles \citep{Uribe-Schmitt-Grohe-textbook,Na-18}. Nominal wage rigidity is set as $\gamma=$ 1.109 based on the empirical estimation of downward wage rigidity in 2014 by \citet*{wage-rigidity-data}.
 
-\input{sections/result-sec/sri_lanla-calibration-table.tex}
 Following \citet{Na-18}, the rest of the parameters $\left( \beta, \delta_1, \delta_2 \right)$, which is respectively the subjective discount factor and the two parameter for the loss function, is chosen to match three equilibrium outcomes\footnote{
     In particular, I use the grid search algorithm to search for the optimal values for the three parameters. Essentially, VFI must be proceeded for each triplet of the parameters to obtain the targeting equilibrium outcomes. Details are mentioned in \autoref{sec:computation}.
 }:
 \begin{enumerate*}[label = (\roman*)]
-    \item the average debt-to-GDP ratio in periods of good standing is 84\% per quarter;
-    \item the frequency of default is 1.37 times per century; and
-    \item the average output loss is 10.5\% per year conditional on being in financial autarky.
+    \item the average debt-to-GDP ratio in periods of good standing is 65\% per quarter;
+    \item the frequency of default is 2.36 times per century; and
+    \item the average output loss is 7\% per year conditional on being in financial autarky.
 \end{enumerate*}
-The average debt-to-GDP ratio to be targeted is motivated by the fact that the average annual debt-to-GDP ratio in the data is about 42\%\footnotemark{}.
-\footnotetext{Data source: International Debt Statistics. The value is calculated by averaging the nominal debt-to-GDP ratio over 2000 to 2010. The same approach is conducted when calibrating Pakistan. }
-Multiplying this by an average of 50\% haircut implies that about 21\% of the debt is secured annually\footnotemark{}.
-\footnotetext{In the mode, we assume that the country defaults on 100\% of the debt, hence this approach is necessary to handle the case of a haircut.}
-Since we are dealing with a model with quarterly period, this results in the 84\% debt-to-GDP ratio.
-The average frequency of default is justified by the fact that Sri Lanka experienced its first default on 2022 since its independence in 1948; this give an average of 1.37 times per century\footnote{$\frac{1}{2022-1948} \times 100 \approx 1.37$}. Finally, following the default of Sri Lanka since April 2022, the GDP growth is -7.4\%, -11.5\%, and -12.4\%, for the subsequent three quarters\footnote{Data Source: Central Bank of Sri Lanka}. This implies a geometric mean of -10.5\%.
+The following justifies this choice of targets.
+\begin{enumerate}[label = (\roman*)]
+    \item
+    The average debt-to-GDP ratio to be targeted is motivated by the fact that the average annual debt-to-GDP ratio in the data is about 44\%.
+    The value is calculated by averaging the nominal external-debt-to-GDP ratio over 2001 to 2008\footnotemark{}.
+    \footnotetext{Data source: International Debt Statistics. The period of year is chosen to be 8 years before China's increasing support of loans. The time span of 8 years is inline with that in \citet{Uribe-Schmitt-Grohe-textbook}.}
+    Multiplying this by an average of 37\% haircut\footnote{This is the average sovereign haircut between 1970 and 2010 \citep{Cruces-Trebesch-13}. The haircut data for the current Sri Lanka sovereign default is not available since it is still under restructuring.} implies that about 16.28\% of the debt is unsecured annually\footnotemark{}.
+    \footnotetext{In the mode, we assume that the country defaults on 100\% of the debt, hence this approach is necessary to handle the case of a haircut.}
+    Since we are dealing with a model with quarterly period, this results in the 65\% debt-to-GDP ratio targeted during calibration.
+    \item
+    The average frequency of default is evaluated using the BoC-BoE Sovereign Default Database. I specify the default incidents on IMF, Wolrd Bank, Paris Club, and China\footnote{
+        Studies have found that China is bypassing the seniority through repayments through revenue account, therefore China's loans are de facto senior debts \citep{Gelpern-22,Chen-Muyang-23-china-debt-seniority}.
+    }, who are creditors of senior debts \citep{debt-seniority-19}. Sri Lanka defaulted to Paris Club in 2005, defaulted to China in 2012 and 2017, and suspended payment on most foreign debts (including those from IMF and World Bank, making it default to 4 creditors in this event) in 2022. This yields in average 2.36 times per century per creditor\footnote{$\frac{1+2+4}{2022 - 1948}\times 100 \times \frac{1}{4}$. }.
+    \item  \citet{Na-18} adopts a growth accounting approach proposed by \citet{zarazaga-12} to calculate the output loss associated with the default. Applying this method to Sri Lanka, however, suggests that the output increases along with default, indicating that the method is not suitable in this case. See Appendix \ref{ap: zarazaga} for more detail. I therefore follow \citet{Na-18} and set the output loss to be 7\%, matching the case of Argentina.
+\end{enumerate}
 Table \ref{tab:cal-sri-lanka} summarizes the calibrated parameters and their sources.
 

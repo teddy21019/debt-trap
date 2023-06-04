@@ -1,4 +1,4 @@
-Following \citet{Na-18}, the periodic utility function is assumed to be the constant relative risk aversion (CRRA) type
+Following \citet{Na-18}, the time unit is assumed to be one quarter, and the periodic utility function is assumed to be the constant relative risk aversion (CRRA) type
 \begin{equation}
     \label{eq:CRRA-utility}
     U(c_t) = \frac{c_t^{1-\sigma} - 1}{1 - \sigma},
@@ -12,20 +12,23 @@ The aggregator function for tradable and non-tradable consumption takes the cons
             (1 - a) \left( c^N_t \right)^{1- \frac{1}{\xi}}
         \right]^{\frac{1}{1 - \frac{1}{\xi}}}.
 \end{equation}
-The CES aggregator states that the share of tradable consumption is $a \in [0,1]$, and the elasticity of substitution between the tradable and non-tradable consumption is $\xi$. More over, assume that the inter- and intratemporal elasticity of substitution is equivalent. That is,
+The CES aggregator states that the share of tradable consumption is $a \in [0,1]$, and the elasticity of substitution between the tradable and non-tradable consumption is $\xi$.
+Moreover, following the literature, to make the consumption of tradable goods $c^T_t$ and the external debt $d_t$ independent of the outputs in the nontradable sector in the equilibrium,
+assume that the inter- and intratemporal elasticity of substitution is equivalent \citep*[See][Chapter 9.5]{Uribe-Schmitt-Grohe-textbook}.
+That is,
 \begin{equation}
+    \label{eq:xi-sigma}
     \xi = \frac{1}{\sigma}.
 \end{equation}
-In the equilibrium, consumption of tradable goods $c^T_t$ and the external debt $d_t$ are now independent of the activities in the nontradable sector under this restriction \citep*[See][Chapter 9.5]{Uribe-Schmitt-Grohe-textbook}.
 The production technology for the nontradable goods follows a simple form
 \begin{equation}
     \label{eq:production-function}
     y^N_t = F(h_t) = h_t ^\alpha.
 \end{equation}
-The loss-function in \refeq{eq:ytt} is positive and increasing with $y^T_t$, and following \citet{Chatterjee-12}, I adopt the ad-hoc quadratic form with two parameters
+The loss-function in \refeq{eq:ytt} is positive and increasing with $y^T_t$, and following \citet{Chatterjee-12}, I adopt the quadratic form with two parameters
 \begin{equation}
     L(y^T_t) = \max \left\{
         0, \delta_1 y^T_t + \delta_2 \left( y^T_t \right)^2
      \right\}.
 \end{equation}
-This is also adopted in \citet{Na-18}.
+This is also adopted in \citet{Na-18}. In this setting, if we set $\delta_1 < 0$ and $\delta_2 >0$, the output-loss increases as $y^T_t$ increases, indicating that the more a country is endowed, the more it loses during default.

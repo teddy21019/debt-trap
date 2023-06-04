@@ -1,0 +1,15 @@
+@article{10.2307/2118002,
+ ISSN = {00028282},
+ URL = {http://www.jstor.org/stable/2118002},
+ abstract = {Trade on international financial markets allows people to insure country-specific risk and smooth consumption intertemporally. Equilibrium models of business cycles with trade on global financial markets typically yield international consumption correlations near 1 and excessive volatility of investment. We incorporate nontraded goods in the model and find that the implications for aggregate consumption, investment, and the trade balance are consistent with business-cycle properties of industrialized countries. However, the model driven by technology shocks alone yields counterfactual implications for comovements between consumption and prices at the sectoral level. Taste shocks produce price--quantity relationships more consistent with the data.},
+ author = {Alan C. Stockman and Linda L. Tesar},
+ journal = {The American Economic Review},
+ number = {1},
+ pages = {168--185},
+ publisher = {American Economic Association},
+ title = {Tastes and Technology in a Two-Country Model of the Business Cycle: Explaining International Comovements},
+ urldate = {2023-05-27},
+ volume = {85},
+ year = {1995}
+}
+
