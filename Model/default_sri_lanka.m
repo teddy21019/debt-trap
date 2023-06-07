@@ -32,13 +32,13 @@ ny = numel(ygrid);                                  %number of grid points for l
 y = exp(ygrid(:));                                  %level of tradable output
 
 %Calibrated parameters: 
-rstar = 0.0012/4;                                   %quarterly risk-free interest rate, using US 3-month treasury bill
-betta = 0.85;                                       %discount factor based on loss-function, using standard numbers (from Na et al. 2018)
+rstar = 0.01;                                   %quarterly risk-free interest rate, using US 3-month treasury bill
+betta = 0.8;                                       %discount factor based on loss-function, using standard numbers (from Na et al. 2018)
 theta = 0.0385;                                     %probability of leaving 'bad standing' is 1-theta. When it is in bad standing, external obligations go to zero. Implies you're in bad standing for ~6.5 years, following Na et al. (2018)
-alfa = 0.9;                                         %hours elasticity of nontraded output (rough estimate based on exports as % of GDP)
+alfa = 0.65;                                         %hours elasticity of nontraded output (rough estimate based on exports as % of GDP)
 hbar = 1;                                           %full-employment hours (normalised to unity)
 a = 0.35;                                           %share of tradables (as a % of total consumption) (based on actual GDP data, imports/consumptions)
-xi = 0.78;                                          %elasticity of substitution between traded and nontraded goods (estimates vary considerably; 1/sigg (where sigg=2) is Na et al; 0.75 is Devereux and Smith.)
+xi = 0.5;                                          %elasticity of substitution between traded and nontraded goods (estimates vary considerably; 1/sigg (where sigg=2) is Na et al; 0.75 is Devereux and Smith.)
 sigg = 1/xi;                                        %elasticity of substitution: inverse intertemporal (Na et al. 2018)
 
 % %Calibrated parameters: 

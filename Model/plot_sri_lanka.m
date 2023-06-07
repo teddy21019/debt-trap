@@ -19,7 +19,7 @@ load simu_SRI.mat YT YTA YTtilde B D CT P W Q F TAU DEV PM INFL PC T Tburn ygrid
 
 C = (a*CT.^(1-1/xi) + (1-a)*1^(1-1/xi)).^(1/(1-1/xi));
 
-ER = W.^(-1);                                       %nominal exchange rate. Recall that under the particular optimal devaluation policy considered here, namely, dev_t = w_{t-1}/wf_t, the nominal wage is constant, so the nominal exchange rate is proportional to the inverse of the real wage rate.
+ER = W.^(-1) * 1.109;                                       %nominal exchange rate. Recall that under the particular optimal devaluation policy considered here, namely, dev_t = w_{t-1}/wf_t, the nominal wage is constant, so the nominal exchange rate is proportional to the inverse of the real wage rate.
 
 x1 = find(F==1);
 x1 = x1(x1>tb);
