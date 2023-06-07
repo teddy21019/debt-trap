@@ -146,6 +146,7 @@ function VFI(calibration_param, output_file_name, init_value_function)
     % Change from gpuArray back to normal 
     d = gather(d);
     y = gather(y);
+    yT = gather(yT);
     yTa = gather(yTa);
     cTc = gather(cTc);
     q = gather(q);
