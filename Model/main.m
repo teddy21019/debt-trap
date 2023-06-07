@@ -56,12 +56,19 @@ clear all
     fixed_calibration_param.ygrid = ygrid;
     fixed_calibration_param.pai = pai;
     
+    %% Set distance function and the search method. 
+    % This is using the bridge pattern in design pattern
+
+    % distance_func = @(x) calibration_target_distance(x, fixed_calibration_param, targets);
+    distance_func = @(x) calibration_target_distance_2_param(x, fixed_calibration_param, targets);
+    search_method = @(a,b,c)fmin_calibration(a,b,c, distance_func);
+    
     if NEED_CALIBRATE_BETA_AND_LOSS
-        optimal_grid = grid_search_calibration(...
+        [optimal_calibration_grid, min_distance, exitflag, output, trials] = search_method(...
             fixed_calibration_param, ...
             search_grid, ...
             targets);
-        save optimal_grid.mat optimal_grid
+        save optimal_grid.mat optimal_calibration_grid min_distance exitflag output trials;
         
     else
         load(  ...
