@@ -11,7 +11,6 @@ clear all
 % Functions in subfolders are modified from Hinrichsen (2021) and 
 %                                           Na et al.(2018)
 
-
 %% Sri Lanka Case
 %
 %
@@ -29,12 +28,12 @@ clear all
     % Calibrated parameters: 
     % I put them in a structure to pass them into a VFI function
     fixed_calibration_param = struct();
-        fixed_calibration_param.rstar   = 0.0012/4;                                 %quarterly risk-free interest rate, using US 3-month treasury bill
+        fixed_calibration_param.rstar   = 0.01;                                 %quarterly risk-free interest rate, using US 3-month treasury bill
         fixed_calibration_param.theta   = 0.0385;                                   %probability of leaving 'bad standing' is 1-theta. When it is in bad standing, external obligations go to zero. Implies you're in bad standing for ~6.5 years, following Na et al. (2018)
-        fixed_calibration_param.alfa    = 0.9;                                      %hours elasticity of nontraded output (rough estimate based on exports as % of GDP)
+        fixed_calibration_param.alfa    = 0.65;                                      %hours elasticity of nontraded output (rough estimate based on exports as % of GDP)
         fixed_calibration_param.hbar    = 1;                                        %full-employment hours (normalised to unity)
         fixed_calibration_param.a       = 0.35;                                     %share of tradables (as a % of total consumption) (based on actual GDP data, imports/consumptions)
-        fixed_calibration_param.xi      = 0.78;                                     %elasticity of substitution between traded and nontraded goods (estimates vary considerably; 1/sigg (where sigg=2) is Na et al; 0.75 is Devereux and Smith.)
+        fixed_calibration_param.xi      = 0.5;                                     %elasticity of substitution between traded and nontraded goods (estimates vary considerably; 1/sigg (where sigg=2) is Na et al; 0.75 is Devereux and Smith.)
         fixed_calibration_param.sigg    = 1/fixed_calibration_param.xi;             %elasticity of substitution: inverse intertemporal (Na et al. 2018)
         %   Note: Calibration for betta, delta_1, and delta_2 is 
         %         conducted through matching three outcomes.
@@ -42,14 +41,14 @@ clear all
 
     %% Assign targets
     targets = struct();
-        targets.debt_ratio               = 0.84;              % 84% per quarter
-        targets.default_freq             = 1.37;              % 1.37 times per centurty
-        targets.output_loss              = 0.0105;            % 10.5% output loss per year
+        targets.debt_ratio               = 0.65;              % 84% per quarter
+        targets.default_freq             = 2.36;              % 1.37 times per centurty
+        targets.output_loss              = 0.07;            % 10.5% output loss per year
     
     %% Assign search grids
-    beta_grid       = 0.8:0.05:0.95;
-    delta_1_grid    = -0.2 : -0.05: -0.4;
-    delta_2_grid    = 0.3 : 0.1: 0.5;
+    beta_grid       = 0.6:0.05:0.95;
+    delta_1_grid    = -0.2:-0.1:-0.6;
+    delta_2_grid    = 0.2:0.01:0.6;
     search_grid = create_grid_permutation(beta_grid, delta_1_grid, delta_2_grid);
     
     %% Load transition probability matrix
