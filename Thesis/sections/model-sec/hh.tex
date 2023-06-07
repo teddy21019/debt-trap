@@ -30,14 +30,35 @@ The household's working hour is bounded by an upper limit
 \end{equation}
 and it takes the working hour $h_t$ as given.
 
-The household's problem is to choose $\{c_t, c_t^T, c_t^N, d_{t+1}\}$ such that its utility \eqref{eq:utility} is maximized subject to the budget constraints \eqref{eq:A} -- \eqref{eq:h-constraint} and the no-Ponzi-game debt limit.
-Further, denote the relative price of nontradable in terms of tradable goods as $p_t \equiv \frac{P^N_t}{P^T_t}$, we have the following first order conditions
+Further, denote the relative price of nontradable in terms of tradable goods as $p_t \equiv \frac{P^N_t}{P^T_t}$, we have the following budget constraint,
+\begin{equation}
+    \label{eq:h-constraint-pt}
+    c^T_t + p_t c^N_t +  d_t =
+     \tilde{y}^T_t + w_t h_t + (1- \tau^d_t) q^d_t d_{t+1} + f_t + \phi_t,
+\end{equation}
+where $w_t = \frac{W_t}{P^T_t}$, $f_t = \frac{F_t}{P^T_t}$, $\phi_t = \frac{\Phi_t}{P^T_t}$ are the variables expressed in price of tradable goods.
+The household's problem is to choose $\{c_t, c_t^T, c_t^N, d_{t+1}\}$ such that its utility \eqref{eq:utility} is maximized subject to the budget constraints \eqref{eq:A} -- \eqref{eq:h-constraint-pt} and the no-Ponzi-game debt limit. The Lagrangian for the household is
+\begin{equation*}
+    \mathcal{L} = E_0 \sum_{t=0}^\infty \beta^t \left\{
+        U(A(c^T_t, c^N_t)) + \lambda_t \left[
+            \tilde{y}^T_t + w_t h_t + (1- \tau^d_t) q^d_t d_{t+1} + f_t + \phi_t -
+            c^T_t - p_t c^N_t -  d_t
+         \right]
+     \right\}.
+\end{equation*}
+The first order equations are the following:
+\begin{align*}
+    \pdv{\mathcal{L}}{c^T_t} &= A_1(c^T_t, c^N_t) U'(c_t) - \lambda_t = 0\\
+    \pdv{\mathcal{L}}{c^N_t} &= A_2 (c^T_t, c^N_t) U'(c_t) - \lambda_t p_t = 0 \\
+    \pdv{\mathcal{L}}{d_{t+1}} &= (1 - \tau^d_t)q^d_t \lambda_{t} - E_{t} \lambda_{t+1} = 0,
+\end{align*}
+where $\lambda_t$ is the Lagrange multiplier.
+$A_1(\cdot, \cdot) = \pdv{A}{c^T_t}$ and $A_2(\cdot, \cdot) = \pdv{A}{c^N_t}$ is respectively the first derivative of the aggregation function with respect to tradable and nontradable consumption.
+The first order conditions can be concluded as
 \begin{subequations}
     \begin{align}
         p_t &= \frac{A_2(c_t^T, c_t^N)}{A_1(c_t^t, c_t^N)} \label{eq:FOC-HH-1} \\
         \lambda_t &= U'(c_t)A_1(c_t^T, c_t^N)\\
-        (1-\tau_t^d)q_t^d \lambda_t &= \beta E_t \lambda_{t+1},
+        (1-\tau_t^d)q_t^d \lambda_t &= \beta E_t \lambda_{t+1}.
     \end{align}
 \end{subequations}
-where $\lambda_t$ is the Lagrange multiplier.
-$A_1(\cdot, \cdot) = \pdv{A}{c^T_t}$ and $A_2(\cdot, \cdot) = \pdv{A}{c^N_t}$ is respectively the first derivative of the aggregation function with respect to tradable and nontradable consumption.
