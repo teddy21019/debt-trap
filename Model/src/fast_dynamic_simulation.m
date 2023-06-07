@@ -109,7 +109,7 @@ function results = fast_dynamic_simulation(VFI_filename, sim_filename, save_file
     
     results = struct("I", I, "J", J, "B", B, "F", F, "D", D, "YT", YT, "YTtilde", YTtilde, "RR", RR, "T", T);
     if save_file_bool
-        save(strcat(sim_filename, '.mat'), "I", "J", "B", "F", "D", "YT", "YTtilde", "RR", "T")
+        save(strcat(sim_filename, '.mat'), "I", "J", "B", "F", "D", "YT", "YTtilde", "RR", "T");
     end
 
 
