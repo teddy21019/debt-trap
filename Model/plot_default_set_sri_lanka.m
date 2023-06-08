@@ -3,8 +3,8 @@
 clear all
 % load default_1870s.mat
 % load default_1920s.mat
-load default_sri_lanka.mat
-
+% load default_sri_lanka.mat
+load temp_VFI_result.mat
 %subplot(1,3,1)
 
 contourf(yT,dpc*100,f,'LineColor','None','ShowText','On') 

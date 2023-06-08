@@ -14,12 +14,12 @@ cols = 2;
 tb = 8;                                             %periods before default
 ta = 8;                                             %periods after default
 
-load simu_SRI.mat YT YTA YTtilde B D CT P W Q F TAU DEV PM INFL PC T Tburn ygrid pai filename rstar betta theta yhat alfa hbar a sigg xi dupper dlower nd 
+load simu_SRI.mat YT YTA YTtilde B D CT P W Q F TAU DEV PM INFL PC T Tburn ygrid pai rstar betta theta yhat alfa hbar a sigg xi dupper dlower nd 
 
 
 C = (a*CT.^(1-1/xi) + (1-a)*1^(1-1/xi)).^(1/(1-1/xi));
 
-ER = W.^(-1);                                       %nominal exchange rate. Recall that under the particular optimal devaluation policy considered here, namely, dev_t = w_{t-1}/wf_t, the nominal wage is constant, so the nominal exchange rate is proportional to the inverse of the real wage rate.
+ER = W.^(-1) * 1.109;                                       %nominal exchange rate. Recall that under the particular optimal devaluation policy considered here, namely, dev_t = w_{t-1}/wf_t, the nominal wage is constant, so the nominal exchange rate is proportional to the inverse of the real wage rate.
 
 x1 = find(F==1);
 x1 = x1(x1>tb);
@@ -78,7 +78,7 @@ mean_dev =  (W(1)/W(end))^(1/(length(W)-1));
 mean_dev = (mean_dev^4-1)*100;
 
 f = @(x) median(x);
-f = @(x) mean(x);
+% f = @(x) mean(x);
 
 
 nameOfEpisode='Sri Lanka';                                                      
@@ -90,6 +90,9 @@ tslineWidth=2;
 subplot(rows,cols,i)                                                                    
 x=f(yT);
 plot(t,x,lineType,'linewidth',tslineWidth,'color',[0.4940 0.1840 0.5560])       
+hold on 
+x=f(yTtilde);
+plot(t,x,'--','linewidth',tslineWidth,'color',[0.4940 0.1840 0.5560])       
 hold on 
 % plot(t,FinlandY,':','linewidth',tslineWidth,'Color',[0.4940 0.1840 0.5560]);    
 % hold on

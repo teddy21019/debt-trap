@@ -8,7 +8,8 @@
 clear all
 format compact
 
-load default_sri_lanka.mat 
+% load default_sri_lanka.mat 
+load temp_VFI_result.mat
 
 cpai = cumsum(pai,2);
 
@@ -39,7 +40,7 @@ STATE = zeros(Tburn+T,1);
 
 for t=1:T+Tburn
 
-    STATE(t,1) = sub2ind([ny nd ],i,j);
+    %STATE(t,1) = sub2ind([ny nd ],i,j);
     rr = rand;                                          %random number  determining reentry if applicable
     F(t,1) = f(i,j);
     
@@ -124,9 +125,10 @@ end
 
 
 %create W(t), W(t-1), and DEV(t)
-W  = P.* alfa; 
+W  = P.* alfa;
 Wback = [wb; W(1:end-1)];
-DEV = Wback./W;
+DEV = Wback./W * 
+;
 
 %remove burn in 
 STATE = STATE(Tburn+1:end);
