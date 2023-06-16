@@ -6,35 +6,28 @@ function [debt_ratio, default_freq, output_loss]  ...
         load(simulation_result)
     else
         F = simulation_result.F;
+        B = simulation_result.B;
         T = simulation_result.T;
         YT = simulation_result.YT;
         YTtilde = simulation_result.YTtilde;
         D = simulation_result.D;
     end
     
-    tb = 1;                                             %periods before default
-    ta = 3; 
-
-    x = find(F == 1);
-    x = x(x > tb & x <= T - ta);
-    
     %% get the debt ratio
-    default_freq = size(x,1) / T * 400;             % Frequency of default per century (400 quarters)
+    default_freq = mean(F) * 400;             % Frequency of default per century (400 quarters)
     
     %% get output loss
-    xlong = length(x);
-    ylong = ta + 1;                                 % 4 periods, including default period
-    yloss = zeros(xlong, ylong);                 
-
-    for i=1:length(x)
-        yloss(i,1:ylong) = YT(x(i):x(i)+ ta)' - YTtilde(x(i):x(i)+ta)';
-    end
-
-    % get the average of [average of output loss for 4 episodes]
-    output_loss = mean(yloss, "all");
+    % Implementation refers to https://www.joseeliasgallegos.com/uploads/7/5/1/4/75144577/ps2_solution.pdf
+    % P21, line 16, and is checked on Na et al.(2018), Martin Uribe and
+    % Stephanie Schmitt-Grohe (2014)
+    
+    bs = find(F==1|B==1);                               % default period & bad standings. By desing, a default is followed by a sereis of bas standings.
+    output_loss = mean((YT(bs)-YTtilde(bs))./YT(bs));   % average output loss of tradable output of being in bas standings as share of total tradable output.
 
 
     %% Mean of t-1 for debt over all episode
-    debt_ratio = mean(D(x-1));                      % D is 1e7 x 1, extract the period before default
+
+    gs = find(F==0&B==0);                               % good standings = no default decision + not in bad
+    debt_ratio = mean(D(gs)./YTtilde(gs));              % average debt to tradable GDP ratio, condition on being in good standings
 
 end
