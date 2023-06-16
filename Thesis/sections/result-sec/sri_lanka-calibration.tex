@@ -8,33 +8,32 @@ Estimation of the AR(1) on the cyclical component thus yields $\rho = $ 0.9114 a
 $\rho = 1 - \frac{1 - \hat{\rho}}{4}$, and $\sigma_u = \frac{\hat{\sigma}}{\sqrt{4}}$, where $\hat{\rho}$ and $\hat{\sigma}$ are the estimated parameters for the AR(1) via OLS.}
 
 The global risk-free world interest rate $r^*$ is set to match the U.S. 3-month treasury bill rate during 1990 to 2007\footnote{
-    Quarterly averaged data retrieved from FRED. 1980s are excluded due to the fact that the FED sets it rate extremely high to fight the inflation, and 2008 is excluded due to sudden drop caused by the financial crisis. The average of 3-month treasury bill rate over 1990 to 2007 is 4.10\%.
-}, which is roughly 4\% annually, or 1\% for one quarter. This is in line with \citet{Chatterjee-12}.
+    Quarterly averaged data retrieved from FRED. The span of 1990 to 2007 is set to match the periods of the Great Moderation, when the business cycle fluctuation is reduced \citep{FedHistory-GreatModeration}. The average of 3-month treasury bill rate over 1990 to 2007 is 4.10\%.
+}, which is roughly 4\% annually, or 1\% for one quarter. This is in line with \citet{Chatterjee-12} and \citet{Na-18}.
 The probability of reentry is difficult to assess due to the lack of data. As a result, following \citet*{Chatterjee-12} and \citet*{Hinrichsen_2020-chapter4}, I set the probability of reentry to 0.0385, which implies that the country will be in default on average for about 6.5 years.
 
-The labor share is set as $\alpha=$ 0.65 based on the calibration in \citet*{Jegajeevan-Sri-Lanka-DSGE}, which matches the estimation of labor share in \citet{duma2007sri}. The share of tradable consumption is approximated by the share of tradable output in total output, as suggested in \citet{Uribe-Schmitt-Grohe-textbook}. Calculating the mean of tradable-to-GDP ratio over 1980 to 2021, I set the value as $a =$ 0.36. The elasticity of substitution between tradable and nontradable goods $\xi$ follows the cross-country estimation by \citet*{Stockman-Tesar-95}, which is 0.44, and is approximated to 0.5 following the literature. According to the assumption in \refeq{eq:xi-sigma}, $\sigma=1/\xi=$ 2. The calibration on the two parameters is inline with most real-business-cycles \citep{Uribe-Schmitt-Grohe-textbook,Na-18}. Nominal wage rigidity is set as $\gamma=$ 1.109 based on the empirical estimation of downward wage rigidity in 2014 by \citet*{wage-rigidity-data}.
+The labor share is set as $\alpha=$ 0.65 based on the calibration in \citet*{Jegajeevan-Sri-Lanka-DSGE}, which matches the estimation of labor share in \citet{duma2007sri}. The share of tradable consumption is approximated by the share of tradable output in total output, as suggested in \citet{Uribe-Schmitt-Grohe-textbook}. Calculating the mean of tradable-to-GDP ratio over 1980 to 2021, I set the value as $a =$ 0.36. The elasticity of substitution between tradable and nontradable goods $\xi$ is set as 0.5 following \citet{Uribe-Schmitt-Grohe-textbook}, which is close to the cross-country estimation of 0.44 by \citet*{Stockman-Tesar-95}. According to the assumption in \refeq{eq:xi-sigma}, $\sigma=1/\xi=$ 2. The calibration on the two parameters $\xi$ and $\sigma$ is inline with most real-business-cycles \citep{Uribe-Schmitt-Grohe-textbook,Na-18}. Nominal wage rigidity is set as $\gamma=$ 1.109 based on the empirical estimation of downward wage rigidity in 2014 by \citet*{wage-rigidity-data}\footnote{\citet{wage-rigidity-data} estimates downward wage rigidity by measuring the annualized average gross real wage growth during an unemployment cycle for each country.}.
 
-Following \citet{Na-18}, the rest of the parameters $\left( \beta, \delta_1, \delta_2 \right)$, which is respectively the subjective discount factor and the two parameter for the loss function, is chosen to match three equilibrium outcomes\footnote{
-    In particular, I use the grid search algorithm to search for the optimal values for the three parameters. Essentially, VFI must be proceeded for each triplet of the parameters to obtain the targeting equilibrium outcomes. Details are mentioned in \autoref{sec:computation}.
+Following \citet{Na-18}, the rest of the parameters $\left( \beta, \delta_1, \delta_2 \right)$, which is respectively the subjective discount factor and the two parameters for the loss function, is chosen to match three equilibrium outcomes\footnote{
+    In particular, I use the surrogate optimization solver in Matlab to search for the optimal values for the three parameters. Essentially, VFI must be proceeded for each triplet of the parameters to obtain the targeting equilibrium outcomes. Details are mentioned in \autoref{sec:computation}.
 }:
 \begin{enumerate*}[label = (\roman*)]
     \item the average debt-to-GDP ratio in periods of good standing is 65\% per quarter;
-    \item the frequency of default is 2.36 times per century; and
+    \item the frequency of default is 2.6 times per century; and
     \item the average output loss is 7\% per year conditional on being in financial autarky.
 \end{enumerate*}
 The following justifies this choice of targets.
 \begin{enumerate}[label = (\roman*)]
     \item
-    The average debt-to-GDP ratio to be targeted is motivated by the fact that the average annual debt-to-GDP ratio in the data is about 44\%.
+    The average debt-to-GDP ratio to be targeted is motivated by the fact that the average annual debt-to-GDP ratio of Sri Lanka in the data is about 44\%.
     The value is calculated by averaging the nominal external-debt-to-GDP ratio over 2001 to 2008\footnotemark{}.
     \footnotetext{Data source: International Debt Statistics. The period of year is chosen to be 8 years before China's increasing support of loans. The time span of 8 years is inline with that in \citet{Uribe-Schmitt-Grohe-textbook}.}
     Multiplying this by an average of 37\% haircut\footnote{This is the average sovereign haircut between 1970 and 2010 \citep{Cruces-Trebesch-13}. The haircut data for the current Sri Lanka sovereign default is not available since it is still under restructuring.} implies that about 16.28\% of the debt is unsecured annually\footnotemark{}.
-    \footnotetext{In the mode, we assume that the country defaults on 100\% of the debt, hence this approach is necessary to handle the case of a haircut.}
+    \footnotetext{In the model, we assume that the country defaults on 100\% of the debt, hence this approach is necessary to handle the case of a haircut.}
     Since we are dealing with a model with quarterly period, this results in the 65\% debt-to-GDP ratio targeted during calibration.
     \item
-    The average frequency of default is evaluated using the BoC-BoE Sovereign Default Database. I specify the default incidents on IMF, Wolrd Bank, Paris Club, and China\footnote{
-        Studies have found that China is bypassing the seniority through repayments through revenue account, therefore China's loans are de facto senior debts \citep{Gelpern-22,Chen-Muyang-23-china-debt-seniority}.
-    }, who are creditors of senior debts \citep{debt-seniority-19}. Sri Lanka defaulted to Paris Club in 2005, defaulted to China in 2012 and 2017, and suspended payment on most foreign debts (including those from IMF and World Bank, making it default to 4 creditors in this event) in 2022. This yields in average 2.36 times per century per creditor\footnote{$\frac{1+2+4}{2022 - 1948}\times 100 \times \frac{1}{4}$. }.
+    Sri Lanka suspended all debt payment in April 2022, but else there is no other default episode within the periods of calibration. Note that Sri Lanka interacted with Paris Club in 2005 for a moratorium due to the tsunami of December 2004, but this event is not counted as a default according to global rating systems such as S\&P Global \citep{SPGlobal-default-report}.
+    Due to this uncertainty of determining a default episode, I set the default frequency to be 2.6 as the benchmark target, which is the frequency of Argentina following \citet{Na-18}. Attempts on counting default episodes based on a different definition will be conducted as a robustness check in later section.
     \item  \citet{Na-18} adopts a growth accounting approach proposed by \citet{zarazaga-12} to calculate the output loss associated with the default. Applying this method to Sri Lanka, however, suggests that the output increases along with default, indicating that the method is not suitable in this case. See Appendix \ref{ap: zarazaga} for more detail. I therefore follow \citet{Na-18} and set the output loss to be 7\%, matching the case of Argentina.
 \end{enumerate}
 Table \ref{tab:cal-sri-lanka} summarizes the calibrated parameters and their sources.
