@@ -1,0 +1,151 @@
+In Chapter \ref{ch:model}, I introduce the default set given by the decentralized Eaton-Gersovitz model by \citet{Na-18}.
+It is worth examining some properties of the default set, as it justifies visually the empirical results of the thesis.
+Despite the fact that the default set can only be established through numerical computation instead of an analytical expression, some properties of the default set can still be obtained without knowing the exact form of the set.
+
+\newcommand{\yT}{y^T_{t}}
+\newcommand{\yTpr}{y^T_{t+1}}
+\newcommand{\dpr}{d_{t+1}}
+Recall that the default set is defined as
+\begin{equation*}
+    D(d_t) = \{\yT : v^b(\yT) > v^c(\yT, d_t)\},
+\end{equation*}
+which is the set of output levels within which the country is best to default given a debt level $d_t$.
+I derive the following three properties regarding the default set under the model specifications of \citet{Na-18}:
+\begin{enumerate}
+    \item If the default set is not empty, then the trade balance deficit  is less that the loss. That is, $q(\yT, \dpr)\dpr - d_t < -L(\yT)$.
+    \item If $y_1 \in D(d_t)$ and $\underline{y}\le y_2 \le y_1$, then $y_2 \in D(d_t)$
+    \item The default set $D(d_t)$ is an interval $[\underline{y}, y^*(d_t)]$, where $y^*(d_t)$ is decreasing in $d_t$.
+\end{enumerate}
+Here, $\underline{y}$ denotes the lower bound on the endowment level during numerical computaiton.
+Similar properties are proved in \citet*{Arellano-08} and \citet*{Uribe-Schmitt-Grohe-textbook} for the centralized version of Eaton-Gersovitz model.
+
+\begin{proposition}
+    \label{prop1}
+    If $D(d_t) \neq \emptyset$, then $q(\yT, \dpr)\dpr - d_t < -L(\yT)$ for all $\dpr$.
+\end{proposition}
+\begin{proof}
+    The proof is by contradiction. Suppose that $q(\yT, \tilde{d}_{t+1})\tilde{d}_{t+1} - d_t > -L(\yT)$ for some $\tilde{d}_t$, according to the definition of $v^c(d_t, \yT)$,
+    \begin{align*}
+        v^c(d_t, \yT) &= \max_{\dpr} \left\{
+            U\left( A(\yT + q_t(\yT, \dpr) \dpr - d_t, \bar{h}) \right) +
+            \beta E_t v^g(\yTpr, \dpr)
+         \right\}\\
+         &\ge U\left( A(\yT + q_t(\yT, \tilde{d}_{t+1}) \tilde{d}_{t+1} - d, \bar{h}) \right) +
+            \beta E_t v^g(\yTpr, \tilde{d}_{t+1}) \\
+         &\ge U\left( A(\yT -L(\yT), \bar{h}) \right) +
+            \beta E_t v^b(\yTpr) \\
+        &\equiv v^b(\yT).
+    \end{align*}
+    For third line, the first term holds due to the fact that both the utility function and the aggregation function is strictly increasing and concave, and the second term holds due to the definition of  $v^g = \max\{v^b, v^c\}$.
+
+    This result, however, yields a contradiction since if $v^c(d_t, \yT) \ge v^b(\yT)$ for all possible endowments of tradable output, then we have $D(d_t) = \emptyset$ by definition. Therefore, we conclude that if under the certain debt level, the default set is not empty, then we must have $q(\yT, \dpr)\dpr - d_t < -L(\yT)$ for all $\dpr$.
+\end{proof}
+
+\begin{proposition}
+    \label{prop2}
+    If $y_1 \in D(d_t)$ and $\underline{y}\le y_2 \le y_1$, then $y_2 \in D(d_t)$.
+\end{proposition}
+\begin{proof}
+    Consider the difference between the value function under bad standings $v^b(\yT)$ and the value function of continuing to repay its debt  $v^c(\yT, d_t)$ as $\Delta(\yT) \equiv v^b(\yT) - v^c(\yT, d_t)$. By definition, any tradable output in the default set $y \in D(d)$ satisfies $\Delta(y) >0$.
+
+    Consider the first derivative of the difference function $\Delta_{y} = \pdv{\Delta}{y^T_t} = v^b_{y}(y) - v^c_{y}(y, d)$.
+    Recall that
+    \begin{align*}
+        v^c(y, d) &= \max_{\left\{d' \right\}} \quad
+        \left\{
+            U\left(
+                A\left( y + q(y, d')d' - d, F(1)\right)
+             \right)
+             + \beta E_t
+             v^g \left(
+                y', d'
+              \right)
+         \right\}\\
+        v^b(y) &=
+            U\left(
+                A\left( y - L(y), F(1)\right)
+             \right)
+             + \beta E_t \left[
+                \theta v^g \left(
+                    y', 0
+                \right)
+                + (1-\theta) v^b \left(
+                    y'
+                 \right)
+            \right].
+    \end{align*}
+    The notation for tradable output $y^T_t$ is simplified as $y$ and $y^T_{t+1}$ as $y'$, and similarly $d_t$ is simplified as $d$ and $d_{t+1}$ as $d'$. Also, from previous discussion we know that the optimal working hours is $h^*_t = \bar{h}$ when the government chooses to devaluate during default as its optimal policy, which is normalized to unity for simplicity. Applying the envelope theorem on $v^c(y, d)$,
+    \begin{align*}
+        v^c_y \equiv \pdv{v^c}{y} &= \pdv{}{y} U\Big[ A\Big(y + q(y, d')d' - d, F(1)\Big)\Big]\\
+        &=\Big(1 + q_y(y, d')d'\Big) A_1(c_c, F(1)) U'\Big(A(c_c, F(1))\Big),
+    \end{align*}
+    where $q_y(y, d') \equiv \pdv{q}{y}$, $c_c \equiv y + q(y, d')d' -d$. This is easily derived by the chain rule. As for $v^b(y)$,
+    \begin{align*}
+        v^b_y \equiv \pdv{v^b}{y} &=
+        \Big[ 1 - L' (y)\Big] A_1 (c_b, F(1)) U' \Bigl(A(c_b, F(1))\Bigr),
+    \end{align*}
+    where $L' \equiv \pdv{L}{y}$ and $c_b \equiv y - L(y)$
+    For the sake of simplicity, the second parameter for the aggregation function $A(\cdot, \cdot)$ and its derivative $A_1(\cdot,\cdot )$ will be simplified by showing only the first argument since the second argument is always $F(1)$.
+
+    Accordingly, the difference function
+    \begin{align}
+        \Delta_y =& v^b_y(y) - v^c_y(y, d) \nonumber \\
+        =& \Big[ 1 - L' (y)\Big] A_1 (c_b) U' \Bigl(A(c_b)\Bigr)-
+            \Big(1 + q_y(y, d')d'\Big) A_1(c_c) U'\Big(A(c_c)\Big) \nonumber\\
+        =& A_1 (c_b) U' \Bigl(A(c_b)\Bigr)-A_1 (c_c) U' \Bigl(A(c_c)\Bigr)  \nonumber \\
+        & -L'(y) A_1(c_b)U'(A(c_b)) - q_y(y, d')d'A_1(c_c)U'(c_c). \label{eq:diff-value-function}
+    \end{align}
+
+    Note that $A(\cdot, \cdot)$ and $U(\cdot)$ are both concave and increasing by assumption. This implies that if $c_1<c_2$, then
+    \begin{enumerate*}[label = (\roman*)]
+        \item $A(c_1) < A(c_2)$,
+        \item $A_1(c_1) > A_1(c_2)$, and
+        \item $U'(c_1) > U'(c_2)$
+    \end{enumerate*}
+    Together, it implies that $U'(A(c_1)) > U'(A(c_2))$. Furthermore, since $\frac{A_1(c_1)}{A_1(c_2)} > 1$ and $\frac {U'(A(c_1))}{U'(A(c_2))} > 1$, we have
+    \begin{equation}
+        \label{eq:AUA-compare}
+        \frac{A_1(c_1) U'(A(c_1))}{A_1(c_2) U'(A(c_2))} > 1 \implies
+        {A_1(c_1) U'(A(c_1))} > {A_1(c_2) U'(A(c_2))}.
+    \end{equation}
+    The first two terms in \refeq{eq:diff-value-function} resembles this relationship. Since
+    \begin{equation*}
+        c_b \equiv y - L(y) > y+q(y, d')d' -d \equiv c_c
+    \end{equation*}
+    according to Proposition \ref{prop1}, by \refeq{eq:AUA-compare}
+    \begin{equation*}
+        A_1 (c_b) U' \Bigl(A(c_b)\Bigr) - A_1 (c_c) U' \Bigl(A(c_c)\Bigr) < 0.
+    \end{equation*}
+    The third term in \refeq{eq:diff-value-function} is negative since the loss function is assumed to be nonnegative and nondecreasing \citep{Na-18}, hence $L'(y) > 0$. The marginal price of debt offered by foreign lenders $q_y(y, d')$ is positive since a better condition of output today $y$ yields a higher output tomorrow $y'$ due to the AR(1) nature of output, which in turn decreases the probability of default tomorrow. As a result, the price of bond increases.
+    Overall, we have
+    \begin{equation*}
+        \Delta_y (y, d) < 0
+    \end{equation*}
+    if the default set is not empty. That is, $v^b(y) - v^c(y, d)$ is a decreasing function of $y$.
+
+    When default is an optimal policy under the tuple $(y_1, d)$, which means that $y_1 \in D(d)$, then by definition $v^b(y_1) > v^c(y_1, d)$. For any given $y_2 \le y_1$, since $v^b(y) - v^c(y, d)$ is decreasing in $y$, we also have $v^b(y_2) > v^c(y_2, d)$, hence $y_2 \in D(d)$.
+\end{proof}
+
+\begin{proposition}
+ The default set $D(d_t)$ is an interval $[\underline{y}, y^{T*}(d_t)]$, where $y^{T*}(d_t)$ is decreasing in $d_t$.
+\end{proposition}
+\begin{proof}
+    Previously, it is proven that $\Delta_y(\yT, d_t) = v^b_y(\yT) - v^c_y(y^T_t, d_t) < 0$ when $D(d_t) \ne \emptyset$. An ouput is in the default set if $v^b(y^T_t) - v^c(y^T_t, d_t) >0$. It is trivial that as the output goes to infinity, the country has no incentive to default hence $v^c(\infty, d_t) > v^b(\infty)$. By the intermediate value theorem, it is obvious that there exist some $y^{T*}$ such that $v^b(y^{T*}) - v^c(y^{T*}, d_t) = 0$, where $y^{T*} = y^{T*}(d_t)$ is a value that depends on the current debt level. This proves that the default set is an interval.
+
+    Taking the total derivative of the upper limit, together with the equation $\Delta(y^{T*}) = 0$, we get
+    \begin{equation*}
+        \dv{y^{T*}(d_t)}{d_t} = - \frac{\pdv{\Delta}{d_t}}{\pdv{\Delta}{y^{T}}} = - \frac{-v^c_d(y^{T*}(d_t), d_t)}{v^b_y(y^{T*}) - v^c_y(y^{T*}, d_t)}.
+    \end{equation*}
+    We know that $v^b_y(y^{T*}) - v^c_y(y^{T*}, d_tj) < 0$. Applying the envelope theorem to $v^c(y^{T*}_t, d_t)$, we get
+    \begin{equation*}
+        \pdv{v^c}{d_t} = -A_1\Big[y^{T*}_t + q_t(y^{T*}_t, \dpr)\dpr - d_t\Big] U'\Big[A(y^{T*}_t + q_t(y^{T*}_t, \dpr)\dpr - d_t)\Big]<0.
+    \end{equation*}
+    Eventually,
+    \begin{equation}
+        \dv{y^{T*}(d_t)}{d_t} > 0.
+    \end{equation}
+
+    This result replies that as the debt level increases, the upper bound of the default set should be strictly increasing.
+\end{proof}
+
+These results match those of \citet{Arellano-08} and \citet{Uribe-Schmitt-Grohe-textbook}. As discussed by \citet{Na-18}, when optimal devaluation and taxation policies are implemented, the equilibrium allocation in the economy aligns with that of the centralized Eaton-Gersovitz model. Therefore, it is not surprising that the default set in the decentralized economy exhibits similar behavior to that observed in a traditional centralized economy.
