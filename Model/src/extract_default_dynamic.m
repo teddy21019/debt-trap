@@ -1,7 +1,7 @@
 function [debt_ratio, default_freq, output_loss]  ...
     = extract_default_dynamic(simulation_result)
     
-    if isstring(simulation_result)
+    if ischar(simulation_result)
         simulation_result = strcat(simulation_result, '.mat');
         load(simulation_result)
     else

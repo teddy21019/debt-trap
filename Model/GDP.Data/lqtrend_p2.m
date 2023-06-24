@@ -3,25 +3,36 @@
 
 clear all
 
+addpath('reader')
+GDP_data = read_gdp_data();
+
 %data from World Bank
-tradable_per_capita = table2array(readtable('/Users/abc/Desktop/論文3/DATA/GDP.per.capita.csv'));
-tradable_per_capita = tradable_per_capita(2:end, :);
-SRI = log(tradable_per_capita(:,2));
-PAK = log(tradable_per_capita(:,3));
-% 
-% y_cyclical_SRI = LQ_detrend(SRI, 'difference');
-% y_cyclical_PAK = LQ_detrend(PAK, 'difference');
+
+% use real GDP as proxy of yT
+% GDP_data = table2array(readtable('/Users/abc/Desktop/論文3/DATA/GDP.per.capita.csv'));
+% tradable_per_capita = GDP_data(2:end, :);
+% SRI = log(tradable_per_capita(:,2));
+% PAK = log(tradable_per_capita(:,3));
+
+% use AGI + IND as proxy of yT
+tradable_GDP_data = table2array(GDP_data(:, 'pc_trade'));
+SRI = log(tradable_GDP_data(GDP_data.code == 'LKA',:));
+PAK = log(tradable_GDP_data(GDP_data.code == 'PAK',:));
+
+
 [ys_SRI, y_cyclical_SRI] = hpfilter(SRI, 100);
 [ys_PAK,y_cyclical_PAK] = hpfilter(PAK, 100);
+% y_cyclical_SRI = LQ_detrend(SRI, 'difference');
+% y_cyclical_PAK = LQ_detrend(PAK, 'difference');
 % ys_SRI = SRI - y_cyclical_SRI;
 % ys_PAK = PAK - y_cyclical_PAK;
 
 subplot(1,2,1);
-plot(tradable_per_capita(:,1), SRI,'color','[0.8500, 0.3250, 0.0980]')
+plot(GDP_data(:,1), SRI,'color','[0.8500, 0.3250, 0.0980]')
 hold on
-plot(tradable_per_capita(:,1), PAK,'color','[0.4940, 0.1840, 0.5560]')
-plot(tradable_per_capita(:,1), ys_SRI,'--','color','[0.8500, 0.3250, 0.0980]')
-plot(tradable_per_capita(:,1), ys_PAK,'--','color','[0.4940, 0.1840, 0.5560]')
+plot(GDP_data(:,1), PAK,'color','[0.4940, 0.1840, 0.5560]')
+plot(GDP_data(:,1), ys_SRI,'--','color','[0.8500, 0.3250, 0.0980]')
+plot(GDP_data(:,1), ys_PAK,'--','color','[0.4940, 0.1840, 0.5560]')
 set(gca, 'YScale','log')
 ylabel('Log of real GDP per capita','interpreter','latex')
 xlabel('Year','interpreter','latex')
@@ -32,11 +43,11 @@ hold off
 
 %plot deviation
 subplot(1,2,2);
-plot(tradable_per_capita(:,1), y_cyclical_SRI*100,'color','[0.8500, 0.3250, 0.0980]')
+plot(GDP_data(:,1), y_cyclical_SRI*100,'color','[0.8500, 0.3250, 0.0980]')
 hold on
-plot(tradable_per_capita(:,1), y_cyclical_PAK*100,'color','[0.4940, 0.1840, 0.5560]')
-xlim([1960 2020])
-ylim([-15 15])
+plot(GDP_data(:,1), y_cyclical_PAK*100,'color','[0.4940, 0.1840, 0.5560]')
+xlim([1960 2021])
+ylim([-20 20])
 ylabel('Percent deviation from secular trend of $y_t$','interpreter','latex')
 xlabel('Year','interpreter','latex')
 hline=refline(0);

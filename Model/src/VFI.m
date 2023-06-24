@@ -1,4 +1,11 @@
-function VFI(calibration_param, output_file_name, init_value_function)
+% VFI.m
+%
+% Modified version of Na et al. (2018).
+% All matrix manipulation is conducted on GPU 
+% This reduces total execution time from 90s to 10s in average.
+
+
+function VFI(calibration_param, output_file_name)
     % extract calibration parameters
     rstar   = calibration_param.rstar;                  %quarterly risk-free interest rate, using US 3-month treasury bill
     betta   = calibration_param.betta;                  %discount factor based on loss-function, using standard numbers (from Na et al. 2018)
@@ -12,6 +19,7 @@ function VFI(calibration_param, output_file_name, init_value_function)
 
     ygrid   = gpuArray(calibration_param.ygrid);
     pai     = gpuArray(calibration_param.pai);
+    y_cyclical = calibration_param.y_cyclical;
 
     ny = numel(ygrid);                                  %number of grid points for log of tradable ouput
     y = exp(ygrid(:));                                  %level of tradable output
@@ -19,7 +27,7 @@ function VFI(calibration_param, output_file_name, init_value_function)
     hbar = 1;                                           % since this is universal for all model, I put the calibration here instead of main file
         
     % Debt grid
-    dupper = 1.5;                                       %upper bound debt range
+    dupper = calibration_param.dupper;                  %upper bound debt range
     dlower = 0;                                         %lower bound debt range
     nd = 200;                                           %# of grid points for debt 
     d = dlower:(dupper-dlower)/(nd-1):dupper;           % create a 200 vector of debt space
@@ -55,20 +63,11 @@ function VFI(calibration_param, output_file_name, init_value_function)
     cTa = yTa;                                          %consumption of tradables under autarky
     ua = (a * cTa.^(1-sigg) + (1-a) * hbar.^(alfa*(1-sigg))-1)  / (1-sigg); %utility under autarky 
     
-    init_value_function = strcat(init_value_function, '.mat');
-    if isfile(init_value_function)
-        load(init_value_function, 'vc', 'vg', 'vb', 'vr')
-        vc = gpuArray(vc);
-        vg = gpuArray(vg);
-        vb = gpuArray(vb);
-        vr = gpuArray(vr);
-    else
-        %Initialize the value functions
-        vc = zeros(ny,nd, 'gpuArray');                                  %continue repaying
-        vg = zeros(ny,nd, 'gpuArray');                                  %good standing
-        vb = zeros(ny,nd, 'gpuArray');                                  %bad standing
-        vr = zeros(ny,nd, 'gpuArray'); 
-    end
+    %initialize the value functions
+    vc = zeros(ny,nd, 'gpuArray');                                  %continue repaying
+    vg = zeros(ny,nd, 'gpuArray');                                  %good standing
+    vb = zeros(ny,nd, 'gpuArray');                                  %bad standing
+    vr = zeros(ny,nd, 'gpuArray'); 
     
     vcnew = vc;
     dpix = vc; 

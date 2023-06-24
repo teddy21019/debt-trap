@@ -1,30 +1,40 @@
 %plot_default_set
 
-clear all
 % load default_1870s.mat
 % load default_1920s.mat
 % load default_pakistan.mat
-load temp_VFI_result.mat
+load VFI_PAK_result.mat
 
 %subplot(1,3,1)
-contourf(yT,dpc*100,f,'LineColor','None','ShowText','On') 
+figure
+d_grid = repmat(d', [200 1]);
+map=[0.9 0.9 0.9
+    1 1 1
+    ];
+colormap(map)
+contourf(yT, d_grid*100, f, 'LineColor','None','ShowText','On') 
 
-load cyclic.mat y_cyclical_PAK
-load debt_to_gdp.mat debt_to_gdp_ratio
+debt_data = read_debt_data("C:\Users\tedb0\Documents\debt-trap\DATA\ModelData.xlsx");
 
-%%% Year from 2007 to 2017
-% Sri Lanka started to receive loans from China since 2007
-% The new election started in 2015, and the new government declared
-% insolvency in 2016, 2017
-years = debt_to_gdp_ratio(:,1);
-y_cyclical_PAK = 1+y_cyclical_PAK(years - 1980 + 1, :);
-debt_PAK_no_china = debt_to_gdp_ratio(:,4) * 100;
-debt_PAK = debt_to_gdp_ratio(:,5) * 100;
+%%% Year from 2013 to 2017
+% Pakistan started to receive loans from China since 2013
+year_mask = debt_data.year>=2013 & debt_data.year <=2017;
+years = table2array(debt_data(year_mask,'year'));
+
+y_cyclical = 1+y_cyclical(2013 - 1960 + 1: 2017 - 1960 + 1);         % y_cyclical start from 1960
+
+debt_PAK_no_china = table2array(debt_data(year_mask, 'pak_x_china')) ...
+                ./ table2array(debt_data(year_mask, 'pak_gdp'))* 100 * 0.37 * 4;
+debt_PAK = table2array(debt_data(year_mask, 'pak_with_china')) ...
+                ./ table2array(debt_data(year_mask, 'pak_gdp')) * 100 * 0.37 * 4;
 
 for year_index = 1:numel(years)
     hold on
-    plot(y_cyclical_PAK(year_index), debt_PAK(year_index), 'ko','MarkerFaceColor','r')
-    text(y_cyclical_PAK(year_index), ceil(debt_PAK(year_index))+3, string(years(year_index)))
+    plot(y_cyclical(year_index), debt_PAK(year_index), 'ko','MarkerFaceColor','k')
+    text(y_cyclical(year_index), ceil(debt_PAK(year_index))+3, string(years(year_index)))
+
+    plot(y_cyclical(year_index), debt_PAK_no_china(year_index), 'ko','MarkerFaceColor','r')
+    text(y_cyclical(year_index), ceil(debt_PAK_no_china(year_index))+3, string(years(year_index)))
 end
 xlabel('$y_{t}^{T}$','interpreter','latex')
 ylabel('Debt stock $d_{t}$','interpreter','latex')

@@ -1,30 +1,42 @@
 %plot_default_set
 
-clear all
 % load default_1870s.mat
 % load default_1920s.mat
 % load default_sri_lanka.mat
-load temp_VFI_result.mat
+load VFI_SRI_result.mat
 %subplot(1,3,1)
 
-contourf(yT,dpc*100,f,'LineColor','None','ShowText','On') 
+figure
+d_grid = repmat(d', [200 1]) * 100;
+map=[0.9 0.9 0.9
+    1 1 1
+    ];
+colormap(map)
+contourf(yT,d_grid,f,'LineColor','None','ShowText','On') 
 
-load cyclic.mat y_cyclical_SRI
-load debt_to_gdp.mat debt_to_gdp_ratio
+debt_data = read_debt_data("C:\Users\tedb0\Documents\debt-trap\DATA\ModelData.xlsx");
 
 %%% Year from 2007 to 2017
 % Sri Lanka started to receive loans from China since 2007
 % The new election started in 2015, and the new government declared
 % insolvency in 2016, 2017
-years = debt_to_gdp_ratio(:,1);
-y_cyclical_SRI = 1+y_cyclical_SRI(years - 1980 + 1, :);
-debt_SRI_no_china = debt_to_gdp_ratio(:,2) * 100;
-debt_SRI = debt_to_gdp_ratio(:,3) * 100;
+year_mask = debt_data.year>=2007 & debt_data.year <=2017;
+years = table2array(debt_data(year_mask,'year'));
+
+y_cyclical = 1+y_cyclical(2007 - 1960 + 1: 2017 - 1960 + 1);         % y_cyclical start from 1960
+
+debt_SRI_no_china = table2array(debt_data(year_mask, 'lka_x_china')) ...
+                ./ table2array(debt_data(year_mask, 'lka_gdp')) * 100 * 0.37 * 4;
+debt_SRI= table2array(debt_data(year_mask, 'lka_with_china')) ...
+                ./ table2array(debt_data(year_mask, 'lka_gdp')) * 100 * 0.37 * 4;
 
 for year_index = 1:numel(years)
     hold on
-    plot(y_cyclical_SRI(year_index), debt_SRI(year_index), 'ko','MarkerFaceColor','r')
-    text(y_cyclical_SRI(year_index), ceil(debt_SRI(year_index))+3, string(years(year_index)))
+    plot(y_cyclical(year_index), debt_SRI(year_index), 'ko','MarkerFaceColor','k')
+    text(y_cyclical(year_index), ceil(debt_SRI(year_index))+3, string(years(year_index)))
+
+    plot(y_cyclical(year_index), debt_SRI_no_china(year_index), 'ko','MarkerFaceColor','r')
+    text(y_cyclical(year_index), ceil(debt_SRI_no_china(year_index))+3, string(years(year_index)))
 end
 xlabel('$y_{t}^{T}$','interpreter','latex')
 ylabel('Debt stock $d_{t}$','interpreter','latex')

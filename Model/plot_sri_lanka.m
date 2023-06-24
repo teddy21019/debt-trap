@@ -4,7 +4,6 @@
 %   
 % by Simon Hinrichsen (2020), a (sligthly) edited version of the code from Na et al. (2018)
 
-clear all
 format compact
 clf
 orient tall
@@ -86,6 +85,7 @@ i=1;
 lineType='-';                                                                           
 tslineWidth=2;                                                                         
 
+figure
 %start subplots
 subplot(rows,cols,i)                                                                    
 x=f(yT);
@@ -139,7 +139,7 @@ set(h, 'Interpreter', 'Latex')
 h=legend('Model estimate of ${d_t}$','Location','nw');
 set(h, 'Interpreter', 'Latex')  
 ylabel('Percent of GDP','FontSize',9)
-%ylim([0 15])
+ylim([0 90])
 xlim([-tb tb])
 xlabel('Quarters before a hypothetical default at {t_0}','FontSize',9);
 set(gca,'xtick', -tb:4:ta)

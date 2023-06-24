@@ -5,11 +5,10 @@
 %   
 % by Simon Hinrichsen (2020), a (sligthly) edited version of the code from Na et al. (2018)
 
-clear all
 format compact
 
 % load default_sri_lanka.mat 
-load temp_VFI_result.mat
+load VFI_SRI_result.mat
 
 cpai = cumsum(pai,2);
 
@@ -127,8 +126,7 @@ end
 %create W(t), W(t-1), and DEV(t)
 W  = P.* alfa;
 Wback = [wb; W(1:end-1)];
-DEV = Wback./W * 
-;
+DEV = Wback./W ;
 
 %remove burn in 
 STATE = STATE(Tburn+1:end);
