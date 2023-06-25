@@ -102,14 +102,14 @@
   \fi
 \fi
 
-\makecertification
+% \makecertification
 
-\input{thesis-configs/acknowledgements.tex}
-\input{thesis-configs/abstract.tex}
+% \input{thesis-configs/acknowledgements.tex}
+% \input{thesis-configs/abstract.tex}
 
-\tableofcontents
-\listoffigures
-\listoftables
+% \tableofcontents
+% \listoffigures
+% \listoftables
 
 \mainmatter
 
@@ -143,11 +143,12 @@
 {}
 
 \appendix
+  \chapter{Properties of the Default Set}
+  \label{ap: default-set}
+  \input{sections/appendix/property-default-set.tex}
+  
   \chapter{Output Loss}
   \label{ap: zarazaga}
   \input{sections/appendix/zarazaga.tex}
 
-  \chapter{Properties of the Default Set}
-  \label{ap: default-set}
-  \input{sections/appendix/property-default-set.tex}
 \end{document}

@@ -56,11 +56,13 @@ If the country is in good standing, the government has the freedom to choose whi
 Define the default set $D(d_t)$ as the set of tradable-output levels $y^T_t$ examined by the government in period $t$, in which the government's optimal respond is to default. Formally,
 \begin{equation}
     \label{eq:default-set}
-    D(d_t) = \left\{ 
+    D(d_t) = \left\{
         y^T_t : v^b(y^T_t) > v^c(y^T_t, d_t)
      \right\}.
 \end{equation}
 In other words, given a current debt level $d_t$, if the government observes that $y^T_t$ is inside $D(d_t)$, it chooses to default.
+The default set under the model specification in \citet{Na-18} is an interval $\left[ \underline{y}, y^*(d_t) \right)$, where $\underline{y}$ is the lower bound of the endowment process under numerical evaluation, and the upper bound $y^*(d_t)$ is increasing in the current debt level $d_t$.
+An analytic proof of this property is provided in Appendix \ref{ap: default-set} (See Proposition \ref{prop3}).
 
 Under rational expectations, the foreign lenders recognize the default set, hence the price for debt is determined by Equation \eqref{eq:lender}, given by
 \begin{equation}
@@ -81,6 +83,5 @@ where the second equal sign comes from Equation \eqref{eq:devaluation-rate}. Sub
 \begin{equation}
     \epsilon_t \ge \gamma \frac{w_{t-1}}{w^f(c^T_t)}.
 \end{equation}
-This is the family of optimal devaluation policies. Following \citet{Na-18} and \citet*{Hinrichsen_2020-chapter4}, we assume that the government chooses the minimal devaluation target that stabilizes nominal wages, that is, $
-    \epsilon_t = \gamma \frac{w_{t-1}}{w^f(c^T_t)}.
-$
+This is the family of optimal devaluation policies. Following \citet{Na-18} and \citet*{Hinrichsen_2020-chapter4}, we assume that the government chooses the minimal devaluation target that stabilizes nominal wages, that is, $\epsilon_t = \gamma \frac{w_{t-1}}{w^f(c^T_t)}$.
+Note, however, that the devaluation rate derived need not necessary match the data, as any rate larger than that provides the government an optimal non-tradable output level with full employment.
