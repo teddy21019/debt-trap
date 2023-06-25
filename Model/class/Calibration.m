@@ -12,7 +12,10 @@ classdef Calibration
         a;                      % share of tradables (as a % of total consumption)
         xi;                     % elasticity of substitution between traded and nontraded goods
         sigg; 
-        hbar;
+        hbar;                   % hours of work, usually normalized to 1
+        gamma;                  % downward wage rigidity
+
+        d_range (1,2) double = [0 1.5]
     end
 
     properties(Dependent)

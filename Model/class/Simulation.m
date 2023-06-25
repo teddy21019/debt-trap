@@ -103,7 +103,7 @@ classdef Simulation < handle
             RR = RR(Tburn+1:end);
         
             state_num_y = length(y);
-            state_num_d = length(d)
+            state_num_d = length(d);
         
            %% choose to continue 
             t = (B == 0) & (F == 0);

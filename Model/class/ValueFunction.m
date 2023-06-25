@@ -7,7 +7,6 @@ classdef ValueFunction < handle
         % configuration
         calibration     Calibration
         output_process  OutputProcess
-        d_range         (1,2) double = [0 1.5]
         nd              int16 = 200
 
         % value functions
@@ -31,6 +30,7 @@ classdef ValueFunction < handle
 
     methods
         function obj = ValueFunction(calibration, output_process)
+
             obj.calibration = calibration;
             obj.output_process = output_process;
         end
@@ -49,6 +49,8 @@ classdef ValueFunction < handle
             sigg    = obj.calibration.sigg; 
             delta_1 = obj.calibration.delta_1;
             delta_2 = obj.calibration.delta_2;
+            dupper  = obj.calibration.d_range(2);             %upper bound debt range
+            dlower  = obj.calibration.d_range(1);             %lower bound debt range
         
             ygrid   = gpuArray(obj.output_process.ygrid);
             pai     = gpuArray(obj.output_process.pai);
@@ -58,9 +60,7 @@ classdef ValueFunction < handle
             
             hbar = 1;                                           % since this is universal for all model, I put the calibration here instead of main file
                 
-            % Debt grid
-            dupper = obj.d_range(2);                  %upper bound debt range
-            dlower = obj.d_range(1);                                         %lower bound debt range
+            % Debt grid                                      
             nd = 200;                                           %# of grid points for debt 
             d = dlower:(dupper-dlower)/(nd-1):dupper;           % create a 200 vector of debt space
             d = gpuArray(d(:));                                           % reshape as one column (1 x 200) to (200 x 1)

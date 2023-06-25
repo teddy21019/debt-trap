@@ -6,6 +6,7 @@ classdef OutputProcess < handle
         y               (:,1) double
         y_cyclical      (:,1) double
         y_trend         (:,1) double
+        year_range      (:,1) int16
 
         p               double                      % rho for AR(1) process
         sigg            double                      % sigma for AR(1) process
@@ -16,9 +17,14 @@ classdef OutputProcess < handle
     end
 
     methods
-        function obj = OutputProcess(y, filter_type)
+        function obj = OutputProcess(y, year_range, filter_type)
             obj.y = y;
+            obj.year_range = year_range;
             obj.filter_type = filter_type;
+
+            if length(y) ~= length(year_range)
+                error("Year range does not match output process !!")
+            end
     
             disp("Filtering...")
             obj.filter();
@@ -50,7 +56,7 @@ classdef OutputProcess < handle
             N_grid = 200; 
             T = 1e7; 
                   
-            UB = max(W*obj.unconditional_std, 0.2);  %highest value of y_t grid. Must not less than 1.5
+            UB = W*obj.unconditional_std;  %highest value of y_t grid. Must not less than 1.5
             ygrid_ = -UB: 2*UB / (N_grid-1) : UB;    %grid for y_t
              
             PAI = zeros(N_grid);                    %initialize of transition probability matrix
@@ -108,6 +114,17 @@ classdef OutputProcess < handle
             hline.Color='Black';
             title('Cyclical compotent of real GDP per capita','fontweight','normal','interpreter','latex')
             legend('Sri Lanka $y_t$', 'Location','southwest','interpreter','latex')
+
+        end
+    
+        function [y, y_t, y_c] = get_range(obj, get_year_range)
+            % 1960 ~ 2021 -> 2007 ~ 2013
+            %    1 ~   62 ->   48 ~   54
+            i_start = get_year_range(1) - obj.year_range(1) + 1;
+            i_end   = get_year_range(end) - obj.year_range(1) + 1;
+            y = obj.y(i_start:i_end);
+            y_t = obj.y_trend(i_start:i_end);
+            y_c = obj.y_cyclical(i_start:i_end);
 
         end
     end

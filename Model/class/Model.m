@@ -12,6 +12,11 @@ classdef Model < handle
         output_proxy OutputProcess;
         vf ValueFunction;
         targets struct;
+
+        optimal_calibration_grid
+        min_distance
+        d_range         (1,2) double
+
     end
 
 
@@ -28,9 +33,10 @@ classdef Model < handle
                 keep_running = questdlg("The calibration parameters is not all set. Proceed to run estimation?", ...
                     "Run Estimation", ...
                       "Yes", "No", "Yes");
-                if ~keep_running
-                    disp("Model estimation terminated.")
-                    return
+                switch keep_running
+                    case "No"
+                        disp("Model estimation terminated.")
+                        return
                 end
             
                 % proceed to find the optimal calibration for beta, delta_1
@@ -50,11 +56,19 @@ classdef Model < handle
             min_search = [0.6   -0.6    0.2];
             max_search = [0.95  -0.2    0.6];
 
+            distance_func = @(x) obj.search_objective_fn(x);
+
 
             options = optimoptions('surrogateopt','PlotFcn','surrogateoptplot',...
                             'MaxFunctionEvaluations',150,'CheckpointFile','opt_checkfile.mat');
+            f_opt = figure;
             [optimal_calibration_grid, min_distance, exitflag, output,trials] = ...
                     surrogateopt(distance_func,min_search, max_search, options);
+            obj.optimal_calibration_grid = optimal_calibration_grid;
+
+            obj.min_distance = min_distance;
+            obj.cal = add_tuning_params(obj.cal, optimal_calibration_grid);
+            obj.vf = ValueFunction(obj.cal, obj.output_proxy);
 
         end
 
