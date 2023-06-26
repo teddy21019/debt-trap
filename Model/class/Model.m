@@ -11,12 +11,16 @@ classdef Model < handle
         cal Calibration;
         output_proxy OutputProcess;
         vf ValueFunction;
+        sim Simulation;
         targets struct;
 
         optimal_calibration_grid
         min_distance
-        d_range         (1,2) double
 
+    end
+
+    properties(Dependent)
+        estimated_target
     end
 
 
@@ -44,7 +48,8 @@ classdef Model < handle
                 obj.tune_calibration()
 
             end
-            obj.vf.VFI()
+            obj.vf.VFI();
+            obj.sim = Simulation(obj.vf).fast_simulation();
         end
 
         function set_targets(obj, targets)
@@ -69,7 +74,6 @@ classdef Model < handle
             obj.min_distance = min_distance;
             obj.cal = add_tuning_params(obj.cal, optimal_calibration_grid);
             obj.vf = ValueFunction(obj.cal, obj.output_proxy);
-
         end
 
         function distance = search_objective_fn(obj, param_vector)
@@ -88,6 +92,15 @@ classdef Model < handle
             distance = norm( ...
                     [targets.debt_ratio*10 targets.default_freq targets.output_loss*100] - ...
                     [debt_ratio*10 default_freq output_loss*100]); 
+        end
+
+        function estimated_target = get.estimated_target(obj)
+            if ~obj.cal.has_set_all
+                estimated_target = [0 0 0];
+            else
+                [debt_ratio, default_freq, output_loss] = obj.sim.extract_default_moments();
+                estimated_target = [debt_ratio, default_freq, output_loss];
+            end
         end
 
     end

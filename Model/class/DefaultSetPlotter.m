@@ -58,9 +58,7 @@ classdef DefaultSetPlotter < handle
 
 
         end
-
-
-
+        
         function op = get.output_process(obj)
             op = obj.model.output_proxy;
         end
