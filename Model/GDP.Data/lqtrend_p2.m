@@ -15,7 +15,7 @@ GDP_data = read_gdp_data();
 % PAK = log(tradable_per_capita(:,3));
 
 % use AGI + IND as proxy of yT
-tradable_GDP_data = table2array(GDP_data(:, 'pc_trade'));
+tradable_GDP_data = table2array(GDP_data(:, 'pc_gdp'));
 SRI = log(tradable_GDP_data(GDP_data.code == 'LKA',:));
 PAK = log(tradable_GDP_data(GDP_data.code == 'PAK',:));
 
