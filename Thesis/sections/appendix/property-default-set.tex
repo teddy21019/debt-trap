@@ -12,9 +12,9 @@ Recall that the default set is defined as
 which is the set of output levels within which the country is best to default given a debt level $d_t$.
 I derive the following three properties regarding the default set under the model specifications of \citet{Na-18}:
 \begin{enumerate}
-    \item If the default set is not empty, then the trade balance deficit  is less that the loss. That is, $q(\yT, \dpr)\dpr - d_t < -L(\yT)$.
+    \item If the default set is not empty, then the trade balance deficit  is less than the output loss. That is, $q(\yT, \dpr)\dpr - d_t < -L(\yT)$.
     \item If $y_1 \in D(d_t)$ and $\underline{y}\le y_2 \le y_1$, then $y_2 \in D(d_t)$
-    \item The default set $D(d_t)$ is an interval $[\underline{y}, y^*(d_t)]$, where $y^*(d_t)$ is decreasing in $d_t$.
+    \item The default set $D(d_t)$ is an interval $[\underline{y}, y^*(d_t)]$, where $y^*(d_t)$ is increasing in $d_t$.
 \end{enumerate}
 Here, $\underline{y}$ denotes the lower bound on the endowment level during numerical computaiton.
 Similar properties are proved in \citet*{Arellano-08} and \citet*{Uribe-Schmitt-Grohe-textbook} for the centralized version of Eaton-Gersovitz model.
@@ -26,8 +26,8 @@ Similar properties are proved in \citet*{Arellano-08} and \citet*{Uribe-Schmitt-
 \begin{proof}
     The proof is by contradiction. Suppose that $q(\yT, \tilde{d}_{t+1})\tilde{d}_{t+1} - d_t > -L(\yT)$ for some $\tilde{d}_t$, according to the definition of $v^c(d_t, \yT)$,
     \begin{align*}
-        v^c(d_t, \yT) &= \max_{\dpr} \left\{
-            U\left( A(\yT + q_t(\yT, \dpr) \dpr - d_t, \bar{h}) \right) +
+        v^c(d_t, \yT) &= \max_{\dpr, h_t} \left\{
+            U\left( A(\yT + q_t(\yT, \dpr) \dpr - d_t, F(h_t)) \right) +
             \beta E_t v^g(\yTpr, \dpr)
          \right\}\\
          &\ge U\left( A(\yT + q_t(\yT, \tilde{d}_{t+1}) \tilde{d}_{t+1} - d, \bar{h}) \right) +
@@ -46,9 +46,9 @@ Similar properties are proved in \citet*{Arellano-08} and \citet*{Uribe-Schmitt-
     If $y_1 \in D(d_t)$ and $\underline{y}\le y_2 \le y_1$, then $y_2 \in D(d_t)$.
 \end{proposition}
 \begin{proof}
-    Consider the difference between the value function under bad standings $v^b(\yT)$ and the value function of continuing to repay its debt  $v^c(\yT, d_t)$ as $\Delta(\yT) \equiv v^b(\yT) - v^c(\yT, d_t)$. By definition, any tradable output in the default set $y \in D(d)$ satisfies $\Delta(y) >0$.
+    Consider the difference between the value function under bad standings $v^b(\yT)$ and the value function of continuing to repay its debt  $v^c(\yT, d_t)$ as $\Delta(\yT, d_t) \equiv v^b(\yT) - v^c(\yT, d_t)$. By definition, any tradable output in the default set $\yT \in D(d_t)$ satisfies $\Delta(\yT, d_t) >0$.
 
-    Consider the first derivative of the difference function $\Delta_{y} = \pdv{\Delta}{y^T_t} = v^b_{y}(y) - v^c_{y}(y, d)$.
+    Consider the first derivative of the difference function $\Delta_{y, d} = \pdv{\Delta}{y^T_t} = v^b_{y}(y) - v^c_{y}(y, d)$.
     Recall that
     \begin{align*}
         v^c(y, d) &= \max_{\left\{d' \right\}} \quad
@@ -99,8 +99,8 @@ Similar properties are proved in \citet*{Arellano-08} and \citet*{Uribe-Schmitt-
     Note that $A(\cdot, \cdot)$ and $U(\cdot)$ are both concave and increasing by assumption. This implies that if $c_1<c_2$, then
     \begin{enumerate*}[label = (\roman*)]
         \item $A(c_1) < A(c_2)$,
-        \item $A_1(c_1) > A_1(c_2)$, and
-        \item $U'(c_1) > U'(c_2)$
+        \item $A_1(c_1) > A_1(c_2)>0$, and
+        \item $U'(c_1) > U'(c_2)>0$
     \end{enumerate*}
     Together, it implies that $U'(A(c_1)) > U'(A(c_2))$. Furthermore, since $\frac{A_1(c_1)}{A_1(c_2)} > 1$ and $\frac {U'(A(c_1))}{U'(A(c_2))} > 1$, we have
     \begin{equation}
@@ -127,12 +127,13 @@ Similar properties are proved in \citet*{Arellano-08} and \citet*{Uribe-Schmitt-
 \end{proof}
 
 \begin{proposition}
- The default set $D(d_t)$ is an interval $[\underline{y}, y^{T*}(d_t)]$, where $y^{T*}(d_t)$ is decreasing in $d_t$.
+    \label{prop3}
+    The default set $D(d_t)$ is an interval $\left[\underline{y}, y^{T*}(d_t) \right)$, where $y^{T*}(d_t)$ is increasing in $d_t$.
 \end{proposition}
 \begin{proof}
-    Previously, it is proven that $\Delta_y(\yT, d_t) = v^b_y(\yT) - v^c_y(y^T_t, d_t) < 0$ when $D(d_t) \ne \emptyset$. An ouput is in the default set if $v^b(y^T_t) - v^c(y^T_t, d_t) >0$. It is trivial that as the output goes to infinity, the country has no incentive to default hence $v^c(\infty, d_t) > v^b(\infty)$. By the intermediate value theorem, it is obvious that there exist some $y^{T*}$ such that $v^b(y^{T*}) - v^c(y^{T*}, d_t) = 0$, where $y^{T*} = y^{T*}(d_t)$ is a value that depends on the current debt level. This proves that the default set is an interval.
+    An output is in the default set if $v^b(y^T_t) - v^c(y^T_t, d_t) >0$. It is trivial that as the output goes to infinity, the country has no incentive to default hence $v^c(\infty, d_t) > v^b(\infty)$. By the intermediate value theorem, it is obvious that there exist some $y^{T*}$ such that $\Delta(y^{T*}, d_t) = v^b(y^{T*}) - v^c(y^{T*}, d_t) = 0$, where $y^{T*} = y^{T*}(d_t)$ is the upper bound of default set that depends on the current debt level. Since  $\Delta_y(\yT, d_t) = v^b_y(\yT) - v^c_y(y^T_t, d_t) < 0$ when $D(d_t) \ne \emptyset$, all values such that  $\yT < y^{T*}_t$ has $\Delta(\yT, d_t) <0$. This proves that the default set is an interval\footnote{The lower bound of the interval is the lowest level of endowment $\underline{y}$}.
 
-    Taking the total derivative of the upper limit, together with the equation $\Delta(y^{T*}) = 0$, we get
+    Taking the total derivative of the upper limit with respect to the debt level using the equation $\Delta(y^{T*}(d_t), d_t) = 0$, we get
     \begin{equation*}
         \dv{y^{T*}(d_t)}{d_t} = - \frac{\pdv{\Delta}{d_t}}{\pdv{\Delta}{y^{T}}} = - \frac{-v^c_d(y^{T*}(d_t), d_t)}{v^b_y(y^{T*}) - v^c_y(y^{T*}, d_t)}.
     \end{equation*}
@@ -144,8 +145,7 @@ Similar properties are proved in \citet*{Arellano-08} and \citet*{Uribe-Schmitt-
     \begin{equation}
         \dv{y^{T*}(d_t)}{d_t} > 0.
     \end{equation}
-
-    This result replies that as the debt level increases, the upper bound of the default set should be strictly increasing.
+    This result implies that as the debt level increases (decreases), the upper bound of the default set should be strictly increasing (decreasing).
 \end{proof}
 
 These results match those of \citet{Arellano-08} and \citet{Uribe-Schmitt-Grohe-textbook}. As discussed by \citet{Na-18}, when optimal devaluation and taxation policies are implemented, the equilibrium allocation in the economy aligns with that of the centralized Eaton-Gersovitz model. Therefore, it is not surprising that the default set in the decentralized economy exhibits similar behavior to that observed in a traditional centralized economy.
