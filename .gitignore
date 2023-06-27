@@ -1,6 +1,10 @@
 Model/simu_SRI.mat
 *.asv
 *.mat
+*.xls
+*.xlsx
+*.docx
+
 #DATA/
 ## Core latex/pdflatex auxiliary files:
 *.aux
