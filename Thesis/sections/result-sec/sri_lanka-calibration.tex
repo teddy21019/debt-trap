@@ -1,11 +1,13 @@
 The model is calibrated to Sri Lanka before 2008, when the Chinese government started to provide the increasing amount of loans.
-China started to provide loans to Sri Lanka in 2005, and during 2006 to 2008, the debt amount to China remains to be around \$1 billion, which is roughly 2.9\% of GDP. Starting from 2009, debt to China has increased to \$3 billion, and it reached \$7.5 billion in 2014, accounting for 9.5\% of GDP
+As described in Chapter \ref{ch:data}, China started to provide loans to Sri Lanka in 2005, and during 2006 to 2008, the debt amount to China remains to be around \$1 billion, which is roughly 2.9\% of GDP. Starting from 2009, debt to China has increased to \$3 billion, and it reached \$7.5 billion in 2014, accounting for 9.5\% of GDP
 (see \autoref{fig: sri-lanka-debt-ts}).
 
-I proxy the output process of \refeq{eq:ar1-output} by the detrended log-real-GDP of Sri Lanka from 1980 to 2021. Considering that the seasonality in the quarterly data for Sri Lanka might impose a higher volatility estimated in the AR(1) process, I follow \citet{Hinrichsen_2020-chapter4} and estimate the annual data over 1980 to 2021. I obtain the cyclical component of the output by filtering the time series with an HP-filter with smoothing parameter $\lambda$ set to 100.
-Estimation of the AR(1) on the cyclical component thus yields $\rho = $ 0.9114 and $\sigma_u = $ 0.0123\footnotemark{}. \autoref{fig:decompose-gdp} presents the decomposition of the log-real-GDP.
+I proxy the output process of \refeq{eq:ar1-output} by the annual detrended log-real-tradable-GDP of Sri Lanka from 1980 to 2021. I follow \citet{Na-18} and calculate real tradable GDP by summing the real GDP in agriculture, forestry, fishing and industry\footnote{
+    Industry includes: mining, manufacturing, construction, electricity, water, and gas. In the original specification in \citet{Na-18}, only mining and manufacturing is included. The case of Pakistan, however, suggested that energy related sector is a crucial component traded with China. Therefore a broader ``industry'' sector is included in my thesis.
+}. The cyclical component of the output is obtained by filtering the time series with an HP-filter with smoothing parameter $\lambda$ set to 100.
+Estimation of the AR(1) on the cyclical component thus yields $\rho = $ 0.9114 and $\sigma_u = $ 0.0180, which yields an unconditional standard deviation of 4.37\% for the output\footnotemark{}. \autoref{fig:decompose-gdp} presents the decomposition of the log-real-GDP.
 \footnotetext{Since the AR(1) estimation is conducted on annual data, the estimated coefficients must be quarterized. Specifically,
-$\rho = 1 - \frac{1 - \hat{\rho}}{4}$, and $\sigma_u = \frac{\hat{\sigma}}{\sqrt{4}}$, where $\hat{\rho}$ and $\hat{\sigma}$ are the estimated parameters for the AR(1) via OLS.}
+$\rho = 1 - \frac{1 - \hat{\rho}}{4}$, and $\sigma_u = \frac{\hat{\sigma}}{\sqrt{4}}$, where $\hat{\rho}$ and $\hat{\sigma}$ are the estimated parameters for the AR(1) via OLS. The uncon}
 
 The global risk-free world interest rate $r^*$ is set to match the U.S. 3-month treasury bill rate during 1990 to 2007\footnote{
     Quarterly averaged data retrieved from FRED. The span of 1990 to 2007 is set to match the periods of the Great Moderation, when the business cycle fluctuation is reduced \citep{FedHistory-GreatModeration}. The average of 3-month treasury bill rate over 1990 to 2007 is 4.10\%.
@@ -18,19 +20,19 @@ Following \citet{Na-18}, the rest of the parameters $\left( \beta, \delta_1, \de
     In particular, I use the surrogate optimization solver in Matlab to search for the optimal values for the three parameters. Essentially, VFI must be proceeded for each triplet of the parameters to obtain the targeting equilibrium outcomes. Details are mentioned in \autoref{sec:computation}.
 }:
 \begin{enumerate*}[label = (\roman*)]
-    \item the average debt-to-GDP ratio in periods of good standing is 65\% per quarter;
+    \item the average debt-to-tradable-GDP ratio in periods of good standing is 175\% per quarter;
     \item the frequency of default is 2.6 times per century; and
     \item the average output loss is 7\% per year conditional on being in financial autarky.
 \end{enumerate*}
 The following justifies this choice of targets.
 \begin{enumerate}[label = (\roman*)]
     \item
-    The average debt-to-GDP ratio to be targeted is motivated by the fact that the average annual debt-to-GDP ratio of Sri Lanka in the data is about 44\%.
+    The average debt-to-tradable-GDP ratio to be targeted is motivated by the fact that the average annual debt-to-tradable-GDP ratio of Sri Lanka in the data is about 118\%.
     The value is calculated by averaging the nominal external-debt-to-GDP ratio over 2001 to 2008\footnotemark{}.
     \footnotetext{Data source: International Debt Statistics. The period of year is chosen to be 8 years before China's increasing support of loans. The time span of 8 years is inline with that in \citet{Uribe-Schmitt-Grohe-textbook}.}
-    Multiplying this by an average of 37\% haircut\footnote{This is the average sovereign haircut between 1970 and 2010 \citep{Cruces-Trebesch-13}. The haircut data for the current Sri Lanka sovereign default is not available since it is still under restructuring.} implies that about 16.28\% of the debt is unsecured annually\footnotemark{}.
+    Multiplying this by an average of 37\% haircut\footnote{This is the average sovereign haircut between 1970 and 2010 \citep{Cruces-Trebesch-13}. The haircut data for the current Sri Lanka sovereign default is not available since it is still under restructuring.} implies that about 44\% of the debt is unsecured annually\footnotemark{}.
     \footnotetext{In the model, we assume that the country defaults on 100\% of the debt, hence this approach is necessary to handle the case of a haircut.}
-    Since we are dealing with a model with quarterly period, this results in the 65\% debt-to-GDP ratio targeted during calibration.
+    Since we are dealing with a model with quarterly period, this results in the 175\% debt-to-tradable-GDP ratio targeted during calibration.
     \item
     Sri Lanka suspended all debt payment in April 2022, but else there is no other default episode within the periods of calibration. Note that Sri Lanka interacted with Paris Club in 2005 for a moratorium due to the tsunami of December 2004, but this event is not counted as a default according to global rating systems such as S\&P Global \citep{SPGlobal-default-report}.
     Due to this uncertainty of determining a default episode, I set the default frequency to be 2.6 as the benchmark target, which is the frequency of Argentina following \citet{Na-18}. Attempts on counting default episodes based on a different definition will be conducted as a robustness check in later section.
