@@ -61,3 +61,65 @@
     \input{sections/result-sec/sri_lanla-calibration-table.tex}
     \input{sections/result-sec/pakistan-calibration-table.tex}
 \end{landscape}
+
+
+\begin{figure}[t]
+    \centering
+    \begin{subfigure}[t]{0.8\textwidth}
+        \centering
+        \includegraphics[width = \textwidth]{fig/default_set_sri_trad_hp.eps}
+        \caption{Sri Lanka}
+        \label{fig: ds-sri}
+    \end{subfigure}%
+
+    \begin{subfigure}[t]{0.8\textwidth}
+        \centering
+        \includegraphics[width = \textwidth]{fig/default_set_pak_trad_hp.eps}
+        \caption{Pakistan}
+        \label{fig: ds-pak}
+    \end{subfigure}
+    \caption{Graphical Representation of Default Set}
+    \label{fig:ds}
+    \floatfoot{\emph{Note:} The default set derived via value function iteration is plotted on the state space. The horizontal axis represents the tradable output level, and the vertical axis represents the debt stock. The gray area represents the grid point where the country chooses not to default, and the white area is the grid point where default is the optimal action for the country.}
+\end{figure}
+
+\begin{figure}
+    \begin{subfigure}[t]{0.8\textwidth}
+        \includegraphics[width = \textwidth]{fig/default_set_sri_trad_hp_with_china.eps}
+        \caption{Debt to All Creditors}
+        \label{fig: ds-sri-data-with-china}
+    \end{subfigure}
+
+    \begin{subfigure}[t]{0.8\textwidth}
+        \includegraphics[width = \textwidth]{fig/default_set_sri_trad_hp_x_china.eps}
+        \caption{Excluding Debt to China}
+        \label{fig: ds-sri-data-x-china}
+    \end{subfigure}
+    \caption{Mapping Actual Data onto Analytical Model for Sri Lanka, 2007 -- 2017}
+    \label{fig:ds-sri-data}
+    \floatfoot{
+        \emph{Source:} Debt data from IDS Database and \citet*{Horn-Reinhart-Trebesch-21} Database. GDP data from World Bank\\
+        \emph{Note:} The gray region represents the non-default set of Sri Lanka, and the white region represents the default set. Black dots in (a) and (b) represents for the output-debt pair in the real data, and the gray dots in (b) represents the output-debt pair that excludes the debts from China.
+    }
+\end{figure}
+
+
+\begin{figure}
+    \begin{subfigure}[t]{0.8\textwidth}
+        \includegraphics[width = \textwidth]{fig/default_set_pak_trad_hp_with_china.eps}
+        \caption{Debt to All Creditors}
+        \label{fig: ds-pak-data-with-china}
+    \end{subfigure}
+
+    \begin{subfigure}[t]{0.8\textwidth}
+        \includegraphics[width = \textwidth]{fig/default_set_pak_trad_hp_x_china.eps}
+        \caption{Excluding Debt to China}
+        \label{fig: ds-pak-data-x-china}
+    \end{subfigure}
+    \caption{Mapping Actual Data onto Analytical Model for Pakistan, 2013 -- 2017}
+    \label{fig:ds-pak-data}
+    \floatfoot{
+        \emph{Source:} Debt data from IDS Database and \citet*{Horn-Reinhart-Trebesch-21} Database. GDP data from World Bank\\
+        \emph{Note:} The gray region represents the non-default set of Pakistan, and the white region represents the default set. Black dots in (a) and (b) represents for the output-debt pair in the real data, and the gray dots in (b) represents the output-debt pair that excludes the debts from China.
+    }
+\end{figure}
