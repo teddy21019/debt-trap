@@ -5,9 +5,9 @@ As described in Chapter \ref{ch:data}, China started to provide loans to Sri Lan
 I proxy the output process of \refeq{eq:ar1-output} by the annual detrended log-real-tradable-GDP of Sri Lanka from 1980 to 2021. I follow \citet{Na-18} and calculate real tradable GDP by summing the real GDP in agriculture, forestry, fishing and industry\footnote{
     Industry includes: mining, manufacturing, construction, electricity, water, and gas. In the original specification in \citet{Na-18}, only mining and manufacturing is included. The case of Pakistan, however, suggested that energy related sector is a crucial component traded with China. Therefore a broader ``industry'' sector is included in my thesis.
 }. The cyclical component of the output is obtained by filtering the time series with an HP-filter with smoothing parameter $\lambda$ set to 100.
-Estimation of the AR(1) on the cyclical component thus yields $\rho = $ 0.9114 and $\sigma_u = $ 0.0180, which yields an unconditional standard deviation of 4.37\% for the output\footnotemark{}. \autoref{fig:decompose-gdp} presents the decomposition of the log-real-GDP.
+Estimation of the AR(1) on the cyclical component thus yields $\rho = $ 0.9114 and $\sigma_u = $ 0.0180, which yields an unconditional standard deviation of 4.37\% for the output\footnotemark{}. \autoref{fig:decompose-trad-hp} presents the decomposition of the log-real-GDP.
 \footnotetext{Since the AR(1) estimation is conducted on annual data, the estimated coefficients must be quarterized. Specifically,
-$\rho = 1 - \frac{1 - \hat{\rho}}{4}$, and $\sigma_u = \frac{\hat{\sigma}}{\sqrt{4}}$, where $\hat{\rho}$ and $\hat{\sigma}$ are the estimated parameters for the AR(1) via OLS. The uncon}
+$\rho = 1 - \frac{1 - \hat{\rho}}{4}$, and $\sigma_u = \frac{\hat{\sigma}}{\sqrt{4}}$, where $\hat{\rho}$ and $\hat{\sigma}$ are the estimated parameters for the AR(1) via OLS. The unconditional standard deviation is evaluated by $\frac{\sigma_u}{\sqrt{1 - \rho^2}}$}
 
 The global risk-free world interest rate $r^*$ is set to match the U.S. 3-month treasury bill rate during 1990 to 2007\footnote{
     Quarterly averaged data retrieved from FRED. The span of 1990 to 2007 is set to match the periods of the Great Moderation, when the business cycle fluctuation is reduced \citep{FedHistory-GreatModeration}. The average of 3-month treasury bill rate over 1990 to 2007 is 4.10\%.
@@ -38,5 +38,6 @@ The following justifies this choice of targets.
     Due to this uncertainty of determining a default episode, I set the default frequency to be 2.6 as the benchmark target, which is the frequency of Argentina following \citet{Na-18}. Attempts on counting default episodes based on a different definition will be conducted as a robustness check in later section.
     \item  \citet{Na-18} adopts a growth accounting approach proposed by \citet{zarazaga-12} to calculate the output loss associated with the default. Applying this method to Sri Lanka, however, suggests that the output increases along with default, indicating that the method is not suitable in this case. See Appendix \ref{ap: zarazaga} for more detail. I therefore follow \citet{Na-18} and set the output loss to be 7\%, matching the case of Argentina.
 \end{enumerate}
-Table \ref{tab:cal-sri-lanka} summarizes the calibrated parameters and their sources.
+Table \ref{tab:cal-sri-lanka} summarizes the calibrated parameters and their sources, and Table~\ref{tab: calibration-compare} summarizes the fitness.
+
 

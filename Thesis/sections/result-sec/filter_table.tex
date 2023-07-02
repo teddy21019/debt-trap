@@ -1,0 +1,62 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[t]
+    \centering
+    \begin{tabular}{@{}rrrrrrr@{}}
+    \toprule
+    \multicolumn{1}{c}{} & \multicolumn{3}{c}{Sri Lanka} & \multicolumn{3}{c}{Pakistan} \\ \cmidrule(l){2-7} 
+    Filtering &
+    $\rho$ &
+    $\sigma$ &
+    \begin{tabular}[c]{@{}r@{}}Unconditional \\ std\end{tabular} &
+    $\rho$ &
+    $\sigma$ &
+    \begin{tabular}[c]{@{}r@{}}Unconditional \\ std\end{tabular} \\ \midrule
+    HP                   & 0.9114   & 0.0180   & 4.37\%  & 0.8518   & 0.0116  & 2.21\%  \\
+    Log-Q                & 0.9325   & 0.0266   & 7.38\%  & 0.9239   & 0.0174  & 4.55\%  \\  \bottomrule
+    \end{tabular}
+    \caption{AR(1) Estimation Result with Different Filtering Methods}
+    \label{tab:ar1-filter}
+    \floatfoot{\emph{Note}:
+        ``HP'' refers to HP-filter with $\lambda=$ 100; ``Log-Q'' refers to the log-quadratic detrending. $\rho$ and $\sigma_u$ are the parameters obtained by fitting the AR(1) process of the cyclical component $y^c_t = \rho y^c_{t-1} + u_t$, where $u_t \sim \mathcal{N}(0, \sigma_u^2)$. ``Unconditional std'' stands for the corresponding unconditional standard deviation of the AR(1) process, evaluated by $\frac{\sigma_u}{\sqrt{1 - \rho^2}}$.
+    }
+\end{table}
+
+\begin{table}[t]
+    \centering
+    \begin{tabular}{@{}rrrrrrr@{}}
+    \toprule
+    \multicolumn{1}{c}{} & \multicolumn{3}{c}{Sri Lanka} & \multicolumn{3}{c}{Pakistan} \\ \cmidrule(l){2-7}
+    Filtering &
+    $\beta$ &
+    $\delta_1$ &
+    $\delta_2$ &
+    $\beta$ &
+    $\delta_1$ &
+    $\delta_2$\\
+    \midrule
+    HP &    0.6919 &  -0.4391  &  0.5530 &  0.6252 &  -0.5148  &   0.5789 \\
+    Log-Q &0.6320  & -0.2878  &  0.4248  &   0.8627   & -0.4167    & 0.4973\\  \midrule
+     &
+    $d/y^T$ &
+    freq &
+    $L$ &
+    $d/y^T$ &
+    freq &
+    $L$ \\
+    \midrule
+    \textbf{\emph{Target}} &
+   \emph{ 1.75} &\emph{ 2.6} &\emph{ 0.07} &\emph{ 1.02} &\emph{ 2.6} &\emph{ 0.07} \\
+    HP &  1.73 &	1.26 & 0.102 & 1.02 & 1.26 & 0.057\\
+    Log-Q & 1.70 & 1.8 & 0.122 & 1.00 & 1.06 & 0.067\\
+    \bottomrule
+
+    \end{tabular}
+    \caption{Calibrated Parameters Under Different Filtering Methods}
+    \label{tab: calibration-compare}
+    \floatfoot{\emph{Note}:
+        ``HP'' refers to HP-filter with $\lambda=$ 100; ``Log-Q'' refers to the log-quadratic detrending.
+        The upper part of the table shows the estimated parameters $(\beta, \delta_1, \delta_2)$ that are tuned to match three equilibrium conditions: debt-to-tradable-GDP ratio ($d/y^T$), frequency of default (freq), and the output loss $L$.
+        The lower part of the table shows the fitness of the estimation by comparing the targeted moments with the model-generated moments.
+    }
+\end{table}

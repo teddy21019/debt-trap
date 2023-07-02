@@ -16,8 +16,8 @@
     \end{subfigure}
     \caption{Debt to China Statistic by Country in 2017}
     \label{fig:Country-Agg}
-    \floatfoot{Source: \citet*{Horn-Reinhart-Trebesch-21} database \\
-    Note: The figure on the left presents the top 30 countries in amount of total external debt to China in 2017. The figure on the right compares by the China-debt-to-GDP ratio.}
+    \floatfoot{\emph{Source:} \citet*{Horn-Reinhart-Trebesch-21} database \\
+    \emph{Note:} The figure on the left presents the top 30 countries in amount of total external debt to China in 2017. The figure on the right compares by the China-debt-to-GDP ratio.}
 \end{figure}
 
 \begin{figure}[h]
@@ -25,8 +25,8 @@
     \includegraphics[width = 0.8\textwidth]{fig/aggr_debt_source.pdf}
     \caption{Change of Aggregate Public Debt for Different Official Creditors}
     \label{fig:debt-ts}
-    \floatfoot{Source: \citet*{Horn-Reinhart-Trebesch-21} database \\
-    Note: The figure shows the change in the aggregate external public debt that the developing countries owed to different official creditors. These include China, World Bank (excluding China), IMF, and all 22 Paris Club governments. It is obvious that China had become the largest official creditors in the world according to the estimation of \citet*{Horn-Reinhart-Trebesch-21}.}
+    \floatfoot{\emph{Source}: \citet*{Horn-Reinhart-Trebesch-21} database \\
+    \emph{Note}: The figure shows the change in the aggregate external public debt that the developing countries owed to different official creditors. These include China, World Bank (excluding China), IMF, and all 22 Paris Club governments. It is obvious that China had become the largest official creditors in the world according to the estimation of \citet*{Horn-Reinhart-Trebesch-21}.}
 \end{figure}
 
 \begin{figure}[h]
@@ -45,23 +45,52 @@
     \end{subfigure}
     \caption{Debt to Main Creditors}
     \label{fig: LAK-PAK-debt-ts}
-    \floatfoot{Source: \citet*{Horn-Reinhart-Trebesch-21} database \\
-    Note: The figure shows the change in the external public debt that Sri Lanka and Pakistan owed to different official creditors. These include China, World Bank (excluding China), IMF, and all 22 Paris Club governments.}
+    \floatfoot{\emph{Source:} \citet*{Horn-Reinhart-Trebesch-21} database \\
+    \emph{Note:} The figure shows the change in the external public debt that Sri Lanka and Pakistan owed to different official creditors. These include China, World Bank (excluding China), IMF, and all 22 Paris Club governments.}
 \end{figure}
 
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            % Decompose Tradable HP
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[h]
-    \includegraphics[width = \textwidth]{fig/decompose_gdp.eps}
-    \caption{Decomposition of log-real-tradable-GDP for Sri Lanka and Pakistan}
-    \label{fig:decompose-gdp}
+    \includegraphics[width = \textwidth]{fig/decompose_trad_hp.eps}
+    \caption{Decomposition of log-real-tradable-GDP for Sri Lanka and Pakistan Using HP-Filter}
+    \label{fig:decompose-trad-hp}
     \floatfoot{\emph{Source:} World Bank national accounts data. \\
-    \emph{Note:} The cyclical component in the right is obtained by the HP-filter with smoothing parameter $\lambda = 100$ for the log-real-GDP in the left. The quarterized AR(1) estimation for Sri Lanka yields $(\rho, \sigma_u)= (0.9114, 0.0123)$, and for Pakistan yields $(\rho, \sigma_u)= (0.9008, 0.0111)$}
+    \emph{Note:} The cyclical component in the right is obtained by the HP-filter with smoothing parameter $\lambda = 100$ for the log-real-GDP in the left. The quarterized AR(1) estimation for Sri Lanka yields $(\rho, \sigma_u)= (0.9114, 0.0180)$, and for Pakistan yields $(\rho, \sigma_u)= (0.8518, 0.0116)$}
 \end{figure}
-% \section*{}
-\begin{landscape}
-    \input{sections/result-sec/sri_lanla-calibration-table.tex}
-    \input{sections/result-sec/pakistan-calibration-table.tex}
-\end{landscape}
 
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            % Decompose Tradable Log-Q
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[h]
+    \includegraphics[width = \textwidth]{fig/decompose_trad_logq.eps}
+    \caption{Decomposition of log-real-tradable-GDP for Sri Lanka and Pakistan Using Log-quadratic Filter}
+    \label{fig:decompose-trad-logq}
+    \floatfoot{\emph{Source:} World Bank national accounts data. \\
+    \emph{Note:} The cyclical component in the right is obtained by the log-quadratic filter for the log-real-GDP in the left. The quarterized AR(1) estimation for Sri Lanka yields $(\rho, \sigma_u)= (0.9325, 0.0266)$, and for Pakistan yields $(\rho, \sigma_u)= (0.9239, 0.0174)$}
+\end{figure}
+
+
+\begin{figure}
+     \begin{subfigure}[t]{\textwidth}
+        \includegraphics[width = \textwidth]{fig/sri_lanka_debt_gdp.pdf}
+        \caption{Sri Lanka}
+        \label{fig: sri_d_t_trad}
+    \end{subfigure}
+
+     \begin{subfigure}[t]{\textwidth}
+        \includegraphics[width = \textwidth]{fig/pak_debt_gdp.pdf}
+        \caption{Pakistan}
+        \label{fig: pak_d_t_trad}
+    \end{subfigure}
+    \caption{Debt Stock, Tradable GDP, and the Ratio, 2007 -- 2017}
+    \label{fig: d-t_trad}
+    \floatfoot{\emph{Source:} Debt data from IDS Database and \citet*{Horn-Reinhart-Trebesch-21} Database. GDP data from World Bank.\\
+        \emph{Note:} The figure shows the change of total debt level versus the nominal GDP for tradable goods, defined as the sum of agriculture, forestry, fishing, and industry. The left vertical axis represents the values of debts and nominal tradable-GDP in billion USD, depicted by solid lines. The right vertical axis corresponds to the ratio shown as a dashed black line, reflecting the ratio of debt-to-tradable-GDP.
+    }
+\end{figure}
+%https://www.bbc.com/news/world-south-asia-11060119
 
 \begin{figure}[t]
     \centering
@@ -83,6 +112,8 @@
     \floatfoot{\emph{Note:} The default set derived via value function iteration is plotted on the state space. The horizontal axis represents the tradable output level, and the vertical axis represents the debt stock. The gray area represents the grid point where the country chooses not to default, and the white area is the grid point where default is the optimal action for the country.}
 \end{figure}
 
+
+
 \begin{figure}
     \begin{subfigure}[t]{0.8\textwidth}
         \includegraphics[width = \textwidth]{fig/default_set_sri_trad_hp_with_china.eps}
@@ -97,11 +128,11 @@
     \end{subfigure}
     \caption{Mapping Actual Data onto Analytical Model for Sri Lanka, 2007 -- 2017}
     \label{fig:ds-sri-data}
-    \floatfoot{
-        \emph{Source:} Debt data from IDS Database and \citet*{Horn-Reinhart-Trebesch-21} Database. GDP data from World Bank\\
-        \emph{Note:} The gray region represents the non-default set of Sri Lanka, and the white region represents the default set. Black dots in (a) and (b) represents for the output-debt pair in the real data, and the gray dots in (b) represents the output-debt pair that excludes the debts from China.
+    \floatfoot{\emph{Source:} Debt data from IDS Database and \citet*{Horn-Reinhart-Trebesch-21} Database. GDP data from World Bank\\
+        \emph{Note:} The gray region represents the non-default set of Sri Lanka, and the white region represents the default set. Black dots in (a) and (b) represents the output-debt pair in the real data, and the gray dots in (b) represents the output-debt pair that excludes the debts from China. Debt here corresponds to the unsecured debt amount per quarter.
     }
 \end{figure}
+
 
 
 \begin{figure}
@@ -118,8 +149,42 @@
     \end{subfigure}
     \caption{Mapping Actual Data onto Analytical Model for Pakistan, 2013 -- 2017}
     \label{fig:ds-pak-data}
-    \floatfoot{
-        \emph{Source:} Debt data from IDS Database and \citet*{Horn-Reinhart-Trebesch-21} Database. GDP data from World Bank\\
-        \emph{Note:} The gray region represents the non-default set of Pakistan, and the white region represents the default set. Black dots in (a) and (b) represents for the output-debt pair in the real data, and the gray dots in (b) represents the output-debt pair that excludes the debts from China.
+    \floatfoot{\emph{Source:} Debt data from IDS Database and \citet*{Horn-Reinhart-Trebesch-21} Database. GDP data from World Bank\\
+        \emph{Note:} The gray region represents the non-default set of Pakistan, and the white region represents the default set. Black dots in (a) and (b) represents the output-debt pair in the real data, and the gray dots in (b) represents the output-debt pair that excludes the debts from China. Debt here corresponds to the unsecured debt amount per quarter.
     }
 \end{figure}
+
+
+            %%%%%%%%%%%%%%%%%%%%%%%%
+            % Using Log-Q
+            %%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}
+    \begin{subfigure}[t]{0.8\textwidth}
+        \includegraphics[width = \textwidth]{fig/default_set_sri_trad_logq_with_china.eps}
+        \caption{Sri Lanka}
+        \label{fig: ds-sri-logq}
+    \end{subfigure}
+
+    \begin{subfigure}[t]{0.8\textwidth}
+        \includegraphics[width = \textwidth]{fig/default_set_pak_trad_logq_with_china.eps}
+        \caption{Pakistan}
+        \label{fig: ds-pak-logq}
+    \end{subfigure}
+    \caption{Default Set and Mapped Data Using Log-quadratic Filter}
+    \label{fig: ds-logq}
+    \floatfoot{\emph{Source:} Debt data from IDS Database and \citet*{Horn-Reinhart-Trebesch-21} Database. GDP data from World Bank\\
+        \emph{Note:} The figures demonstrates the default set as well as the data points when the cyclical component of the output process is obtained via a log-quadratic filter.
+        The gray region represents the non-default set of Pakistan, and the white region represents the default set. Black dots represent the output-debt pair in the real data.
+    }
+\end{figure}
+
+
+\section*{}
+\input{sections/intro-sec/data-source.tex}
+
+\begin{landscape}
+    \input{sections/result-sec/sri_lanla-calibration-table.tex}
+    \input{sections/result-sec/pakistan-calibration-table.tex}
+\end{landscape}
+
+\input{sections/result-sec/filter_table.tex}
