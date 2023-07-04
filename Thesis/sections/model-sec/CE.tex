@@ -1,33 +1,33 @@
-Under equilibrium, the households' consumption equals the production of firms
+Under equilibrium, households' consumption equals the production of firms:
 \begin{equation}
     \label{eq:nontrade-clear}
     c^N_{t} = y^N_t.
 \end{equation}
-The tradable goods are purely endowed exogenously under an AR(1) process
+The tradable goods are purely endowed exogenously under an AR(1) process:
 \begin{equation}
     \label{eq:ar1-output}
     \ln(y_t^T) = \rho \ln(y^T_{t-1}) + \mu_t,
 \end{equation}
 where $\mu_t \overset{\mathrm{iid}}{\sim} \mathcal{N}(0,\sigma_\mu^2)$ is an i.i.d. shock, and $ |\rho| \in [0,1)$ is the autocorrelation parameter.
-When the country decides to default, it is in bad standing, hence it faces an output loss defined by $L(y^T_t)$. The loss function is non-negative and increasing in the tradable goods. The endowment of tradable goods to the household is then
+When the country decides to default, it is in bad standing, and hence it faces an output loss defined by $L(y^T_t)$. The loss function is non-negative and increasing in the tradable goods. The endowment of tradable goods to the household is then:
 \begin{equation}
     \label{eq:ytt}
     \tilde{y}^T_t =
         \begin{cases}
         y^T_t  - L(y^T_t) & \text{if } I_t = 0 \\
-        y^T_t & \text{otherwise}
+        y^T_t & \text{otherwise.}
         \end{cases}
 \end{equation}
 When the country defaults ($I_t = 0$), the endowment decreases.
 
-Price of debt offered by foreign lenders $q_t$ should be equal to the price of the domestic debt $q^d_t$, but only during the good standing
+The price of debt offered by foreign lenders $q_t$ should equal the price of the domestic debt $q^d_t$, but only during good standing:
 \begin{equation}
     \label{eq:qq}
     I_t(q^d_t - q_t) = 0.
 \end{equation}
 
-The market clearing condition can be established by combining various equations, including the household budget constraint \eqref{eq:bc} and \eqref{eq:h-constraint}, the firm's production function \eqref{eq:production} and profit equation \eqref{eq:profit}, the government's constraint on debt \eqref{eq:gov-next-debt} and lump-sum return \eqref{eq:gov-budget}, and conditions from \eqref{eq:nontrade-clear}, \eqref{eq:ytt}, and \eqref{eq:qq}.
-Eventually, the clearing condition for tradable goods is
+The market-clearing condition can be established by combining various equations, including household budget constraints \eqref{eq:bc} and \eqref{eq:h-constraint}, the firm's production function \eqref{eq:production} and profit equation \eqref{eq:profit}, the government's constraint on debt \eqref{eq:gov-next-debt} and lump-sum return \eqref{eq:gov-budget}, and the conditions from \eqref{eq:nontrade-clear}, \eqref{eq:ytt}, and \eqref{eq:qq}.
+Eventually, the clearing condition for tradable goods is:
 \begin{equation}
     \label{eq:market-clearing}
     c^T_t = y^T_t - (1 - I_t)L(y^T_t) + I_t(q_t d_{t+1} - d_t)
@@ -37,28 +37,31 @@ Assume that the law of one price applies to tradable goods. The foreign currency
 \begin{equation*}
     P^T_t = P^{T*}_t \mathcal{E}_t
 \end{equation*}
-This implies that the price of a tradable good should be the same in both domestic and foreign currency terms in an efficient market. Without loss of generosity, the foreign-currency price of the tradable goods is normalized to 1 ($P^{T*}_t = 1$), hence the nominal price for tradable goods can be expressed as the nominal exchange rate
+This implies that the price of a tradable good should be the same in both domestic and foreign currency terms in an efficient market.
+
+Without loss of generosity, the foreign-currency price of the tradable goods is normalized to 1 ($P^{T*}_t = 1$)
+Hence, the nominal price for tradable goods can be expressed as the nominal exchange rate:
 \begin{equation}
     \label{eq:price-exrate}
     P^T_t = \mathcal{E}_t.
 \end{equation}
-For convenience, also define the devaluation rate of domestic currency as
+For convenience, I also define the devaluation rate of domestic currency as:
 \begin{equation}
     \label{eq:devaluation-rate}
     \epsilon_t \equiv \frac{\mathcal{E}_t}{\mathcal{E}_{t-1}} = \frac{P^T_t}{P^T_{t-1}}.
 \end{equation}
-
 The conditions are now sufficient to define a competitive equilibrium.
 \begin{definition}[Competitive Equilibrium in \citet{Na-18}]
-    A competitive equilibrium is a set of stochastic process $\left\{ c^T_t, h_t, w_t, d_{t+1}, \lambda_t, q_t, q^d_t \right\}$ satisfying
+    A competitive equilibrium is a set of stochastic processes $\left\{ c^T_t, h_t, w_t, d_{t+1}, \lambda_t, q_t, q^d_t \right\}$ satisfying:
     \input{sections/model-sec/equil.tex}
     given processes $\left\{ y^T_t, \epsilon_t, \tau^d_t. I_t \right\}$ and initial conditions $w_{-1}$ and $d_0$.
 \end{definition}
-
 As proven by \citet{Na-18}, if the government is able to set the devaluation rate and the tax on debt freely, then the stochastic process of the variables $\left\{ c^T_t, h_t, d_{t+1}, q_t \right\}$ can be determined by the process of $\left\{ y^T_t, I_t\right\}$ and the initial debt level $d_0$.
 
-As discussed previously, the decision of $I_t$ is an optimal policy for the government due to lack of commitment to repay in the international credit market. Furthermore, the default decision of the government in the next period $t+1$ is also affected by the current decision. To see this argument, first notice that the default decision in $t+1$ is determined by the state variables $\left\{ y^T_{t+1}, d_{t+1} \right\}$. However, $d_{t+1}$ is determined in period $t$, which means that the government in period $t$ understands that it is able to affect the default decision in $t+1$ via the choice of $d_{t+1}$. As $y^T_{t+1}$ follows a first-order Markov process, the expected value of $y^T_{t+1}$ is a function of $y^T_t$, hence the expected value for the default decision on period $t$ is actually a function of $y^T$ and $d_{t+1}$. Recall that the price for the debt $q_t$ is related to the probability of default in the next period, according to Equation \eqref{eq:lender}, it can be expressed in the contemporary variables
+As discussed previously, the decision of $I_t$ is an optimal policy for the government due to a lack of commitment to repay debt in the international credit market. Furthermore, the default decision of the government in the next period $t+1$ is also affected by the current decision. To see this argument, first notice that the default decision in $t+1$ is determined by the state variables $\left\{ y^T_{t+1}, d_{t+1} \right\}$. However, $d_{t+1}$ is determined in period $t$, which means that the government in period $t$ understands that it is able to affect the default decision in $t+1$ via the choice of $d_{t+1}$. As $y^T_{t+1}$ follows a first-order Markov process, the expected value of $y^T_{t+1}$ is a function of $y^T_t$, and hence the expected value for the default decision on period $t$ is actually a function of $y^T$ and $d_{t+1}$.
+
+Recall that the price for debt $q_t$ relates to the probability of default in the next period. According to Equation \eqref{eq:lender}, it can be expressed in the contemporary variables:
 \begin{equation}
     q_t = q(y^T_t, d_{t+1}).
 \end{equation}
-On the one hand, this provides us the economic intuition that the government internalizes the fact that its choice of debt in the next period can affect the price of the debt. On the other hand, this allows us to clarify the dependencies of variables in the value function.
+On the one hand, this provides economic intuition that the government internalizes the fact that its choice of debt in the next period can affect the price of the debt. On the other hand, this clarifies the dependencies of variables in the value function.
