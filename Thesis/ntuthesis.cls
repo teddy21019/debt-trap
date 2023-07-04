@@ -189,12 +189,12 @@
     \begin{doublespace}
     \fontsize{15}{30}\selectfont
     \begin{tabular}{p{2.75cm}p{12.5cm}}
-      \raisebox{30pt}{口試委員：} & \rule{11.5cm}{1pt} \\
+      \raisebox{30pt}{口試委員：} & \rule{8.5cm}{1pt} (指導教授) \\
       & \rule{5cm}{1pt}\hspace{1.5cm}\rule{5cm}{1pt} \\
       & \rule{5cm}{1pt}\hspace{1.5cm}\rule{5cm}{1pt} \\
       & \rule{5cm}{1pt}\hspace{1.5cm}\rule{5cm}{1pt} \\
-      % & \rule{5cm}{1pt}\hspace{1.5cm}\rule{5cm}{1pt} \\
-      \raisebox{5pt}{所\hspace{15pt}長：} & \rule{8.5cm}{1pt}
+      & \rule{5cm}{1pt}\hspace{1.5cm}\rule{5cm}{1pt} \\
+      % \raisebox{5pt}{所\hspace{15pt}長：} & \rule{8.5cm}{1pt}
     \end{tabular}
     \end{doublespace}
     \end{center}
