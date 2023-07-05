@@ -27,7 +27,7 @@
 \LoadClass[a4paper,12pt]{book}
 
 % Required packages
-\RequirePackage[top=4cm,left=3cm,bottom=3cm,right=3cm]{geometry}
+\RequirePackage[top=3cm,left=3cm,bottom=2cm,right=3cm]{geometry}
 \RequirePackage{xeCJK}
 \RequirePackage{setspace}
 \RequirePackage[contents={}]{background}
