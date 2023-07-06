@@ -5,7 +5,7 @@ Despite the fact that the default set can only be established through numerical 
 \newcommand{\yT}{y^T_{t}}
 \newcommand{\yTpr}{y^T_{t+1}}
 \newcommand{\dpr}{d_{t+1}}
-Recall that the default set is defined as
+Recall that the default set is defined as:
 \begin{equation*}
     D(d_t) = \{\yT : v^b(\yT) > v^c(\yT, d_t)\},
 \end{equation*}
@@ -24,7 +24,7 @@ Similar properties are proved in \citet*{Arellano-08} and \citet*{Uribe-Schmitt-
     If $D(d_t) \neq \emptyset$, then $q(\yT, \dpr)\dpr - d_t < -L(\yT)$ for all $\dpr$.
 \end{proposition}
 \begin{proof}
-    The proof is by contradiction. Suppose that $q(\yT, \tilde{d}_{t+1})\tilde{d}_{t+1} - d_t > -L(\yT)$ for some $\tilde{d}_t$, according to the definition of $v^c(d_t, \yT)$,
+    The proof is by contradiction. Suppose that $q(\yT, \tilde{d}_{t+1})\tilde{d}_{t+1} - d_t > -L(\yT)$ for some $\tilde{d}_t$, according to the definition of $v^c(d_t, \yT)$:
     \begin{align*}
         v^c(d_t, \yT) &= \max_{\dpr, h_t} \left\{
             U\left( A(\yT + q_t(\yT, \dpr) \dpr - d_t, F(h_t)) \right) +
@@ -49,7 +49,7 @@ Similar properties are proved in \citet*{Arellano-08} and \citet*{Uribe-Schmitt-
     Consider the difference between the value function under bad standings $v^b(\yT)$ and the value function of continuing to repay its debt  $v^c(\yT, d_t)$ as $\Delta(\yT, d_t) \equiv v^b(\yT) - v^c(\yT, d_t)$. By definition, any tradable output in the default set $\yT \in D(d_t)$ satisfies $\Delta(\yT, d_t) >0$.
 
     Consider the first derivative of the difference function $\Delta_{y, d} = \pdv{\Delta}{y^T_t} = v^b_{y}(y) - v^c_{y}(y, d)$.
-    Recall that
+    Recall that:
     \begin{align*}
         v^c(y, d) &= \max_{\left\{d' \right\}} \quad
         \left\{
@@ -74,7 +74,7 @@ Similar properties are proved in \citet*{Arellano-08} and \citet*{Uribe-Schmitt-
                  \right)
             \right].
     \end{align*}
-    The notation for tradable output $y^T_t$ is simplified as $y$ and $y^T_{t+1}$ as $y'$, and similarly $d_t$ is simplified as $d$ and $d_{t+1}$ as $d'$. Also, from previous discussion we know that the optimal working hours is $h^*_t = \bar{h}$ when the government chooses to devaluate during default as its optimal policy, which is normalized to unity for simplicity. Applying the envelope theorem on $v^c(y, d)$,
+    The notation for tradable output $y^T_t$ is simplified as $y$ and $y^T_{t+1}$ as $y'$, and similarly $d_t$ is simplified as $d$ and $d_{t+1}$ as $d'$. Also, from previous discussion we know that the optimal working hours is $h^*_t = \bar{h}$ when the government chooses to devaluate during default as its optimal policy, which is normalized to unity for simplicity. Applying the envelope theorem on $v^c(y, d)$:
     \begin{align*}
         v^c_y \equiv \pdv{v^c}{y} &= \pdv{}{y} U\Big[ A\Big(y + q(y, d')d' - d, F(1)\Big)\Big]\\
         &=\Big(1 + q_y(y, d')d'\Big) A_1(c_c, F(1)) U'\Big(A(c_c, F(1))\Big),
@@ -87,7 +87,7 @@ Similar properties are proved in \citet*{Arellano-08} and \citet*{Uribe-Schmitt-
     where $L' \equiv \pdv{L}{y}$ and $c_b \equiv y - L(y)$
     For the sake of simplicity, the second parameter for the aggregation function $A(\cdot, \cdot)$ and its derivative $A_1(\cdot,\cdot )$ will be simplified by showing only the first argument since the second argument is always $F(1)$.
 
-    Accordingly, the difference function
+    Accordingly, the difference function:
     \begin{align}
         \Delta_y =& v^b_y(y) - v^c_y(y, d) \nonumber \\
         =& \Big[ 1 - L' (y)\Big] A_1 (c_b) U' \Bigl(A(c_b)\Bigr)-
@@ -102,13 +102,13 @@ Similar properties are proved in \citet*{Arellano-08} and \citet*{Uribe-Schmitt-
         \item $A_1(c_1) > A_1(c_2)>0$, and
         \item $U'(c_1) > U'(c_2)>0$
     \end{enumerate*}
-    Together, it implies that $U'(A(c_1)) > U'(A(c_2))$. Furthermore, since $\frac{A_1(c_1)}{A_1(c_2)} > 1$ and $\frac {U'(A(c_1))}{U'(A(c_2))} > 1$, we have
+    Together, it implies that $U'(A(c_1)) > U'(A(c_2))$. Furthermore, since $\frac{A_1(c_1)}{A_1(c_2)} > 1$ and $\frac {U'(A(c_1))}{U'(A(c_2))} > 1$, this results in:
     \begin{equation}
         \label{eq:AUA-compare}
         \frac{A_1(c_1) U'(A(c_1))}{A_1(c_2) U'(A(c_2))} > 1 \implies
         {A_1(c_1) U'(A(c_1))} > {A_1(c_2) U'(A(c_2))}.
     \end{equation}
-    The first two terms in \refeq{eq:diff-value-function} resembles this relationship. Since
+    The first two terms in \refeq{eq:diff-value-function} resembles this relationship. Since:
     \begin{equation*}
         c_b \equiv y - L(y) > y+q(y, d')d' -d \equiv c_c
     \end{equation*}
