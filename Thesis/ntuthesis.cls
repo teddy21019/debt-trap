@@ -24,7 +24,7 @@
 \DeclareOption{onehalfspacing}{\gdef\@setspacing{\onehalfspacing}}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions\relax
-\LoadClass[a4paper,12pt]{book}
+\LoadClass[a4paper,12pt,oneside]{book}
 
 % Required packages
 \RequirePackage[top=3cm,left=3cm,bottom=2cm,right=3cm]{geometry}
