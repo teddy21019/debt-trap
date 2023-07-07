@@ -1,13 +1,13 @@
 The calibration strategy for Pakistan is similar to that of Sri Lanka.
-The parameters for the output process is obtained from the cyclical component of the HP-filter on the annual log-real-GDP for Pakistan from 1980 to 2021, which yields $\rho = $ 0.8518 and $\sigma_u=$ 0.0116 (see \autoref{fig:decompose-trad-hp}).
-The risk-free interest rate remains to be 4\% annually, hence $r= $1\%.
-Pakistan defaulted on January 1999, completed its debt restructuring on December 1999 \citep{SPGlobal-default-report}, but gained partial reaccess (flows > 0) in 2004, and full reaccess (flow > 1\% of GDP) in 2006 \citep*[][Table 5.6]{trebesch-2011-sovereign}.
-The model adopted in my thesis does not distinguish between partial or full reaccess, hence the reentry period is set as the first year Pakistan gain positive flow of debt. Accordingly, the reentry period is set to 6 years (24 quarters), and $\theta=$ 0.0417.
+The parameters for the output process are obtained from the cyclical component of the HP-filter on the annual log-real-GDP for Pakistan from 1980 to 2021, which yields $\rho = $ 0.8518 and $\sigma_u=$ 0.0116 (see \autoref{fig:decompose-trad-hp}).
+The risk-free interest rate remains 4\% annually, and hence $r= $1\%.
+Pakistan defaulted on January 1999, completed its debt restructuring in December 1999 \citep{SPGlobal-default-report}, but gained partial reaccess (flows > 0) in 2004, and full reaccess (flow > 1\% of GDP) in 2006 \citep*[][Table 5.6]{trebesch-2011-sovereign}.
+The model adopted in my thesis does not distinguish between partial or full reaccess, and hence the reentry period is set as the first year Pakistan gains positive flow of debt. Accordingly, the reentry period is set to 6 years (24 quarters), and $\theta=$ 0.0417.
 
 The labor share is set as 0.4 to match the capital share in real GDP, following \citet{Pakistan-DSGE-calibration}. The share of tradable consumption is calibrated according to the tradable-to-GDP ratio over 1980 to 2021, which gives $a=$ 0.33. The intratemporal elasticity of substitution of consumption $\xi=$ 0.5 and $\sigma=$ 2, following the same justification for Sri Lanka \citep{Pakistan-DSGE-calibration,Uribe-Schmitt-Grohe-textbook}.
 Nominal wage rigidity is set as $\gamma=$ 1.048 based on the empirical estimation of downward wage rigidity in 2014 by \citet*{wage-rigidity-data}.
 
-Finally, the triplet $\left( \beta, \delta_1, \delta_2 \right)$ is also chosen to match the three equilibrium results:
+The triplet $\left( \beta, \delta_1, \delta_2 \right)$ is also chosen to match the three equilibrium results:
 \begin{enumerate*}[label = (\roman*)]
     \item the average debt-to-traded-GDP ratio in periods of good standing is 44\% per quarter;
     \item the frequency of default is 2.6 times per century; and
@@ -19,13 +19,13 @@ Finally, the triplet $\left( \beta, \delta_1, \delta_2 \right)$ is also chosen t
     \footnote{
         Following the same logic as with Sri Lanka, I choose an 8-years window before the increasing amount of loans from China in 2013.
         }
-    Multiplying it with an average 37\% haircut ratio estimated in \citet{Cruces-Trebesch-13} yields an 11.1\% of annual unsecured debt, which gives an 44.4\% unsecured debt-to-GDP ratio quarterly.%
+    Multiplying it with an average 37\% haircut ratio estimated in \citet{Cruces-Trebesch-13} yields 11.1\% of annual unsecured debt, which gives an 44.4\% unsecured debt-to-GDP ratio quarterly.%
     \footnote{
         \citet{Cruces-Trebesch-13} estimates that the haircut ratio for the 1999 default of Pakistan is about 15\%. This yields an 18\% unsecured debt-to-GDP ratio to be targeted, which is too low for the model. I therefore adopt the average haircut ratio instead.
         }
-    \item Default record according to \citet{SPGlobal-default-report} and \citet{Uribe-Schmitt-Grohe-textbook} shows that in Pakistan there is only one default episode in 1999. However, Pakistan sought debt relief from Paris Club several times during the 1970s and 1980s \citep{pakistan-default-start}, indicating that if we only consider the event of 1999, we might underestimate the default frequency.\footnotemark{} Following the same logic in Sri Lanka, since determining a default episode is not straightforward in this case, I set the default frequency to be 2.6 times per century as the benchmark target, following \citet{Na-18}.
+    \item The default record according to \citet{SPGlobal-default-report} and \citet{Uribe-Schmitt-Grohe-textbook} shows that in Pakistan there is only one default episode in 1999. However, Pakistan sought debt relief from Paris Club several times during the 1970s and 1980s \citep{pakistan-default-start}, indicating that if one only considers the event of 1999, then one might underestimate the default frequency.\footnotemark{} Following the same logic in Sri Lanka, since determining a default episode is not straightforward in this case, I set the default frequency to be 2.6 times per century as the benchmark target, following \citet{Na-18}.
     \footnotetext{
-        The \citet{Pakistan-gov-debt-rest} reports a comprehensive list of debt restructuring events in Pakistan. In May 1972, Pakistan interacted with the Paris Club for a short-term debt relief of \$234 million following the separation of East Pakistan. In June 1974, an arrangement with member countries of Aid-to-Pakistan Consortium agreed to provide another debt relief of \$650 million. By 1981, political crisis worsen the debt service, hence a debt relief was granted by the Consortium. The nuclear test in 1998 by Pakistan led to international sanction and embargo, causing Pakistan to fail its debt service and had to seek debt restructuring with the Paris Club. The followed debt treatments (in 1999 and 2001) from the Paris Club were under the ``Houston term'', which differs from the previous debt relief in a sense that it granted a smaller concessional interest rate and a longer grace periods \citep{pakistan-debt-rest-list}.
+        The \citet{Pakistan-gov-debt-rest} reports a comprehensive list of debt restructuring events in Pakistan. In May 1972, Pakistan interacted with Paris Club for short-term debt relief of \$234 million following the separation of East Pakistan. In June 1974, an arrangement with member countries of Aid-to-Pakistan Consortium agreed to provide another debt relief of \$650 million. By 1981, a political crisis worsened the debt service,  and hence a debt relief was granted by the Consortium. The nuclear test in 1998 by Pakistan led to international sanction and embargo, causing Pakistan to fail its debt service and to seek debt restructuring with Paris Club. The following debt treatments (in 1999 and 2001) from Paris Club were under the ``Houston term'', which differs from the previous debt relief in a sense that it granted a smaller concessional interest rate and longer grace periods \citep{pakistan-debt-rest-list}.
     }
     \item
     The capital-output ratio rose from 1.36 to 1.4 after the default episode, which suggests that the approach of \citet{zarazaga-12} is also not suitable in this case. See Appendix \ref{ap: zarazaga} for more details.\footnote{
