@@ -26,14 +26,14 @@ classdef OutputProcessPlotter
             subplot(1,2,1);
 
             % original time series
-            plot(obj.output_1.year_range ,obj.output_1.y,'color','[0.8500, 0.3250, 0.0980]')
+            plot(obj.output_1.year_range , obj.output_1.y,'color',[0 0 0], 'LineWidth',1)
             hold on
-            plot(obj.output_2.year_range ,obj.output_2.y,'color','[0.4940, 0.1840, 0.5560]')
+            plot(obj.output_2.year_range ,obj.output_2.y,'color',[0.5 0.5 0.5],'LineWidth',1)
             
             % trend
-            plot(obj.output_1.year_range ,obj.output_1.y_trend,'color','[0.8500, 0.3250, 0.0980]')
+            plot(obj.output_1.year_range ,obj.output_1.y_trend,'color',[0 0 0], 'LineWidth',0.5, 'LineStyle','--')
             hold on
-            plot(obj.output_2.year_range ,obj.output_2.y_trend,'color','[0.4940, 0.1840, 0.5560]')
+            plot(obj.output_2.year_range ,obj.output_2.y_trend,'color',[0.5 0.5 0.5], 'LineWidth',0.5, 'LineStyle','--')
 
             set(gca, 'YScale','log')
             xlim([obj.output_1.year_range(1), obj.output_1.year_range(end)])
@@ -45,9 +45,9 @@ classdef OutputProcessPlotter
             
             %plot deviation
             subplot(1,2,2);
-            plot(obj.output_1.year_range ,obj.output_1.y_cyclical * 100,'color','[0.8500, 0.3250, 0.0980]')
+            plot(obj.output_1.year_range ,obj.output_1.y_cyclical * 100,'color',[0 0 0], 'LineWidth',1)
             hold on
-            plot(obj.output_2.year_range ,obj.output_2.y_cyclical * 100,'color','[0.4940, 0.1840, 0.5560]')
+            plot(obj.output_2.year_range ,obj.output_2.y_cyclical * 100,'color',[0.5 0.5 0.5], 'LineWidth',1)
 
             xlim([1960 2021])
             ylim([-20 20])

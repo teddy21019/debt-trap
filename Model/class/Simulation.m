@@ -67,7 +67,11 @@ classdef Simulation < handle
                 rr = rand();
                 RR(t) = rr;
                 F(t) = f(i(t), j(t));
-        
+                
+                % For each loop, only the state variables (j:debt, B:standing
+                % indicator, and i:output) is important. Other endogenous
+                % variables can be extracted throught the state.
+
                 %% choose to continue 
                 if (B(t) == 0) && (F(t) == 0)
                     j(t+1) = dpix(i(t),j(t));
@@ -173,7 +177,6 @@ classdef Simulation < handle
                 debt_ratio = mean(D(gs)./YTtilde(gs));              % average debt to tradable GDP ratio, condition on being in good standings
 
         end
-
-
+        
     end
 end

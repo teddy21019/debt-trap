@@ -1,0 +1,24 @@
+In the model of \citet{Na-18}, the price of debt offered by foreign lenders in period $t$ takes the probability of the economy defaulting in the next period into consideration, given that the economy does not default in the current period and is in good financial standing, as depicted in \refeq{eq:lender}.
+As a result, it is worthy to also examine the conditional probability of defaulting under the current state.\footnote{%
+    As suggested by several committees, the ``unconditional'' default probabilities under states are able to provide more insights to the issue of debt trap compared to a clear-cut region of the default set. However, the model is unable to evaluate such concept as the default decision is deterministic under given state variables. In turn, I report the probability of defaulting in the consecutive period ``conditional'' on the economy is currently in good financial standing. This provides a slightly different interpretation on the risk of defaulting, but is still able to grasp the concept of uncertainty under different states of an economy.
+}
+
+The conditional probability of default $\Pr (I_{t+1} = 0 \mid I_{t} = 1)$ is equivalent to the probability that the output in the next period does not fall into the default set:
+\begin{equation*}
+    \Pr (y_{t+1} \in D(d_{t+1}) \mid y^T_t)
+\end{equation*}
+In numerical computation, this is obtained by multiplying the transition probability matrix of output with the default policy function, which is a matrix over all state space of output and debt.
+
+Figure \ref{fig: dp} demonstrates the default probability over each state in the model for both Sri Lanka and Pakistan. The darker region represents a lower probability of defaulting in the next period, condition on the debt level unchanged. Notice that for some states that are under the default set in Figure \ref{fig:ds}, the default probability might not be 100\%. This is because if for some reason the economy is unable to default (even if it is optimal to do so), there is a certain probability that the output shocks upward, and the economy moves back to the non-default set. As a result, Figure \ref{fig: dp} provides a fuzzy set of default risk among the boundary of default set.
+The output-debt ratios form the observed data as well as the datapoints that remove the debt to China are also shown in Figure \ref{fig: dp}. The calculations are equivalent to those in Section \ref{sec: default-set}.
+
+Reexamining the datapoints of Sri Lanka under Figure \ref{fig: dp-sri}, it is obvious that during 2012 to 2017, Sri Lanka is wandering around the fuzzy region. Among all years that are in the default set, only 2015 and 2016 is under the level of high default risk. This justifies the conclusion that the new president of Sri Lanka is under great pressure on having to renegotiate with China or other creditors. When removing the debts to China, all years appear in the lowest level on the scale, indicating that the default probabilities in the absence of China are zero.
+
+One might be curious how the default probability behave when debt from other creditor is removed in the case of Sri Lanka. From Figure \ref{fig: sri-lanka-debt-ts}, debt to China exceeds all other main creditors after 2013. A quick observation on Figure \ref{fig: dp-sri} suggested that excluding other creditors instead will in general lead to a higher debt-to-tradable-GDP ratio, and therefore the default probability will remain in the fuzzy zone of default.\footnote{%
+    Take 2016 for instance. Removing the debt from the second-highest creditor(s), in this case the aggregated debt stock from members of the Paris Club, yields a debt-to-tradable-GDP ratio of 199\% (haircut and quarter adjusted), which corresponds to about 45\% chance of defaulting in the next period. Meanwhile, removing China yields a debt-to-tradable-GDP ratio of 187\%, which corresponds to merely 5\% chance of defaulting in the next period. Since the direction of ratio by removing other creditors is trivial and obvious, I do not list all the results on the graph.
+}
+
+As for the case of Pakistan, the results do not provide further insight compared that from the default set. In 2010 and 2017, the default probability is solidly 100\%, in-line with the conclusion elaborated in the previous section. Debt-ouptut pairs in the absence of China after 2015 yield almost 0\% probabilities of defaulting for all periods.\footnote{%
+    Removing debt from the second-highest creditor, which is the World Bank, yields a debt-to-tradable-GDP ratio of 101\%. According to the figure, the probability is still close to zero.
+}
+

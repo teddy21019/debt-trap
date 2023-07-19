@@ -120,11 +120,17 @@ classdef OutputProcess < handle
         function [y, y_t, y_c] = get_range(obj, get_year_range)
             % 1960 ~ 2021 -> 2007 ~ 2013
             %    1 ~   62 ->   48 ~   54
-            i_start = get_year_range(1) - obj.year_range(1) + 1;
-            i_end   = get_year_range(end) - obj.year_range(1) + 1;
-            y = obj.y(i_start:i_end);
-            y_t = obj.y_trend(i_start:i_end);
-            y_c = obj.y_cyclical(i_start:i_end);
+%             i_start = get_year_range(1) - obj.year_range(1) + 1;
+%             i_end   = get_year_range(end) - obj.year_range(1) + 1;
+%             y = obj.y(i_start:i_end);
+%             y_t = obj.y_trend(i_start:i_end);
+%             y_c = obj.y_cyclical(i_start:i_end);
+            return_year_range = int16(get_year_range) - obj.year_range(1) + 1;
+            y = obj.y(return_year_range);
+            y_t = obj.y_trend(return_year_range);
+            y_c = obj.y_cyclical(return_year_range);
+
+
 
         end
     end

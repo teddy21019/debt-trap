@@ -65,7 +65,7 @@ classdef Model < handle
 
 
             options = optimoptions('surrogateopt','PlotFcn','surrogateoptplot',...
-                            'MaxFunctionEvaluations',150,'CheckpointFile','opt_checkfile.mat');
+                            'MaxFunctionEvaluations',1000,'CheckpointFile','opt_checkfile.mat');
             f_opt = figure;
             [optimal_calibration_grid, min_distance, exitflag, output,trials] = ...
                     surrogateopt(distance_func,min_search, max_search, options);
@@ -89,9 +89,16 @@ classdef Model < handle
             targets = obj.targets;
 
             [debt_ratio, default_freq, output_loss] =  simulation.extract_default_moments();
-            distance = norm( ...
-                    [targets.debt_ratio*10 targets.default_freq targets.output_loss*100] - ...
-                    [debt_ratio*10 default_freq output_loss*100]); 
+%             distance = norm( ...
+%                     [targets.debt_ratio*10 targets.default_freq targets.output_loss*100] - ...
+%                     [debt_ratio*10 default_freq output_loss*100]); 
+            disp([debt_ratio, default_freq, output_loss])
+            distance = norm( [ 
+                    (debt_ratio/targets.debt_ratio-1)*8 
+                    (default_freq/targets.default_freq-1)*2
+                    (output_loss/targets.output_loss-1)
+                ]);
+
         end
 
         function estimated_target = get.estimated_target(obj)

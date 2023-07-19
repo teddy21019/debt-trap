@@ -48,7 +48,7 @@ Similar properties are proved in \citet*{Arellano-08} and \citet*{Uribe-Schmitt-
 \begin{proof}
     Consider the difference between the value function under bad standings $v^b(\yT)$ and the value function of continuing to repay its debt  $v^c(\yT, d_t)$ as $\Delta(\yT, d_t) \equiv v^b(\yT) - v^c(\yT, d_t)$. By definition, any tradable output in the default set $\yT \in D(d_t)$ satisfies $\Delta(\yT, d_t) >0$.
 
-    Consider the first derivative of the difference function $\Delta_{y, d} = \pdv{\Delta}{y^T_t} = v^b_{y}(y) - v^c_{y}(y, d)$.
+    Consider the first derivative of the difference function $\Delta_y (y, d) = \pdv{\Delta}{y^T_t} = v^b_{y}(y) - v^c_{y}(y, d)$.
     Recall that:
     \begin{align*}
         v^c(y, d) &= \max_{\left\{d' \right\}} \quad
@@ -79,7 +79,7 @@ Similar properties are proved in \citet*{Arellano-08} and \citet*{Uribe-Schmitt-
         v^c_y \equiv \pdv{v^c}{y} &= \pdv{}{y} U\Big[ A\Big(y + q(y, d')d' - d, F(1)\Big)\Big]\\
         &=\Big(1 + q_y(y, d')d'\Big) A_1(c_c, F(1)) U'\Big(A(c_c, F(1))\Big),
     \end{align*}
-    where $q_y(y, d') \equiv \pdv{q}{y}$, $c_c \equiv y + q(y, d')d' -d$. This is easily derived by the chain rule. As for $v^b(y)$,
+    where $q_y(y, d') \equiv \pdv{q}{y}$, $c_c \equiv y + q(y, d')d' -d$. This is easily derived by the chain rule. As for $v^b(y)$:
     \begin{align*}
         v^b_y \equiv \pdv{v^b}{y} &=
         \Big[ 1 - L' (y)\Big] A_1 (c_b, F(1)) U' \Bigl(A(c_b, F(1))\Bigr),
@@ -116,14 +116,14 @@ Similar properties are proved in \citet*{Arellano-08} and \citet*{Uribe-Schmitt-
     \begin{equation*}
         A_1 (c_b) U' \Bigl(A(c_b)\Bigr) - A_1 (c_c) U' \Bigl(A(c_c)\Bigr) < 0.
     \end{equation*}
-    The third term in \refeq{eq:diff-value-function} is negative since the loss function is assumed to be nonnegative and nondecreasing \citep{Na-18}, hence $L'(y) > 0$. The marginal price of debt offered by foreign lenders $q_y(y, d')$ is positive since a better condition of output today $y$ yields a higher output tomorrow $y'$ due to the AR(1) nature of output, which in turn decreases the probability of default tomorrow. As a result, the price of bond increases.
+    The third term in \refeq{eq:diff-value-function} is negative since the loss function is assumed to be nonnegative and nondecreasing \citep{Na-18}, and hence $L'(y) > 0$. The marginal price of debt offered by foreign lenders $q_y(y, d')$ is positive since a better condition of output today $y$ yields a higher output tomorrow $y'$ due to the AR(1) nature of output, which in turn decreases the probability of default tomorrow. As a result, the price of bond increases.
     Overall, this gives:
     \begin{equation*}
         \Delta_y (y, d) < 0
     \end{equation*}
     if the default set is not empty. That is, $v^b(y) - v^c(y, d)$ is a decreasing function of $y$.
 
-    When default is an optimal policy under the tuple $(y_1, d)$, which means that $y_1 \in D(d)$, then by definition $v^b(y_1) > v^c(y_1, d)$. For any given $y_2 \le y_1$, since $v^b(y) - v^c(y, d)$ is decreasing in $y$, we also have $v^b(y_2) > v^c(y_2, d)$, hence $y_2 \in D(d)$.
+    When default is an optimal policy under the tuple $(y_1, d)$, which means that $y_1 \in D(d)$, then by definition $v^b(y_1) > v^c(y_1, d)$. For any given $y_2 \le y_1$, since $v^b(y) - v^c(y, d)$ is decreasing in $y$, it is clear that $v^b(y_2) > v^c(y_2, d)$, and hence $y_2 \in D(d)$.
 \end{proof}
 
 \begin{proposition}
@@ -137,7 +137,7 @@ Similar properties are proved in \citet*{Arellano-08} and \citet*{Uribe-Schmitt-
     \begin{equation*}
         \dv{y^{T*}(d_t)}{d_t} = - \frac{\pdv{\Delta}{d_t}}{\pdv{\Delta}{y^{T}}} = - \frac{-v^c_d(y^{T*}(d_t), d_t)}{v^b_y(y^{T*}) - v^c_y(y^{T*}, d_t)}.
     \end{equation*}
-    We know that $v^b_y(y^{T*}) - v^c_y(y^{T*}, d_tj) < 0$. Applying the envelope theorem to $v^c(y^{T*}_t, d_t)$, we get
+    Previous proposition shows that $v^b_y(y^{T*}) - v^c_y(y^{T*}, d_tj) < 0$. Applying the envelope theorem to $v^c(y^{T*}_t, d_t)$ gives:
     \begin{equation*}
         \pdv{v^c}{d_t} = -A_1\Big[y^{T*}_t + q_t(y^{T*}_t, \dpr)\dpr - d_t\Big] U'\Big[A(y^{T*}_t + q_t(y^{T*}_t, \dpr)\dpr - d_t)\Big]<0.
     \end{equation*}

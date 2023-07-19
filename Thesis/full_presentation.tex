@@ -605,6 +605,57 @@ $p_t \equiv \frac{P^N_t}{P^T_t}$, $w_t = \frac{W_t}{P^T_t}$, $f_t = \frac{F_t}{P
         
     
     \end{frame}
+
+    \begin{frame}
+        \frametitle{Robustness Check}
+    
+        \begin{itemize}
+            \item HP-filter or Log-Quadratic?
+        \end{itemize}
+
+        \begin{tabular}{@{}rrrrrrr@{}}
+        \toprule
+        \multicolumn{1}{c}{} & \multicolumn{3}{c}{Sri Lanka} & \multicolumn{3}{c}{Pakistan} \\ \cmidrule(l){2-7}
+        Filtering &
+        $\beta$ &
+        $\delta_1$ &
+        $\delta_2$ &
+        $\beta$ &
+        $\delta_1$ &
+        $\delta_2$\\
+        \midrule
+        HP &    0.6919 &  -0.4391  &  0.5530 &  0.6252 &  -0.5148  &   0.5789 \\
+        Log-Q &0.6320  & -0.2878  &  0.4248  &   0.8627   & -0.4167    & 0.4973\\  \midrule
+        &
+        $d/y^T$ &
+        freq &
+        $L$ &
+        $d/y^T$ &
+        freq &
+        $L$ \\
+        \midrule
+        \textbf{\emph{Target}} &
+    \emph{ 1.75} &\emph{ 2.6} &\emph{ 0.07} &\emph{ 1.02} &\emph{ 2.6} &\emph{ 0.07} \\
+        HP &  1.73 &	1.26 & 0.102 & 1.02 & 1.26 & 0.057\\
+        Log-Q & 1.70 & 1.8 & 0.122 & 1.00 & 1.06 & 0.067\\
+        \bottomrule
+
+        \end{tabular}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Sri Lanka -- Log-quadratic}
+        \centering
+        \includegraphics[width = 0.8 \textwidth]{fig/default_set_sri_trad_logq_with_china.eps}
+    
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Pakistan -- Log-quadratic}
+        \centering
+        \includegraphics[width = 0.8 \textwidth]{fig/default_set_pak_trad_logq_with_china.eps}
+    
+    \end{frame}
     \appendix
     \begin{frame}[allowframebreaks]
             \frametitle{References}
