@@ -202,17 +202,17 @@
   \fi
 }
 
-\newenvironment{quotationpage}[1]
+\newenvironment{quotationpage}[2]
   {\if@openright\cleardoublepage\else\clearpage\fi
    \chapter*{\centerline{#1}}
-   \addcontentsline{toc}{chapter}{#1}
+   \addcontentsline{toc}{chapter}{#2}
    \quotation}
   {\endquotation}
 
-\newenvironment{abstracten}{\begin{quotationpage}{\@abstractnameen}}{\end{quotationpage}}
-\newenvironment{abstractzh}{\begin{quotationpage}{\@abstractnamezh}}{\end{quotationpage}}
+\newenvironment{abstracten}{\begin{quotationpage}{\@abstractnameen}{English Abstract}}{\end{quotationpage}}
+\newenvironment{abstractzh}{\begin{quotationpage}{\@abstractnamezh}{Chinese Abstract}}{\end{quotationpage}}
 \newenvironment{acknowledgementsen}{\begin{quotationpage}{\@acknowledgementsen}}{\end{quotationpage}}
-\newenvironment{acknowledgementszh}{\begin{quotationpage}{\@acknowledgementszh}}{\end{quotationpage}}
+\newenvironment{acknowledgementszh}{\begin{quotationpage}{\@acknowledgementszh}{Acknowledgements}}{\end{quotationpage}}
 
 \setcounter{tocdepth}{2}
 \pagestyle{plain}
