@@ -24,13 +24,13 @@
 \DeclareOption{onehalfspacing}{\gdef\@setspacing{\onehalfspacing}}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions\relax
-\LoadClass[a4paper,12pt,oneside]{book}
+\LoadClass[a4paper,12pt]{book}
 
 % Required packages
 \RequirePackage[top=3cm,left=3cm,bottom=2cm,right=3cm]{geometry}
 \RequirePackage{xeCJK}
 \RequirePackage{setspace}
-\RequirePackage[contents={}]{background}
+\RequirePackage{background}
 \RequirePackage{pdfpages}
 
 % Declarations
@@ -89,11 +89,11 @@
     contents={\@doi},
     color=black,
     angle=0,
-    position={current page.south east},
+    position={current page.center},
     scale=0.8,
     opacity=1,
-    hshift={-3.5cm},
-    vshift={1.5cm}
+    % hshift={-3.5cm},
+    % vshift={1.5cm}
   }
 }
 

@@ -33,6 +33,10 @@
 \usepackage{chngcntr}
 \input{thesis-configs/newcom.tex}
 
+\newcommand{\withdoi}{1}
+\newcommand{\firstpage}{1}
+
+
 \counterwithout{equation}{chapter}
 \counterwithout{figure}{chapter}
 \counterwithout{table}{chapter}
@@ -53,13 +57,13 @@
   \def\withwatermark{1}
   \ifdefined\withwatermark
     \newsavebox\mybox
-    \savebox\mybox{\tikz[opacity=0.5]\node{\includegraphics{watermark.pdf}};}
-    \newwatermark*[allpages,xpos=6.1725cm,ypos=10.5225cm,scale=0.5]{\usebox\mybox}
+    \savebox\mybox{\tikz[opacity=0.5]\node{\includegraphics{fig/watermark.png}};}
+    \newwatermark[allpages,xpos=6.1725cm,ypos=10.5225cm,scale=0.5]{\usebox\mybox}
   \fi
 
   % digital object identifier
   \ifdefined\withdoi
-    \insertdoi
+    \newwatermark*[allpages,color = black, xpos=6.8cm, ypos=-13cm, fontsize = 12pt, fontfamily=times]{doi:10.6342/NTU202302090}
   \fi
 \fi
 
@@ -93,8 +97,8 @@
   \def\withwatermark{1}
   \ifdefined\withwatermark
     \newsavebox\mybox
-    \savebox\mybox{\tikz[opacity=0.5]\node{\includegraphics{watermark.pdf}};}
-    \newwatermark*[allpages,xpos=6.1725cm,ypos=10.5225cm,scale=0.5]{\usebox\mybox}
+    \savebox\mybox{\tikz[opacity=0.5]\node{\includegraphics{fig/watermark.png}};}
+    \newwatermark[allpages,xpos=6.1725cm,ypos=10.5225cm,scale=0.5]{\usebox\mybox}
   \fi
 
   % digital object identifier
@@ -103,7 +107,7 @@
   \fi
 \fi
 
-% \makecertification
+\makecertification
 
 \input{thesis-configs/acknowledgements.tex}
 \input{thesis-configs/abstract.tex}
